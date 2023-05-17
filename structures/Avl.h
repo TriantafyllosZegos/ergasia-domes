@@ -1,18 +1,27 @@
 #ifndef AVL_H
 #define AVL_H
+#include <iostream>
 
-class Avl {
-protected:
-  int maxKM;
-  int year;
+template<typename T> class Pair {
+  private:
+    T first;
+    T second;
+  public:
+    Pair();
+    Pair(T first,T second);
 
-public:
-  Avl();
-  Avl(int km, int year);
-  double getPollutionScore();
-  int getMaxKM();
-  int getYear();
-  virtual double getTaxes();
+    void swap();
+
+    T getFirst();
+    T getSecond();
+
+    void setFirst(T first);
+    void setSecond(T second);
+
+    friend std::ostream& operator<<(std::ostream& os,Pair& pair) {
+        return os << pair.getFirst() << "," << pair.getSecond();
+    }
+    
 };
 
-#endif
+#endif 

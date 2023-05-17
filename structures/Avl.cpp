@@ -1,19 +1,42 @@
-#include "structures/Avl.h"
-#include <cmath>
+#include "Avl.h"
+#include <iostream>
 
-Avl::Avl() {
-  this->maxKM = 0;
-  this->year = 0;
-};
-Avl::Avl(int km, int year) {
-  this->maxKM = km;
-  this->year = year;
-};
+template<typename T>
+Pair<T>::Pair(T first_value, T second_value){
+  this->first = first_value;
+  this->second = second_value;
+}
 
-int Avl::getMaxKM() { return maxKM; };
+template<typename T>
+Pair<T>::Pair(){
+}
 
-int Avl::getYear() { return year; };
+template<typename T> 
+void Pair<T>::swap(){
+  T temp = getFirst();
+  setFirst(getSecond());
+  setSecond(temp);
+}
 
-double Avl::getPollutionScore() { return (float)(maxKM * 250) / 365; };
+template<typename T> 
+T Pair<T>::getFirst(){
+  return this->first;
+}
+template<typename T> 
+T Pair<T>::getSecond(){
+  return this->second;
+}
 
-double Avl::getTaxes() { return (2022 - year) * 12.5; };
+template<typename T> 
+void Pair<T>::setFirst(T first_value){
+  this->first = first_value;
+}
+
+template<typename T> 
+void Pair<T>::setSecond(T second_value){
+  this->second = second_value;
+}
+    
+
+template class Pair<int>;
+template class Pair<std::string>;
