@@ -1,6 +1,10 @@
 #include <iostream>
+#include "structures/Avl.h"
+
+using namespace std;
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    Avl *s = new Avl(123,123);
+    cout << s->getMaxKM() << endl;
     return 0;
 }
