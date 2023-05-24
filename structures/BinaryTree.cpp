@@ -3,12 +3,10 @@
 Node* BinaryTree::insertNode(Node* node, const pair<string, string>& value) {
     if (node == nullptr) {
         node = new Node(value);
-    } else if (value.first < node->data.first) {
+    } else if (value.first <= node->data.first) {
         node->left = insertNode(node->left, value);
-    } else if (value.first > node->data.first) {
-        node->right = insertNode(node->right, value);
     } else {
-        cout << "Ignoring duplicate value: " << value.first << endl;
+        node->right = insertNode(node->right, value);
     }
     return node;
 }
@@ -20,3 +18,11 @@ void BinaryTree::insert(const pair<string, string>& value) {
     root = insertNode(root, value);
 }
 
+Node* BinaryTree::getRight() {
+    return root->right;
+
+}
+Node* BinaryTree::getNode() {
+    return root;
+
+}

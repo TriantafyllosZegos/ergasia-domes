@@ -26,6 +26,8 @@ private:
 public:
     BinaryTree();
     void insert(const pair<string, string>& value);
+    Node* getRight ();
+    Node* getNode ();
 };
 
 #endif
