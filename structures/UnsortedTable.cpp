@@ -5,6 +5,8 @@ using namespace std;
 
 UnsortedTable::UnsortedTable(){
     ptr = NULL;
+    int arr;
+    
 }
 
 void UnsortedTable::add(pair<string,string> p){
