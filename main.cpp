@@ -3,7 +3,11 @@
 #include <fstream>
 #include <sstream>
 #include <cctype>
+#include "structures/Avl.h"
 #include "structures/BinaryTree.h"
+#include "structures/HashTable.h"
+#include "structures/SortedTable.h"
+#include "structures/UnsortedTable.h"
 
 using namespace std;
 
@@ -44,15 +48,16 @@ void tokenizeString(const std::string& input, std::string tokens[], int& count) 
 
 int main()
 {
-    pair<string,string> a[10000];
+    
     int z = 0;
     string myline;
     std::ifstream myfile;
     myfile.open("small-file.txt");
 
     BinaryTree bt = BinaryTree();
+    UnsortedTable ut = UnsortedTable();
     if ( myfile.is_open() ) {
-        while ( myfile && z<10000 ) {
+        while ( myfile && z<50000 ) {
             getline (myfile, myline);
             string newl = removeNonAlphaNumeric(myline);
             std::string tokens[100];  // Assuming maximum of 100 tokens
@@ -64,15 +69,16 @@ int main()
             for (int i = 0; i < tokenCount-1; i++) {
                 pair<string,string> p = pair(tokens[i],tokens[i+1]);
                 bt.insert(p);
-                a[z] = p;
+                ut.add(p);
                 z++;
-                if (z == 10000) break;
+                if (z == 50000) break;
             }
         }
     }/*
     for(int i = 0;i<10000;i++){
         cout << a[i].first << "," << a[i].second << endl;
     }*/
+    ut.print();
     Node* n = bt.getNode();
     while (n->left != nullptr){
         cout << n->data.first << "," << n->data.second << endl;

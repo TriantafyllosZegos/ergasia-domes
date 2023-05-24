@@ -4,12 +4,19 @@
 using namespace std;
 
 UnsortedTable::UnsortedTable(){
-    ptr = NULL;
-    int arr;
+    pair<string,string> a[10000];
+    int z = 0;
     
 }
 
 void UnsortedTable::add(pair<string,string> p){
-    ptr = new pair(p);
+    a[z] = p;
+    z++;
+
+}
+void UnsortedTable::print(){
+    for (int i = 0; i < z;i++){
+        cout << a[i].first << "," << a[i].second << std::endl;
+    }
 
 }

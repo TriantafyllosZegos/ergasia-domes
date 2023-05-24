@@ -18,10 +18,6 @@ void BinaryTree::insert(const pair<string, string>& value) {
     root = insertNode(root, value);
 }
 
-Node* BinaryTree::getRight() {
-    return root->right;
-
-}
 Node* BinaryTree::getNode() {
     return root;
 
