@@ -3,10 +3,16 @@
 Node* BinaryTree::insertNode(Node* node, const pair<string, string>& value) {
     if (node == nullptr) {
         node = new Node(value);
-    } else if (value.first <= node->data.first) {
+    } else if (value.first < node->data.first) {
         node->left = insertNode(node->left, value);
-    } else {
+    } else if (value.first > node->data.first) {
         node->right = insertNode(node->right, value);
+    }else {
+        if (value.second < node->data.second){
+            node->left = insertNode(node->left, value);
+        }else{
+            node->right = insertNode(node->right, value);
+        }
     }
     return node;
 }

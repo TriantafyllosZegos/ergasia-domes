@@ -3,11 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <cctype>
-#include "structures/Avl.h"
 #include "structures/BinaryTree.h"
-#include "structures/HashTable.h"
-#include "structures/SortedTable.h"
-#include "structures/UnsortedTable.h"
 
 using namespace std;
 
@@ -55,9 +51,9 @@ int main()
     myfile.open("small-file.txt");
 
     BinaryTree bt = BinaryTree();
-    UnsortedTable ut = UnsortedTable();
+    //UnsortedTable ut = UnsortedTable();
     if ( myfile.is_open() ) {
-        while ( myfile && z<50000 ) {
+        while ( myfile && z<1000 ) {
             getline (myfile, myline);
             string newl = removeNonAlphaNumeric(myline);
             std::string tokens[100];  // Assuming maximum of 100 tokens
@@ -67,22 +63,29 @@ int main()
             
 
             for (int i = 0; i < tokenCount-1; i++) {
-                pair<string,string> p = pair(tokens[i],tokens[i+1]);
+                pair<string,string> p = make_pair(tokens[i],tokens[i+1]);
                 bt.insert(p);
-                ut.add(p);
+                //ut.add(p);
                 z++;
-                if (z == 50000) break;
             }
         }
-    }/*
+    }
+    /*
     for(int i = 0;i<10000;i++){
         cout << a[i].first << "," << a[i].second << endl;
     }*/
-    ut.print();
+
+
+    //ut.print();
+    //ut.printFirst();
+
+    //pair<string,string> *test = ut.get(); 
+    //cout << test[0].first;
+    
     Node* n = bt.getNode();
-    while (n->left != nullptr){
+    while (n->right != nullptr){
         cout << n->data.first << "," << n->data.second << endl;
-        n = n->left;
+        n = n->right;
     }
 
     

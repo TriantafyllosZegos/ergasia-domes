@@ -4,12 +4,14 @@ using namespace std;
 
 class UnsortedTable {
     private:
-        pair<string,string> a[10000];
+        pair<string,string> a[1000];
 
 
     public:
-        int z;
+        int z = 0;
         UnsortedTable();
-        void add(pair<string,string> pair);
+        void add(pair<string,string>p);
+        void printFirst();
+        pair<string,string>* get();
         void print();
 };
