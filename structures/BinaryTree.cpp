@@ -24,6 +24,18 @@ void BinaryTree::insert(const pair<string, string>& value) {
     root = insertNode(root, value);
 }
 
+void printInorder(Node* node)
+{
+    if (node == NULL)
+        return;
+
+    printInorder(node->left);
+ 
+    cout << node->data.first<< "," << node->data.second << endl;
+ 
+    printInorder(node->right);
+}
+
 Node* BinaryTree::getNode() {
     return root;
 

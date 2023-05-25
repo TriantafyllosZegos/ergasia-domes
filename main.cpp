@@ -83,9 +83,10 @@ int main()
     //cout << test[0].first;
     
     Node* n = bt.getNode();
-    while (n->right != nullptr){
+    bt.printInorder();
+    while (n->left != nullptr){
         cout << n->data.first << "," << n->data.second << endl;
-        n = n->right;
+        n = n->left;
     }
 
     

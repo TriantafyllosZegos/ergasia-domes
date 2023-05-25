@@ -26,6 +26,7 @@ private:
 public:
     BinaryTree();
     void insert(const pair<string, string>& value);
+    void printInorder();
     Node* getNode ();
 };
 
