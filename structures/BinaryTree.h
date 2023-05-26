@@ -26,7 +26,8 @@ private:
 public:
     BinaryTree();
     void insert(Pair<string>& value);
-    void printTree(Node* node,string p);
+    int search(Pair<string>& p);
+    void printTree(Node* node,string tp);
     void printTree();
     Node* getNode ();
 };

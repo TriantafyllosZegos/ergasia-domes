@@ -5,6 +5,7 @@
 #include <cctype>
 #include "helpers/Pair.h"
 #include "structures/BinaryTree.h"
+#include "structures/UnsortedTable.h"
 
 using namespace std;
 
@@ -40,18 +41,12 @@ void tokenizeString(const std::string& input, std::string tokens[], int& count) 
     }
 }
 
-
-
-
-int main()
-{
+template <typename T>
+T ConstructData(T strc) {
     int z = 0;
     string myline;
     std::ifstream myfile;
     myfile.open("small-file.txt");
-
-    BinaryTree bt = BinaryTree();
-    //UnsortedTable ut = UnsortedTable();
     if ( myfile.is_open() ) {
         while ( myfile && z < 1000) {
             getline (myfile, myline);
@@ -64,24 +59,23 @@ int main()
 
             for (int i = 0; i < tokenCount-1; i++) {
                 Pair<string> p(tokens[i],tokens[i+1]);
-                bt.insert(p);
-                //ut.add(p);
+                strc.insert(p);
                 z++;
             }
         }
     }
-    /*
-    for(int i = 0;i<10000;i++){
-        cout << ut.get() << endl;
-    }
-*/
+    myfile.close();
+    return strc;
+}
 
-    //ut.print();
-    //ut.printFirst();
 
-    //pair<string,string> *test = ut.get(); 
-    //cout << test[0].first;
-    
+int main()
+{
+    BinaryTree bt = BinaryTree();
+    UnsortedTable ut = UnsortedTable();
+    ut = ConstructData(ut);
+    ut.print();
+    bt = ConstructData(bt);
     bt.printTree();
 
     

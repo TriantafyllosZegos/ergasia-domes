@@ -1,21 +1,23 @@
 #include "UnsortedTable.h"
+#include "../helpers/Pair.h"
 #include <iostream>
 #include <string>
+using namespace std;
 
 UnsortedTable::UnsortedTable(){
-    Pair<string> a[1000];
-    this->z = 0;
+    a = new Pair<string>[1200];
+    z = 0;
     
 }
 
-void UnsortedTable::add(Pair<string> p){
-    a[this->z] = p;
-    this->z++;
+void UnsortedTable::insert(const Pair<string>& p){
+    a[z] = p;
+    z++;
 
 }
 void UnsortedTable::print(){
-    for (int i = 0; i < 5;i++){
-        cout << a[0] << endl;
+    for (int i = 2; i < z;i++){
+        cout << a[i] << endl;
     }
 
 }
