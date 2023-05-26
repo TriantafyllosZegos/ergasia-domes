@@ -15,7 +15,11 @@ using namespace std;
 int main()
 {
     Pair<string> * arrayQ = generateQ();
-    
+
+    for (int i = 0;i< 10;i++){
+        cout << arrayQ[i]<< endl; //show first 10 Qs
+    }
+
     //UnsortedTable ut = UnsortedTable();
     //ut = ConstructData(ut);
     //ut.print();

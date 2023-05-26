@@ -85,12 +85,12 @@ Pair<string>* generateQ() {
             int tokenCount = 0;
 
             tokenizeString(newl, tokens, tokenCount);
+            srand((unsigned) time(NULL));
             for (int i = 0; i < tokenCount-1; i++) {
                 int random = rand() % 10;
                 if (random == 7){
                     Pair<string> p(tokens[i],tokens[i+1]);
-                    cout << p << endl; // testing purposes
-                    aQ[i] = p;
+                    aQ[z] = p;
                     z++;
                 }
                 
