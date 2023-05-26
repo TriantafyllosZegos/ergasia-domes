@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <cctype>
+#include <chrono>
 
 #include "helpers/Pair.h"
 #include "helpers/ConstructData.h"
@@ -14,19 +15,36 @@ using namespace std;
 
 int main()
 {
+    ofstream out("output.txt",std::ios_base::ate);
     Pair<string> * arrayQ = generateQ();
 
-    for (int i = 0;i< 10;i++){
-        cout << arrayQ[i]<< endl; //show first 10 Qs
-    }
+    chrono::system_clock::time_point start,end;
+    double time;
+    start = chrono::high_resolution_clock::now();
 
-    //UnsortedTable ut = UnsortedTable();
-    //ut = ConstructData(ut);
+    UnsortedTable ut = UnsortedTable();
+    ut = ConstructData(ut);
     //ut.print();
-    
-    //BinaryTree bt = BinaryTree();
-    //bt = ConstructData(bt);
+
+    end = chrono::high_resolution_clock::now();
+    time = chrono::duration_cast<chrono::nanoseconds>(end-start).count();
+    time *= 1e-9;
+    out <<"UnsortedTable construction time : " << time << " sec" << endl;
+
+
+
+    start = chrono::high_resolution_clock::now();
+
+    BinaryTree bt = BinaryTree();
+    bt = ConstructData(bt);
     //bt.print();
+
+    end = chrono::high_resolution_clock::now();
+    time = chrono::duration_cast<chrono::nanoseconds>(end-start).count();
+    time *= 1e-9;
+    out <<"BinaryTree construction time : " << time << " sec" << endl;
+
+    out.close();
 
     return 0;
 }

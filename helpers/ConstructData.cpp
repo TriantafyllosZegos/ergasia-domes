@@ -73,7 +73,7 @@ template UnsortedTable ConstructData<UnsortedTable>(UnsortedTable);
 
 Pair<string>* generateQ() {
     int z = 0;
-    Pair<string>* aQ = new Pair<string>[1200];
+    Pair<string>* aQ = new Pair<string>[1000];
     string myline;
     std::ifstream myfile;
     myfile.open("small-file.txt");
