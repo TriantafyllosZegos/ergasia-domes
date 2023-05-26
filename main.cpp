@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <cctype>
+#include "helpers/Pair.h"
 #include "structures/BinaryTree.h"
 
 using namespace std;
@@ -44,7 +45,6 @@ void tokenizeString(const std::string& input, std::string tokens[], int& count) 
 
 int main()
 {
-    
     int z = 0;
     string myline;
     std::ifstream myfile;
@@ -53,7 +53,7 @@ int main()
     BinaryTree bt = BinaryTree();
     //UnsortedTable ut = UnsortedTable();
     if ( myfile.is_open() ) {
-        while ( myfile && z<1000 ) {
+        while ( myfile && z < 1000) {
             getline (myfile, myline);
             string newl = removeNonAlphaNumeric(myline);
             std::string tokens[100];  // Assuming maximum of 100 tokens
@@ -63,7 +63,7 @@ int main()
             
 
             for (int i = 0; i < tokenCount-1; i++) {
-                pair<string,string> p = make_pair(tokens[i],tokens[i+1]);
+                Pair<string> p(tokens[i],tokens[i+1]);
                 bt.insert(p);
                 //ut.add(p);
                 z++;
@@ -72,9 +72,9 @@ int main()
     }
     /*
     for(int i = 0;i<10000;i++){
-        cout << a[i].first << "," << a[i].second << endl;
-    }*/
-
+        cout << ut.get() << endl;
+    }
+*/
 
     //ut.print();
     //ut.printFirst();
@@ -82,12 +82,7 @@ int main()
     //pair<string,string> *test = ut.get(); 
     //cout << test[0].first;
     
-    Node* n = bt.getNode();
-    bt.printInorder();
-    while (n->left != nullptr){
-        cout << n->data.first << "," << n->data.second << endl;
-        n = n->left;
-    }
+    bt.printTree();
 
     
     return 0;

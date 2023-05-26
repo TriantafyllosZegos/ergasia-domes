@@ -1,26 +1,18 @@
 #include "BinaryTree.h"
+#include "../helpers/Pair.h"
 #include <iostream>
 using namespace std;
 
-Node* BinaryTree::insertNode(Node* node, const pair<string, string>& value) {
+Node* BinaryTree::insertNode(Node* node, Pair<string>& value) {
     if (node == nullptr) {
-        cout << "root: " << value.first << "," << value.second << endl;
         node = new Node(value);
-    } else if (value.first < node->data.first) {
+    } else if (value.getFirst() < node->data.getFirst()) {
         node->left = insertNode(node->left, value);
-        cout << "left: " << value.first << "," << value.second << endl;
-    } else if (value.first > node->data.first) {
-        node->right = insertNode(node->right, value);
-        cout << "right: " << value.first << "," << value.second << endl;
+        
     } else {
-        if (value.second < node->data.second) {
-            node->left = insertNode(node->left, value);
-            cout << "left: " << value.first << "," << value.second << endl;
-        } else {
-            node->right = insertNode(node->right, value);
-            cout << "right: " << value.first << "," << value.second << endl;
-        }
-    }
+        node->right = insertNode(node->right, value);
+        
+    } 
     return node;
 }
 
@@ -28,20 +20,33 @@ Node* BinaryTree::insertNode(Node* node, const pair<string, string>& value) {
 
 BinaryTree::BinaryTree() : root(nullptr) {}
 
-void BinaryTree::insert(const pair<string, string>& value) {
+void BinaryTree::insert(Pair<string>& value) {
     root = insertNode(root, value);
 }
 
-void printInorder(Node* node)
+void BinaryTree::printTree()
 {
-    if (node == NULL)
+    Node* node = this->root;
+    string p = "#";
+    if (node == nullptr)
         return;
+    
+    cout << p << " : " << node->data << endl;
 
-    printInorder(node->left);
- 
-    cout << node->data.first<< "," << node->data.second << endl;
- 
-    printInorder(node->right);
+    printTree(node->left,p.append(" ❮"));
+
+    printTree(node->right,p.append(" ❯"));
+}
+void BinaryTree::printTree(Node* node,string p)
+{
+    if (node == nullptr)
+        return;
+    
+    cout << p << " : " << node->data << endl;
+
+    printTree(node->left,p.append(" ❮"));
+
+    printTree(node->right,p.append(" ❯"));
 }
 
 Node* BinaryTree::getNode() {

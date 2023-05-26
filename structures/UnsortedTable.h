@@ -1,17 +1,17 @@
 
 #include <string>
+#include "../helpers/Pair.h"
 using namespace std;
 
 class UnsortedTable {
     private:
-        pair<string,string> a[1000];
+        Pair<string> a[1000];
+        int z;
 
 
     public:
-        int z = 0;
         UnsortedTable();
-        void add(pair<string,string>p);
-        void printFirst();
-        pair<string,string>* get();
+        void add(Pair<string> p);
+        Pair<string>* get();
         void print();
 };
