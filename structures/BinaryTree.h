@@ -3,19 +3,10 @@
 
 #include <iostream>
 #include "../helpers/Pair.h"
+#include "../helpers/Node.h"
 #include <utility>
 
 using namespace std;
-
-struct Node {
-    Pair<string> data;
-    Node* left;
-    Node* right;
-
-    // Constructor to initialize the node with a value
-    Node(const Pair<string>& value)
-        : data(value), left(nullptr), right(nullptr) {}
-};
 
 class BinaryTree {
 private:
@@ -27,8 +18,8 @@ public:
     BinaryTree();
     void insert(Pair<string>& value);
     int search(Pair<string>& p);
-    void printTree(Node* node,string tp);
-    void printTree();
+    void print(Node* node,string tp);
+    void print();
     Node* getNode ();
 };
 

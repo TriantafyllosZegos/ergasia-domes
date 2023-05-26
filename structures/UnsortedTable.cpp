@@ -16,6 +16,7 @@ void UnsortedTable::insert(const Pair<string>& p){
 
 }
 void UnsortedTable::print(){
+    cout << "############## UNSORTED TABLE ##############" << endl;
     for (int i = 2; i < z;i++){
         cout << a[i] << endl;
     }

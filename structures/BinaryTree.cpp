@@ -1,5 +1,6 @@
 #include "BinaryTree.h"
 #include "../helpers/Pair.h"
+#include "../helpers/Node.h"
 #include <iostream>
 using namespace std;
 
@@ -24,8 +25,9 @@ void BinaryTree::insert(Pair<string>& value) {
     root = insertNode(root, value);
 }
 
-void BinaryTree::printTree()
+void BinaryTree::print()
 {
+    cout << "############## BINARY TREE ##############" << endl;
     Node* node = this->root;
     string tp = "#";
     if (node == nullptr)
@@ -33,20 +35,20 @@ void BinaryTree::printTree()
     
     cout << tp << " : " << node->data << endl;
 
-    printTree(node->left,tp.append(" ❮"));
+    print(node->left,tp.append(" ❮"));
 
-    printTree(node->right,tp.append(" ❯"));
+    print(node->right,tp.append(" ❯"));
 }
-void BinaryTree::printTree(Node* node,string tp)
+void BinaryTree::print(Node* node,string tp)
 {
     if (node == nullptr)
         return;
     
     cout << tp << " : " << node->data << endl;
 
-    printTree(node->left,tp.append(" ❮"));
+    print(node->left,tp.append(" ❮"));
 
-    printTree(node->right,tp.append(" ❯"));
+    print(node->right,tp.append(" ❯"));
 }
 
 Node* BinaryTree::getNode() {
