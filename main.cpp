@@ -14,13 +14,15 @@ using namespace std;
 
 int main()
 {
-    UnsortedTable ut = UnsortedTable();
-    ut = ConstructData(ut);
-    ut.print();
+    Pair<string> * arrayQ = generateQ();
     
-    BinaryTree bt = BinaryTree();
-    bt = ConstructData(bt);
-    bt.print();
+    //UnsortedTable ut = UnsortedTable();
+    //ut = ConstructData(ut);
+    //ut.print();
+    
+    //BinaryTree bt = BinaryTree();
+    //bt = ConstructData(bt);
+    //bt.print();
 
     return 0;
 }

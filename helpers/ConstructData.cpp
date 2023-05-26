@@ -69,3 +69,34 @@ STRC ConstructData(STRC strc) {
 
 template BinaryTree ConstructData<BinaryTree>(BinaryTree);
 template UnsortedTable ConstructData<UnsortedTable>(UnsortedTable);
+
+
+Pair<string>* generateQ() {
+    int z = 0;
+    Pair<string>* aQ = new Pair<string>[1200];
+    string myline;
+    std::ifstream myfile;
+    myfile.open("small-file.txt");
+    if ( myfile.is_open() ) {
+        while ( myfile && z < 1000) {
+            getline (myfile, myline);
+            string newl = removeNonAlphaNumeric(myline);
+            std::string tokens[100];  // Assuming maximum of 100 tokens
+            int tokenCount = 0;
+
+            tokenizeString(newl, tokens, tokenCount);
+            for (int i = 0; i < tokenCount-1; i++) {
+                int random = rand() % 10;
+                if (random == 7){
+                    Pair<string> p(tokens[i],tokens[i+1]);
+                    cout << p << endl; // testing purposes
+                    aQ[i] = p;
+                    z++;
+                }
+                
+            }
+        }
+    }
+    myfile.close();
+    return aQ;
+};
