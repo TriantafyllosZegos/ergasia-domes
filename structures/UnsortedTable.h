@@ -8,14 +8,15 @@ using namespace std;
 class UnsortedTable {
     private:
         Pair<string>* a;
-        int z;
+        long int size;
 
 
     public:
         UnsortedTable();
-        void insert(const Pair<string>& p);
-        Pair<string>* get();
+        //~UnsortedTable();
+        void insert(Pair<string>& p);
         void print();
+        int getSize();
 };
 
 #endif

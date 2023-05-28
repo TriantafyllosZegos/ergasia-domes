@@ -9,6 +9,7 @@ template<typename T> class Pair {
   private:
     T first;
     T second;
+    int count;
   public:
     Pair();
     Pair(T first,T second);
@@ -17,12 +18,15 @@ template<typename T> class Pair {
 
     T getFirst();
     T getSecond();
+    int getCount();
 
     void setFirst(T first);
     void setSecond(T second);
+    void increaseCount(int value);
 
     friend std::ostream& operator<<(std::ostream& os,Pair& pair) {
-        return os << pair.getFirst() << "," << pair.getSecond();
+        return os << pair.getFirst() << "," << pair.getSecond() 
+        << " || c : " << pair.getCount() ;
     }
     
 };

@@ -5,25 +5,40 @@
 using namespace std;
 
 UnsortedTable::UnsortedTable(){
-    a = new Pair<string>[1200];
-    z = 0;
+    
+    a = new(nothrow) Pair<string>[300004];
+    if (a == NULL) cout << "UNSORTEDTABLE MEMORY ERROR" << endl;
+    size = 0;
     
 }
+/*
+UnsortedTable::~UnsortedTable(){
+    delete[] a;
+    
+}*/
 
-void UnsortedTable::insert(const Pair<string>& p){
-    a[z] = p;
-    z++;
+
+void UnsortedTable::insert(Pair<string>& p){
+    for (int i=0;i<size;i++){
+        if (a[i].getFirst() == p.getFirst() && a[i].getSecond() == p.getSecond() ){
+            a[i].increaseCount(1);
+            return;
+        }
+    }
+    a[size] = p;
+    size++;
+    
 
 }
+
 void UnsortedTable::print(){
     cout << "############## UNSORTED TABLE ##############" << endl;
-    for (int i = 2; i < z;i++){
+    for (int i = 0; i < size-1;i++){
         cout << a[i] << endl;
     }
 
 }
 
-Pair<string>* UnsortedTable::get(){
-    return a;
-
+int UnsortedTable::getSize(){
+    return size;
 }

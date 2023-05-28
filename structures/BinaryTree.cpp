@@ -4,22 +4,54 @@
 #include <iostream>
 using namespace std;
 
-Node* BinaryTree::insertNode(Node* node, Pair<string>& value) {
+Node* BinaryTree::insertNode(Node* node, Pair<string> value) {
     if (node == nullptr) {
-        node = new Node(value);
-    } else if (value.getFirst() <= node->data.getFirst()) {
+        node = new(nothrow) Node(value);
+        if (node == NULL){
+            cout << "ERROR NODE : " << value << "MEMORY EXX";
+            return node;
+        }
+    } else if (value.getFirst() < node->data.getFirst()) {
         node->left = insertNode(node->left, value);
         
-    } else {
+    } else if (value.getFirst() > node->data.getFirst()) {
         node->right = insertNode(node->right, value);
         
-    } 
+    } else {
+        if (value.getSecond() < node->data.getSecond()) {
+        node->left = insertNode(node->left, value);
+        
+        } else if (value.getSecond() > node->data.getSecond()) {
+        node->right = insertNode(node->right, value);
+        
+        }else {
+        node->data.increaseCount(1);
+        }
+        
+    }
     return node;
 }
 
 
 
 BinaryTree::BinaryTree() : root(nullptr) {}
+
+/*
+void BinaryTree::deleteNode(Node* n){
+    if (n == nullptr)
+        return;
+    delete n->left;
+    delete n->right;
+
+    //deleteNode(n->left);
+    //deleteNode(n->right);
+
+}
+
+BinaryTree::~BinaryTree(){
+    deleteNode(root);
+}*/
+
 
 void BinaryTree::insert(Pair<string>& value) {
     root = insertNode(root, value);

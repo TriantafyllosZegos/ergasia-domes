@@ -4,9 +4,9 @@
 #include <sstream>
 #include <cctype>
 #include "Pair.h"
-#include "ConstructData.h" 
-#include "../structures/BinaryTree.h" 
-#include "../structures/UnsortedTable.h" 
+#include "ConstructData.h"
+#include "../structures/BinaryTree.h"
+#include "../structures/UnsortedTable.h"
 
 std::string removeNonAlphaNumeric(const std::string& input) {
     std::string result;
@@ -47,20 +47,22 @@ STRC ConstructData(STRC strc) {
     std::ifstream myfile;
     myfile.open("small-file.txt");
     if ( myfile.is_open() ) {
-        while ( myfile && z < 1000) {
+        while ( myfile && z < 300000) {
             getline (myfile, myline);
             string newl = removeNonAlphaNumeric(myline);
-            std::string tokens[100];  // Assuming maximum of 100 tokens
+            if (newl == "") continue;
+            std::string tokens[25];  
             int tokenCount = 0;
 
             tokenizeString(newl, tokens, tokenCount);
-            
 
             for (int i = 0; i < tokenCount-1; i++) {
-                Pair<string> p(tokens[i],tokens[i+1]);
+                Pair<string> p = Pair(tokens[i],tokens[i+1]);
                 strc.insert(p);
                 z++;
+                if (z == 300001) break;
             }
+            
         }
     }
     myfile.close();
@@ -73,7 +75,8 @@ template UnsortedTable ConstructData<UnsortedTable>(UnsortedTable);
 
 Pair<string>* generateQ() {
     int z = 0;
-    Pair<string>* aQ = new Pair<string>[1000];
+    Pair<string>* aQ = new(nothrow) Pair<string>[1004];
+    if (aQ == NULL) cout << "aQ MEMORY ERROR" << endl;
     string myline;
     std::ifstream myfile;
     myfile.open("small-file.txt");
@@ -81,22 +84,22 @@ Pair<string>* generateQ() {
         while ( myfile && z < 1000) {
             getline (myfile, myline);
             string newl = removeNonAlphaNumeric(myline);
-            std::string tokens[100];  // Assuming maximum of 100 tokens
+            std::string tokens[25];  // Assuming maximum of 100 tokens
             int tokenCount = 0;
 
             tokenizeString(newl, tokens, tokenCount);
-            srand((unsigned) time(NULL));
             for (int i = 0; i < tokenCount-1; i++) {
                 int random = rand() % 10;
                 if (random == 7){
                     Pair<string> p(tokens[i],tokens[i+1]);
                     aQ[z] = p;
                     z++;
+                    if (z == 1000) break;
                 }
-                
             }
         }
     }
     myfile.close();
+    cout << "aQ size : " << z << endl;
     return aQ;
 };

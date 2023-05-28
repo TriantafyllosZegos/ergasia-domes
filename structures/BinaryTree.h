@@ -11,16 +11,18 @@ using namespace std;
 class BinaryTree {
 private:
     Node* root;
-    Node* insertNode(Node* node,Pair<string>& value);
+    Node* insertNode(Node* node,Pair<string> value);
     
 
 public:
     BinaryTree();
+    //~BinaryTree();
     void insert(Pair<string>& value);
+    void deleteNode(Node* n);
     int search(Pair<string>& p);
     void print(Node* node,string tp);
     void print();
-    Node* getNode ();
+    Node* getNode();
 };
 
 #endif
