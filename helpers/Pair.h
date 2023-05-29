@@ -5,7 +5,8 @@
 #include <iostream>
 using namespace std;
 
-template<typename T> class Pair {
+template<typename T> 
+class Pair {
   private:
     T first;
     T second;

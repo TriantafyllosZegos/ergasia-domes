@@ -1,0 +1,25 @@
+# Build Time
+---
+- <**unsortedtable**> : `0.257348 sec`
+- <**binarytree**> : `0.514797 sec`
+---
+- <**unsortedtable**> : `0.225577 sec`
+- <**binarytree**> : `0.513905 sec`
+---
+- <**unsortedtable**> : `0.222894 sec`
+- <**binarytree**> : `0.521765 sec`
+---
+- <**unsortedtable**> : `0.223045 sec`
+- <**binarytree**> : `0.507127 sec`
+---
+- <**unsortedtable**> : `0.248036 sec`
+- <**binarytree**> : `0.561823 sec`
+---
+- <**unsortedtable**> : `0.235664 sec`
+- <**binarytree**> : `0.530087 sec`
+---
+- <**unsortedtable**> : `0.373421 sec`
+- <**binarytree**> : `0.761721 sec`
+---
+- <**unsortedtable**> : `0.255557 sec`
+- <**binarytree**> : `0.538392 sec`

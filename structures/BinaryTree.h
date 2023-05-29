@@ -17,7 +17,7 @@ private:
 public:
     BinaryTree();
     //~BinaryTree();
-    void insert(Pair<string>& value);
+    void insert(Pair<string> value);
     void deleteNode(Node* n);
     int search(Pair<string>& p);
     void print(Node* node,string tp);

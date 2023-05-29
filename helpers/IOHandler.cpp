@@ -2,9 +2,10 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <chrono>
 #include <cctype>
 #include "Pair.h"
-#include "ConstructData.h"
+#include "IOHandler.h"
 #include "../structures/BinaryTree.h"
 #include "../structures/UnsortedTable.h"
 
@@ -41,17 +42,19 @@ void tokenizeString(const std::string& input, std::string tokens[], int& count) 
 };
 
 template <typename STRC>
-STRC ConstructData(STRC strc) {
-    int z = 0;
+STRC buildStrc(STRC strc) {
+    chrono::system_clock::time_point start,end;
+    double time;
+    start = chrono::high_resolution_clock::now();
     string myline;
     std::ifstream myfile;
     myfile.open("small-file.txt");
     if ( myfile.is_open() ) {
-        while ( myfile && z < 300000) {
+        while ( myfile ) {
             getline (myfile, myline);
             string newl = removeNonAlphaNumeric(myline);
             if (newl == "") continue;
-            std::string tokens[25];  
+            std::string tokens[30];  
             int tokenCount = 0;
 
             tokenizeString(newl, tokens, tokenCount);
@@ -59,27 +62,32 @@ STRC ConstructData(STRC strc) {
             for (int i = 0; i < tokenCount-1; i++) {
                 Pair<string> p = Pair(tokens[i],tokens[i+1]);
                 strc.insert(p);
-                z++;
-                if (z == 300001) break;
             }
             
         }
     }
     myfile.close();
+    end = chrono::high_resolution_clock::now();
+    time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
+    ofstream out("output.txt",std::ios_base::app);
+    out << "Construction Time of <" << removeNonAlphaNumeric(typeid(strc).name()) << "> : " << time << " sec" << endl;
+    out.close();
+    ofstream md("markdown.md",std::ios_base::app);
+    md << "- <**" << removeNonAlphaNumeric(typeid(strc).name()) << "**> : `" << time << " sec`" << endl;
+    md.close();
     return strc;
 };
 
-template BinaryTree ConstructData<BinaryTree>(BinaryTree);
-template UnsortedTable ConstructData<UnsortedTable>(UnsortedTable);
-
+template BinaryTree buildStrc<BinaryTree>(BinaryTree);
+template UnsortedTable buildStrc<UnsortedTable>(UnsortedTable);
 
 Pair<string>* generateQ() {
     int z = 0;
-    Pair<string>* aQ = new(nothrow) Pair<string>[1004];
+    Pair<string>* aQ = new(nothrow) Pair<string>[1000];
     if (aQ == NULL) cout << "aQ MEMORY ERROR" << endl;
     string myline;
     std::ifstream myfile;
-    myfile.open("small-file.txt");
+    myfile.open("gutenberg.txt");
     if ( myfile.is_open() ) {
         while ( myfile && z < 1000) {
             getline (myfile, myline);

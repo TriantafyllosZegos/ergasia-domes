@@ -9,6 +9,7 @@ class UnsortedTable {
     private:
         Pair<string>* a;
         long int size;
+        long int cap;
 
 
     public:

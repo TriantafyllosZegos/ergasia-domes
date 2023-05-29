@@ -3,49 +3,39 @@
 #include <fstream>
 #include <sstream>
 #include <cctype>
-#include <chrono>
 
+#include <thread>
+#include <future>
+#include <typeinfo>
 #include "helpers/Pair.h"
-#include "helpers/ConstructData.h"
+#include "helpers/IOHandler.h"
 
 #include "structures/BinaryTree.h"
 #include "structures/UnsortedTable.h"
 using namespace std;
 
+
+
 int main()
 {
-    ofstream out("output.txt",std::ios_base::ate);
     //Pair<string> * arrayQ = generateQ();
 
-    chrono::system_clock::time_point start,end;
-    double time;
+    ofstream md("markdown.md",std::ios_base::app);
+    md << "---" << endl;
+    md.close();
 
-    
-
-    start = chrono::high_resolution_clock::now();
-    
     UnsortedTable ut;
-    ut = ConstructData(ut);
-    ut.print();
-    end = chrono::high_resolution_clock::now();
-
-    time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
-    out << "UnsortedTable construction time : " << time << " sec" << endl;
-
-
-    
-
-    start = chrono::high_resolution_clock::now();
+    auto t1 = std::async(buildStrc<UnsortedTable>,ut); 
 
     BinaryTree bt;
-    bt = ConstructData(bt);
-    bt.print();
-
-    end = chrono::high_resolution_clock::now();
-    time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
-    out << "BinaryTree construction time : " << time << " sec" << endl;
-
-
-    out.close();
+    auto t2 = std::async(buildStrc<BinaryTree>,bt); 
+    
+    ut = t1.get();
+    bt = t2.get();
+    
+    //ut.print();
+    //bt.print();
+    
+    cout << ut.getSize() << endl;
     return 0;
 }

@@ -5,7 +5,7 @@
 using namespace std;
 
 Node* BinaryTree::insertNode(Node* node, Pair<string> value) {
-    if (node == nullptr) {
+    if (node == NULL) {
         node = new(nothrow) Node(value);
         if (node == NULL){
             cout << "ERROR NODE : " << value << "MEMORY EXX";
@@ -53,7 +53,7 @@ BinaryTree::~BinaryTree(){
 }*/
 
 
-void BinaryTree::insert(Pair<string>& value) {
+void BinaryTree::insert(Pair<string> value) {
     root = insertNode(root, value);
 }
 

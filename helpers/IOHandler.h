@@ -1,11 +1,11 @@
-#ifndef CONSTRUCTDATA_H
-#define CONSTRUCTDATA_H
+#ifndef IOHANDLER_h
+#define IOHANDLER_H
 
 #include <string>
 #include "Pair.h"
 
 template <typename STRC>
-STRC ConstructData(STRC strc);
+STRC buildStrc(STRC strc);
 
 Pair<string>* generateQ();
 
