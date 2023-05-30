@@ -48,7 +48,7 @@ STRC buildStrc(STRC strc) {
     start = chrono::high_resolution_clock::now();
     string myline;
     std::ifstream myfile;
-    myfile.open("small-file.txt");
+    myfile.open("gutenberg.txt");
     if ( myfile.is_open() ) {
         while ( myfile ) {
             getline (myfile, myline);

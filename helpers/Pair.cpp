@@ -1,6 +1,6 @@
 #include "Pair.h"
 #include <iostream>
-
+/*
 template<typename T>
 Pair<T>::Pair(T first_value, T second_value){
   this->first = first_value;
@@ -47,4 +47,4 @@ void Pair<T>::increaseCount(int value){
 }
     
 
-template class Pair<std::string>;
+template class Pair<std::string>;*/
