@@ -23,3 +23,12 @@
 ---
 - <**unsortedtable**> : `0.255557 sec`
 - <**binarytree**> : `0.538392 sec`
+---
+- <**unsortedtable**> : `0.261644 sec`
+- <**binarytree**> : `0.518728 sec`
+---
+- <**unsortedtable**> : `0.257746 sec`
+- <**binarytree**> : `0.51175 sec`
+---
+- <**unsortedtable**> : `0.263709 sec`
+- <**binarytree**> : `0.521593 sec`
