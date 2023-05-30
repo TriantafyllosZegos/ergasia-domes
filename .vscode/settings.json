@@ -21,7 +21,6 @@
   "C_Cpp_Runner.compilerArgs": [
   ],
   "C_Cpp_Runner.linkerArgs": [
-    "-Wl,--stack=2268435456"
   ],
   "C_Cpp_Runner.includePaths": [],
   "C_Cpp_Runner.includeSearch": [

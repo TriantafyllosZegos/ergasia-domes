@@ -10,7 +10,7 @@
 #include "helpers/Pair.h"
 #include "helpers/IOHandler.h"
 
-#include "structures/BinaryTree.h"
+//#include "structures/BinaryTree.h"
 #include "structures/UnsortedTable.h"
 using namespace std;
 
@@ -25,14 +25,14 @@ int main()
     md.close();
 
     UnsortedTable ut;
-    auto t1 = std::async(buildStrc<UnsortedTable>,ut); 
+    //auto t1 = std::async(buildStrc<UnsortedTable>,ut); 
 
-    BinaryTree bt;
-    auto t2 = std::async(buildStrc<BinaryTree>,bt); 
+    //BinaryTree bt;
+    //auto t2 = std::async(buildStrc<BinaryTree>,bt); 
     
-    ut = t1.get();
-    bt = t2.get();
-    
+    ut = buildStrc(ut);
+    //bt = t2.get();
+
     //ut.print();
     //bt.print();
     

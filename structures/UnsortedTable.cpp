@@ -6,10 +6,10 @@ using namespace std;
 
 UnsortedTable::UnsortedTable(){
     
-    a = new(nothrow) Pair<string>[10000];
+    a = new(nothrow) Pair<string>[100000];
     if (a == NULL) cout << "UNSORTEDTABLE MEMORY ERROR" << endl;
     size = 0;
-    cap = 10000;
+    cap = 100000;
     
 }
 
@@ -23,7 +23,7 @@ UnsortedTable::~UnsortedTable(){
 void UnsortedTable::insert(Pair<string>& p){
     if (size == cap) {
         // If the array is full, increase its capacity
-        cap += 10000;
+        cap += 100000;
         Pair<string>* newLines = new(nothrow) Pair<string>[cap];
         if (newLines == NULL) cout << "UNSORTEDTABLE MEMORY ERROR || size : "<< size << endl;
 
