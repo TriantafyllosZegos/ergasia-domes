@@ -18,7 +18,7 @@ using namespace std;
 
 int main()
 {
-    //Pair<string> * arrayQ = generateQ();
+    Pair<string> * arrayQ = generateQ();
 
     ofstream md("markdown.md",std::ios_base::app);
     md << "---" << endl;
