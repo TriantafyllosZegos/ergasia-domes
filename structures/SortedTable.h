@@ -1,24 +1,24 @@
-#ifndef SORTEDTABLE_H
+/*#ifndef SORTEDTABLE_H
 #define SORTEDTABLE_H
 
 #include <iostream>
-#include <vector>
 #include <utility>
+#include "structures/Table.h"
 
-class SortedTable{
-    private:
-        std::vector<std::pair<std::string, std::string>> table;
-
+class SortedTable : public Table{
     public:
-        void addPair(const std::string& word1, const std::string& word2);
-        void sortTable();
-        void printTable();
+        SortedTable();
+        SortedTable(Table t);
+        void search(const std::string& word1, const std::string& word2);
+        void sort();
 
     private:
         void quicksort(int low, int high);
         int partition(int low, int high);
+        void swap(int low ,int high);
 };
 
 
 
 #endif // SORTEDTABLE_H
+*/

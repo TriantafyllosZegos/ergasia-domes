@@ -29,3 +29,30 @@
 - <**unsortedtable**> : `0.0790677 sec`
 ---
 - <**unsortedtable**> : `0.078859 sec`
+---
+- <**unsortedtable**> : `0.0048712 sec`
+---
+- <**unsortedtable**> : `0.140662 sec`
+---
+- <**unsortedtable**> : `0.113098 sec`
+---
+- <**unsortedtable**> : `0.0785296 sec`
+---
+- <**unsortedtable**> : `0.0870479 sec`
+---
+- <**unsortedtable**> : `0.095071 sec`
+---
+- <**binarytree**> : `28.3337 sec`
+---
+- <**unsortedtable**> : `0.0794435 sec`
+- <**binarytree**> : `24.6696 sec`
+---
+---
+---
+---
+---
+---
+---
+---
+---
+- <**table**> : `0.1456 sec`

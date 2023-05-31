@@ -11,24 +11,24 @@ Node* BinaryTree::insertNode(Node* node, Pair<string> value) {
             cout << "ERROR NODE : " << value << "MEMORY EXX";
             return node;
         }
-    } else if (value.first < node->data.first) {
+    } else if (value.first <= node->data.first) {
         node->left = insertNode(node->left, value);
         
     } else if (value.first > node->data.first) {
         node->right = insertNode(node->right, value);
         
-    } else {
-        if (value.second <= node->data.second) {
+    } /*else {
+        if (value.second < node->data.second) {
         node->left = insertNode(node->left, value);
         
         } else if (value.second > node->data.second) {
         node->right = insertNode(node->right, value);
         
-        }/*else {
+        }else {
         node->data.increaseCount(1);
-        }/**/
+        }
         
-    }
+    }*/
     return node;
 }
 

@@ -9,9 +9,9 @@
 #include <typeinfo>
 #include "helpers/Pair.h"
 #include "helpers/IOHandler.h"
-
 //#include "structures/BinaryTree.h"
-#include "structures/UnsortedTable.h"
+#include "structures/Table.h"
+
 using namespace std;
 
 
@@ -24,18 +24,17 @@ int main()
     md << "---" << endl;
     md.close();
 
-    UnsortedTable ut;
-    //auto t1 = std::async(buildStrc<UnsortedTable>,ut); 
-
-    //BinaryTree bt;
+    Table ut;
+    //auto t1 = std::async(buildStrc<Table>,ut); 
+    ut = buildStrc(ut);
+    //BinaryTree st;
     //auto t2 = std::async(buildStrc<BinaryTree>,bt); 
     
-    ut = buildStrc(ut);
+    
+    //st = buildStrc(st);
     //bt = t2.get();
-
     //ut.print();
     //bt.print();
     
-    cout << ut.getSize() << endl;
     return 0;
 }

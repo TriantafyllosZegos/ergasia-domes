@@ -1,21 +1,22 @@
-#ifndef UNSORTEDTABLE_H
-#define UNSORTEDTABLE_H
+#ifndef TABLE_H
+#define TABLE_H
 
 #include <string>
 #include "../helpers/Pair.h"
 using namespace std;
 
-class UnsortedTable {
-    private:
+class Table {
+    protected:
         Pair<string>* a;
         long int size;
         long int cap;
 
 
     public:
-        UnsortedTable();
-        //~UnsortedTable();
+        Table();
+        //~Table();
         void insert(Pair<string>& p);
+        virtual void search(Pair<string>* arr);
         void print();
         int getSize();
 };

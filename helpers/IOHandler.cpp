@@ -7,7 +7,7 @@
 #include "Pair.h"
 #include "IOHandler.h"
 #include "../structures/BinaryTree.h"
-#include "../structures/UnsortedTable.h"
+#include "../structures/Table.h"
 
 std::string removeNonAlphaNumeric(const std::string& input) {
     std::string result;
@@ -48,7 +48,7 @@ STRC buildStrc(STRC strc) {
     start = chrono::high_resolution_clock::now();
     string myline;
     std::ifstream myfile;
-    myfile.open("gutenberg.txt");
+    myfile.open("small-file.txt");
     if ( myfile.is_open() ) {
         while ( myfile ) {
             getline (myfile, myline);
@@ -61,7 +61,7 @@ STRC buildStrc(STRC strc) {
 
             for (int i = 0; i < tokenCount-1; i++) {
                 Pair<string> p = Pair(tokens[i],tokens[i+1]);
-                strc.insert(p);
+                strc.insert(p); // Insert is mutual method to every structure
             }
             
         }
@@ -79,7 +79,7 @@ STRC buildStrc(STRC strc) {
 };
 
 template BinaryTree buildStrc<BinaryTree>(BinaryTree);
-template UnsortedTable buildStrc<UnsortedTable>(UnsortedTable);
+template Table buildStrc<Table>(Table);
 
 Pair<string>* generateQ() {
     int z = 0;
