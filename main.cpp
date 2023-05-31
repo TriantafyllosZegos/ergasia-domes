@@ -9,6 +9,7 @@
 #include <typeinfo>
 #include "helpers/Pair.h"
 #include "helpers/IOHandler.h"
+
 //#include "structures/BinaryTree.h"
 #include "structures/Table.h"
 
@@ -25,8 +26,8 @@ int main()
     md.close();
 
     Table ut;
-    //auto t1 = std::async(buildStrc<Table>,ut); 
     ut = buildStrc(ut);
+    ut.search(arrayQ);
     //BinaryTree st;
     //auto t2 = std::async(buildStrc<BinaryTree>,bt); 
     

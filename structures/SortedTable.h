@@ -1,4 +1,4 @@
-/*#ifndef SORTEDTABLE_H
+#ifndef SORTEDTABLE_H
 #define SORTEDTABLE_H
 
 #include <iostream>
@@ -21,4 +21,3 @@ class SortedTable : public Table{
 
 
 #endif // SORTEDTABLE_H
-*/

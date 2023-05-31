@@ -88,5 +88,6 @@
     "ctime": "cpp",
     "ratio": "cpp",
     "future": "cpp"
-  }
+  },
+  "cmake.configureOnOpen": true
 }
