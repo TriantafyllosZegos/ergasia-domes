@@ -8,6 +8,7 @@
 #include "IOHandler.h"
 #include "../structures/BinaryTree.h"
 #include "../structures/Table.h"
+#include "../structures/SortedTable.h"
 
 std::string removeNonAlphaNumeric(const std::string& input) {
     std::string result;
@@ -80,6 +81,7 @@ STRC buildStrc(STRC strc) {
 
 template BinaryTree buildStrc<BinaryTree>(BinaryTree);
 template Table buildStrc<Table>(Table);
+template SortedTable buildStrc<SortedTable>(SortedTable);
 
 Pair<string>* generateQ() {
     int z = 0;
