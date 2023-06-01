@@ -8,7 +8,9 @@ using namespace std;
 Avl::Avl() : BinaryTree(){};
 
 
-Node* Avl::insertNode(Node* node, CPair<string> value) {
+
+Node *Avl::insertNode(Node *node, const CPair<string> &value)
+{
     if (node == NULL)
     {
         node = new (nothrow) Node(value);
@@ -32,4 +34,3 @@ Node* Avl::insertNode(Node* node, CPair<string> value) {
     }
     return node;
 }
-

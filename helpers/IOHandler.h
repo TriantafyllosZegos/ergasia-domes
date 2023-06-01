@@ -7,9 +7,6 @@
 template <typename STRC>
 STRC buildPairs(STRC strc);
 
-template <typename STRC>
-STRC buildCPairs(STRC strc);
-
 Pair<string>* generateQ();
 
 #endif

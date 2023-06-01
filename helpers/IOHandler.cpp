@@ -48,6 +48,7 @@ void tokenizeString(const std::string& input, std::string tokens[], int& count) 
 
 template <typename STRC>
 STRC buildPairs(STRC strc) {
+    //int z = 0;
     chrono::system_clock::time_point start,end;
     double time;
     start = chrono::high_resolution_clock::now();
@@ -65,8 +66,10 @@ STRC buildPairs(STRC strc) {
             tokenizeString(newl, tokens, tokenCount);
 
             for (int i = 0; i < tokenCount-1; i++) {
-                Pair<string> p = Pair(tokens[i],tokens[i+1]);
+                const Pair<string> p = Pair(tokens[i],tokens[i+1]);
                 strc.insert(p); // Insert is mutual method to every structure
+                //z++;
+                //if (z == 100){return strc;}
             }
             
         }
@@ -85,47 +88,10 @@ STRC buildPairs(STRC strc) {
 
 template Table buildPairs<Table>(Table);
 template SortedTable buildPairs<SortedTable>(SortedTable);
+template BinaryTree buildPairs<BinaryTree>(BinaryTree);
+template Avl buildPairs<Avl>(Avl);
 
 
-template <typename STRC>
-STRC buildCPairs(STRC strc) {
-    chrono::system_clock::time_point start,end;
-    double time;
-    start = chrono::high_resolution_clock::now();
-    string myline;
-    std::ifstream myfile;
-    myfile.open(FILE_PATH);
-    if ( myfile.is_open() ) {
-        while ( myfile ) {
-            getline (myfile, myline);
-            string newl = removeNonAlphaNumeric(myline);
-            if (newl == "") continue;
-            std::string tokens[30];  
-            int tokenCount = 0;
-
-            tokenizeString(newl, tokens, tokenCount);
-
-            for (int i = 0; i < tokenCount-1; i++) {
-                CPair<string> p = CPair(tokens[i],tokens[i+1]);
-                strc.insert(p); // Insert is mutual method to every structure
-            }
-            
-        }
-    }
-    myfile.close();
-    end = chrono::high_resolution_clock::now();
-    time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
-    ofstream out("output.txt",std::ios_base::app);
-    out << "Construction Time of <" << removeNonAlphaNumeric(typeid(strc).name()) << "> : " << time << " sec" << endl;
-    out.close();
-    ofstream md("markdown.md",std::ios_base::app);
-    md << "- <**" << removeNonAlphaNumeric(typeid(strc).name()) << "**> : `" << time << " sec`" << endl;
-    md.close();
-    return strc;
-};
-
-template BinaryTree buildCPairs<BinaryTree>(BinaryTree);
-template Avl buildCPairs<Avl>(Avl);
 
 Pair<string>* generateQ() {
     int z = 0;

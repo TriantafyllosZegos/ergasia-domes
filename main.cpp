@@ -26,23 +26,25 @@ int main()
     md << "---" << endl;
     md.close();
 
+    Pair<string> p = arrayQ[0];
+
    
     Table t;
     t = buildPairs(t);
-    cout << t.search(arrayQ[50]) << endl;
+    cout << "Table | " << p << " : " << t.search(p) << endl;
 
     SortedTable st = SortedTable(t);
     st = buildPairs(st);
     st.sort();
-    cout << st.search(arrayQ[50]) << endl;
+    cout << "SortedTable | " << p << " : " << st.search(p) << endl;
 
     BinaryTree bt;
-    bt = buildCPairs(bt);
-    //cout << bt.search(arrayQ[50]) << endl;
+    bt = buildPairs(bt);
+    cout << "BinaryTree | " << p << " : " << bt.search(p) << endl;
 
     Avl avl;
-    avl = buildCPairs(avl);
-    //cout << avl.search(arrayQ[50]) << endl;
+    avl = buildPairs(avl);
+    cout << "Avl | " << p << " : " << avl.search(p) << endl;
 
     
     return 0;

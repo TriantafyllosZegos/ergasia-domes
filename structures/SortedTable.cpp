@@ -7,7 +7,8 @@ using namespace std;
 
 SortedTable::SortedTable() {}
 
-SortedTable::SortedTable(Table t) {
+SortedTable::SortedTable(Table t)
+{
     a = t.a;
 }
 
@@ -50,35 +51,65 @@ void SortedTable::sort()
     quicksort(0, size);
 }
 
-int SortedTable::search(Pair<string> &pair)
+int SortedTable::search(const Pair<string> &pair)
 {
+    int counter = 0;
     int mid = getSize() / 2;
     int l = 0;
     int h = getSize();
 
     if (a[mid] == pair)
-        return mid;
+    {
+        counter++;
+        int index = mid + 1;
+        while (0 <= index < size && a[index] == pair)
+        {
+            counter++;
+            index++;
+        }
+        index = mid - 1;
+        while (0 <= index < size && a[index] == pair)
+        {
+            counter++;
+            index--;
+        }
+        return counter;
+    }
 
     if (a[mid] > pair)
-        return searchH(l, mid - 1, pair);
+        return searchPair(pair,l, mid - 1);
 
     if (a[mid] < pair)
-        return searchH(mid + 1, h, pair);
+        return searchPair(pair,mid + 1, h);
 }
-int SortedTable::searchH(int low, int high, Pair<string> &pair)
+int SortedTable::searchPair(const Pair<string> &pair,int low, int high)
 {
     int mid = low + (high - low) / 2;
     if (low <= high)
     {
-
         if (a[mid] == pair)
-            return mid;
+        {
+            int counter = 1;
+            int index = mid + 1;
+            while (0 <= index < size && a[index] == pair)
+            {
+                counter++;
+                index++;
+            }
+            index = mid - 1;
+            while (0 <= index < size && a[index] == pair)
+            {
+                counter++;
+                index--;
+            }
+            return counter;
+        }
 
         if (a[mid] > pair)
-            return searchH(low, mid - 1, pair);
+            return searchPair(pair,low, mid - 1);
 
         if (a[mid] < pair)
-            return searchH(mid + 1, high, pair);
+            return searchPair(pair,mid + 1, high);
     }
-    return -1;
+    return 0;
 }

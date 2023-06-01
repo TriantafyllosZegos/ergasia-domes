@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-Node *BinaryTree::insertNode(Node *node, CPair<string> &value)
+Node *BinaryTree::insertNode(Node *node, const CPair<string> &value)
 {
     if (node == NULL)
     {
@@ -33,25 +33,52 @@ Node *BinaryTree::insertNode(Node *node, CPair<string> &value)
 
 BinaryTree::BinaryTree() : root(nullptr) {}
 
-/*
-void BinaryTree::deleteNode(Node* n){
-    if (n == nullptr)
-        return;
-    delete n->left;
-    delete n->right;
-
-    //deleteNode(n->left);
-    //deleteNode(n->right);
-
+void BinaryTree::insert(const Pair<string> &value)
+{
+    root = insertNode(root, CPair<string>(value));
 }
 
-BinaryTree::~BinaryTree(){
-    deleteNode(root);
-}*/
-
-void BinaryTree::insert(CPair<string> &value)
+int BinaryTree::searchPair(Node *node, const CPair<string> &value)
 {
-    root = insertNode(root, value);
+    if (node == NULL)
+    {
+        return 0;
+    }
+    else if (value < node->data)
+    {
+        return searchPair(node->left, value);
+    }
+    else if (value > node->data)
+    {
+        return searchPair(node->right, value);
+    }
+    else
+    {
+        return node->data.count;
+    }
+}
+
+//TODO: Pair < Cpair operations !!!
+
+int BinaryTree::search(const Pair<string> &value)
+{
+    CPair<string> v(value);
+    if (root == NULL)
+    {
+        return 0;
+    }
+    else if (v < root->data)
+    {
+        return searchPair(root->left, v);
+    }
+    else if (v > root->data)
+    {
+        return searchPair(root->right, v);
+    }
+    else
+    {
+        return root->data.count;
+    }
 }
 
 void BinaryTree::print()

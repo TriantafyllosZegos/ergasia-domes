@@ -19,7 +19,7 @@ Table::~Table(){
     
 }*/
 
-void Table::insert(Pair<string>& p){
+void Table::insert(const Pair<string>& p){
     if (size == cap) {
         // If the array is full, increase its capacity
         cap += 100000;
@@ -53,7 +53,7 @@ int Table::getSize(){
     return size;
 }
 
-int Table::search(Pair<string>& p){
+int Table::search(const Pair<string>& p){
     int c = 0;
     for (int i = 0;i<size;i++){
         if (a[i].first == p.first && a[i].second == p.second){

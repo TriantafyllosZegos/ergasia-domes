@@ -12,16 +12,17 @@ using namespace std;
 class BinaryTree {
 protected:
     Node* root;
-    virtual Node* insertNode(Node* node,CPair<string>& value);
+    virtual Node* insertNode(Node* node,const CPair<string>& value);
+    int searchPair(Node* node,const CPair<string>& value);
+    void print(Node* node,string tp);
     
 
 public:
     BinaryTree();
     //~BinaryTree();
-    void insert(CPair<string>& value);
+    void insert(const Pair<string>& value);
     void deleteNode(Node* n);
-    int search(CPair<string> p);
-    void print(Node* node,string tp);
+    int search(const Pair<string>& p);
     void print();
     Node* getNode();
 };
