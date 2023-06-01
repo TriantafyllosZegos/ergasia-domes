@@ -9,7 +9,9 @@
 #include "helpers/Pair.h"
 #include "helpers/IOHandler.h"
 
-//#include "structures/BinaryTree.h"
+#include "structures/Avl.h"
+#include "structures/BinaryTree.h"
+#include "structures/SortedTable.h"
 #include "structures/Table.h"
 
 using namespace std;
@@ -24,17 +26,24 @@ int main()
     md << "---" << endl;
     md.close();
 
-    Table ut;
-    ut = buildStrc(ut);
-    //ut.search();
-    //BinaryTree st;
-    //auto t2 = std::async(buildStrc<BinaryTree>,bt); 
-    
-    
-    //st = buildStrc(st);
-    //bt = t2.get();
-    //ut.print();
-    //bt.print();
+   
+    Table t;
+    t = buildPairs(t);
+    cout << t.search(arrayQ[50]) << endl;
+
+    SortedTable st = SortedTable(t);
+    st = buildPairs(st);
+    st.sort();
+    cout << st.search(arrayQ[50]) << endl;
+
+    BinaryTree bt;
+    bt = buildCPairs(bt);
+    //cout << bt.search(arrayQ[50]) << endl;
+
+    Avl avl;
+    avl = buildCPairs(avl);
+    //cout << avl.search(arrayQ[50]) << endl;
+
     
     return 0;
 }

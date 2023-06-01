@@ -6,8 +6,10 @@
 using namespace std;
 
 class Table {
-    protected:
+    public:
         Pair<string>* a;
+    protected:
+        
         long int size;
         long int cap;
 
@@ -16,7 +18,7 @@ class Table {
         Table();
         //~Table();
         void insert(Pair<string>& p);
-        virtual void search(Pair<string>& p);
+        virtual int search(Pair<string>& p);
         void print();
         int getSize();
 };

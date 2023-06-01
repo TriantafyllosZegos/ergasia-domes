@@ -9,13 +9,13 @@ class SortedTable : public Table{
     public:
         SortedTable();
         SortedTable(Table t);
-        int search(Pair<string> key);
+        int search(Pair<string>& p);
         void sort();
         
     private:
         void quicksort(int low, int high);
         int partition(int low, int high, int pivotIndex);
-        int searchH(int l, int h);
+        int searchH(int low, int high,Pair<string>& p);
         void swap(int low ,int high);
 };
 

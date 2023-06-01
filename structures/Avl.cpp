@@ -4,8 +4,11 @@
 #include <iostream>
 using namespace std;
 
-Node* Avl::insertNode(Node *node, Pair<string> value)
-{
+
+Avl::Avl() : BinaryTree(){};
+
+
+Node* Avl::insertNode(Node* node, CPair<string> value) {
     if (node == NULL)
     {
         node = new (nothrow) Node(value);
@@ -15,16 +18,18 @@ Node* Avl::insertNode(Node *node, Pair<string> value)
             return node;
         }
     }
-    else if (value.first <= node->data.first)
+    else if (value < node->data)
     {
         node->left = insertNode(node->left, value);
     }
-    else
+    else if (value > node->data)
     {
         node->right = insertNode(node->right, value);
-
-        return node;
     }
-};
+    else
+    {
+        node->data.count++;
+    }
+    return node;
+}
 
-Avl::Avl() : BinaryTree(){};

@@ -1,18 +1,20 @@
 #ifndef NODE_H
 #define NODE_H
-#include "Pair.h"
+#include <string>
+#include "CPair.h"
 
 struct Node {
-    Pair<string> data;
+    CPair<string> data;
     Node* left;
     Node* right;
-
-    // Constructor to initialize the node with a value
-    Node(const Pair<string> &value)
-        : data(value), left(nullptr), right(nullptr) {}
-    ~Node(){
+    Node(CPair<string> value){
+        data = value;
+        left = nullptr;
+        right = nullptr;
+    }
+   /* ~Node(){
         delete left;
         delete right;
-    }
+    }*/
 };
 #endif

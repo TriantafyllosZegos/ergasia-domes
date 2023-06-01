@@ -5,10 +5,14 @@
 #include <chrono>
 #include <cctype>
 #include "Pair.h"
+#include "CPair.h"
 #include "IOHandler.h"
+#include "../structures/Avl.h"
 #include "../structures/BinaryTree.h"
 #include "../structures/Table.h"
 #include "../structures/SortedTable.h"
+
+const string FILE_PATH = "small-file.txt";
 
 std::string removeNonAlphaNumeric(const std::string& input) {
     std::string result;
@@ -43,13 +47,13 @@ void tokenizeString(const std::string& input, std::string tokens[], int& count) 
 };
 
 template <typename STRC>
-STRC buildStrc(STRC strc) {
+STRC buildPairs(STRC strc) {
     chrono::system_clock::time_point start,end;
     double time;
     start = chrono::high_resolution_clock::now();
     string myline;
     std::ifstream myfile;
-    myfile.open("small-file.txt");
+    myfile.open(FILE_PATH);
     if ( myfile.is_open() ) {
         while ( myfile ) {
             getline (myfile, myline);
@@ -79,9 +83,49 @@ STRC buildStrc(STRC strc) {
     return strc;
 };
 
-template BinaryTree buildStrc<BinaryTree>(BinaryTree);
-template Table buildStrc<Table>(Table);
-template SortedTable buildStrc<SortedTable>(SortedTable);
+template Table buildPairs<Table>(Table);
+template SortedTable buildPairs<SortedTable>(SortedTable);
+
+
+template <typename STRC>
+STRC buildCPairs(STRC strc) {
+    chrono::system_clock::time_point start,end;
+    double time;
+    start = chrono::high_resolution_clock::now();
+    string myline;
+    std::ifstream myfile;
+    myfile.open(FILE_PATH);
+    if ( myfile.is_open() ) {
+        while ( myfile ) {
+            getline (myfile, myline);
+            string newl = removeNonAlphaNumeric(myline);
+            if (newl == "") continue;
+            std::string tokens[30];  
+            int tokenCount = 0;
+
+            tokenizeString(newl, tokens, tokenCount);
+
+            for (int i = 0; i < tokenCount-1; i++) {
+                CPair<string> p = CPair(tokens[i],tokens[i+1]);
+                strc.insert(p); // Insert is mutual method to every structure
+            }
+            
+        }
+    }
+    myfile.close();
+    end = chrono::high_resolution_clock::now();
+    time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
+    ofstream out("output.txt",std::ios_base::app);
+    out << "Construction Time of <" << removeNonAlphaNumeric(typeid(strc).name()) << "> : " << time << " sec" << endl;
+    out.close();
+    ofstream md("markdown.md",std::ios_base::app);
+    md << "- <**" << removeNonAlphaNumeric(typeid(strc).name()) << "**> : `" << time << " sec`" << endl;
+    md.close();
+    return strc;
+};
+
+template BinaryTree buildCPairs<BinaryTree>(BinaryTree);
+template Avl buildCPairs<Avl>(Avl);
 
 Pair<string>* generateQ() {
     int z = 0;
@@ -89,7 +133,7 @@ Pair<string>* generateQ() {
     if (aQ == NULL) cout << "aQ MEMORY ERROR" << endl;
     string myline;
     std::ifstream myfile;
-    myfile.open("gutenberg.txt");
+    myfile.open(FILE_PATH);
     if ( myfile.is_open() ) {
         while ( myfile && z < 1000) {
             getline (myfile, myline);
@@ -110,6 +154,6 @@ Pair<string>* generateQ() {
         }
     }
     myfile.close();
-    cout << "aQ size : " << z << endl;
+    //cout << "aQ size : " << z << endl;
     return aQ;
 };

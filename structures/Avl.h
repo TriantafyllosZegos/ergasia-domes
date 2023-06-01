@@ -14,7 +14,7 @@ public:
     Avl();
     //~Avl();
 protected:
-    Node* insertNode(Node *node, Pair<string> value);
+    Node* insertNode(Node *node, CPair<string> value);
 };
 
 #endif
