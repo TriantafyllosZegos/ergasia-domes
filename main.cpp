@@ -3,7 +3,6 @@
 #include <fstream>
 #include <sstream>
 #include <cctype>
-
 #include <thread>
 #include <future>
 #include <typeinfo>
@@ -27,7 +26,7 @@ int main()
 
     Table ut;
     ut = buildStrc(ut);
-    ut.search(arrayQ);
+    //ut.search();
     //BinaryTree st;
     //auto t2 = std::async(buildStrc<BinaryTree>,bt); 
     

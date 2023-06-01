@@ -9,15 +9,15 @@
 using namespace std;
 
 class BinaryTree {
-private:
+protected:
     Node* root;
-    Node* insertNode(Node* node,Pair<string> value);
+    virtual Node* insertNode(Node* node,Pair<string> value);
     
 
 public:
     BinaryTree();
     //~BinaryTree();
-    void insert(Pair<string> value);
+    virtual void insert(Pair<string> value);
     void deleteNode(Node* n);
     int search(Pair<string>& p);
     void print(Node* node,string tp);

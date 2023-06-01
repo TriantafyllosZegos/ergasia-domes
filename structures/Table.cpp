@@ -59,6 +59,6 @@ void Table::print(){
 int Table::getSize(){
     return size;
 }
-void Table::search(Pair<string>* arr){
+void Table::search(Pair<string>& p){
     cout << "Search!!!" << endl;
 }

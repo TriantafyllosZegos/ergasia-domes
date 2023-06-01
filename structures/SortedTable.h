@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <utility>
-#include "structures/Table.h"
+#include "Table.h"
 
 class SortedTable : public Table{
     public:

@@ -16,7 +16,7 @@ class Table {
         Table();
         //~Table();
         void insert(Pair<string>& p);
-        virtual void search(Pair<string>* arr);
+        virtual void search(Pair<string>& p);
         void print();
         int getSize();
 };
