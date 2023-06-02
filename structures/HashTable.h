@@ -10,14 +10,14 @@ using namespace std;
 
 class Hashtable{
     private:
-
-
+        int hash(const Pair<string>&  key);
+        int size;
+        vector<vector<Pair<string>>> buckets;
+        
     public:
         Hashtable(int size);
 
-        int hashFuction(const Pair<string>&  key);
-
-        void insert(const Pair<string>& key, int value);
+        void insert(const Pair<string>& key);
 
         int search(const Pair<string>& key);
 
@@ -26,6 +26,8 @@ class Hashtable{
 };
 
 
+
+       
 
 
 
