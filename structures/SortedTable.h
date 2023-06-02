@@ -19,6 +19,4 @@ class SortedTable : public Table{
         void swap(int low ,int high);
 };
 
-
-
-#endif // SORTEDTABLE_H
+#endif

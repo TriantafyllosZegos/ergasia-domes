@@ -12,7 +12,7 @@
 #include "../structures/Table.h"
 #include "../structures/SortedTable.h"
 
-const string FILE_PATH = "small-file.txt";
+const string FILE_PATH = "gutenberg.txt";
 
 std::string removeNonAlphaNumeric(const std::string& input) {
     std::string result;
@@ -62,7 +62,6 @@ STRC buildPairs(STRC strc) {
             if (newl == "") continue;
             std::string tokens[30];  
             int tokenCount = 0;
-
             tokenizeString(newl, tokens, tokenCount);
 
             for (int i = 0; i < tokenCount-1; i++) {

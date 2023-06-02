@@ -10,8 +10,8 @@ class Table {
         Pair<string>* a;
     protected:
         
-        long int size;
-        long int cap;
+        unsigned long long int size;
+        unsigned long long int cap;
 
 
     public:
@@ -20,7 +20,7 @@ class Table {
         void insert(const Pair<string>& p);
         virtual int search(const Pair<string>& p);
         void print();
-        int getSize();
+        unsigned long long int getSize();
 };
 
 #endif

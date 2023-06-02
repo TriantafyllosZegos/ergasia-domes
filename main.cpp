@@ -32,7 +32,7 @@ int main()
     Table t;
     t = buildPairs(t);
     cout << "Table | " << p << " : " << t.search(p) << endl;
-
+/*
     SortedTable st = SortedTable(t);
     st = buildPairs(st);
     st.sort();
@@ -45,7 +45,7 @@ int main()
     Avl avl;
     avl = buildPairs(avl);
     cout << "Avl | " << p << " : " << avl.search(p) << endl;
-
+*/
     
     return 0;
 }

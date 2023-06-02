@@ -5,11 +5,11 @@
 using namespace std;
 
 Table::Table(){
-    
-    a = new(nothrow) Pair<string>[1000000]();
+    unsigned long long int z = 390000000;
+    a = new(nothrow) Pair<string>[z]();
     if (a == NULL) cout << "TABLE MEMORY ERROR" << endl;
     size = 0;
-    cap = 100000;
+    cap = 20000000;
     
 }
 
@@ -20,41 +20,42 @@ Table::~Table(){
 }*/
 
 void Table::insert(const Pair<string>& p){
+    /*
     if (size == cap) {
         // If the array is full, increase its capacity
-        cap += 100000;
+        cap += 20000000;
         Pair<string> * newLines = new(nothrow) Pair<string>[cap]();
         if (newLines == NULL) cout << "Table MEMORY ERROR || size : " << size << endl;
 
         // Copy the existing lines to the new array
-        for (int i = 0; i < size; i++) {
+        for (unsigned long long int i = 0; i < size; i++) {
                 newLines[i] = a[i];
         }
         // Delete the old array
         delete[] a;
         // Update the lines pointer to point to the new array
         a = newLines;
-    }
+    }*/
     // Store the new line
     a[size] = p;
-    //if (size % 100000 == 0) cout << size << endl;
+    if (size % 1000000 == 0) cout << size << endl;
     size++;
 }
 
 
 void Table::print(){
     cout << "############## TABLE ##############" << endl;
-    for (int i = 0; i < size;i++){
+    for (unsigned long long int i = 0; i < size;i++){
         cout << a[i] << endl;
     }
 }
 
-int Table::getSize(){
+unsigned long long int Table::getSize(){
     return size;
 }
 
 int Table::search(const Pair<string>& p){
-    int c = 0;
+    unsigned int c = 0;
     for (int i = 0;i<size;i++){
         if (a[i].first == p.first && a[i].second == p.second){
             c++;
