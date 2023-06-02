@@ -10,6 +10,14 @@
 using namespace std;
 
 class BinaryTree {
+public:
+    BinaryTree();
+    //~BinaryTree();
+    virtual void insert(const Pair<string>& value);
+    void deleteNode(Node* n);
+    int search(const Pair<string>& p);
+    void print();
+    Node* getNode();
 protected:
     Node* root;
     virtual Node* insertNode(Node* node,const CPair<string>& value);
@@ -17,14 +25,7 @@ protected:
     void print(Node* node,string tp);
     
 
-public:
-    BinaryTree();
-    //~BinaryTree();
-    void insert(const Pair<string>& value);
-    void deleteNode(Node* n);
-    int search(const Pair<string>& p);
-    void print();
-    Node* getNode();
+
 };
 
 #endif

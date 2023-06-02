@@ -12,9 +12,13 @@ using namespace std;
 class Avl : public BinaryTree {
 public:
     Avl();
+    void insert(const Pair<string>& value);
     //~Avl();
 protected:
-    Node* insertNode(Node *node,const CPair<string> &value);
+    NodeH* insertNode(NodeH *node,const CPair<string> &value);
+    friend NodeH* rotateLeft(NodeH *n);
+    friend NodeH* rotateRight(NodeH *n);
+    friend int getBalance(NodeH *n);
 };
 
 #endif

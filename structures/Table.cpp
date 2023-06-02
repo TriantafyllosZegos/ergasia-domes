@@ -5,7 +5,7 @@
 using namespace std;
 
 Table::Table(){
-    unsigned long long int z = 390000000;
+    unsigned long long int z = 3900000;
     a = new(nothrow) Pair<string>[z]();
     if (a == NULL) cout << "TABLE MEMORY ERROR" << endl;
     size = 0;
