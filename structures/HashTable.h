@@ -5,31 +5,28 @@
 #include <utility>
 #include <string>
 #include "../helpers/Pair.h"
-using namespace std;
 
-
-class Hashtable{
-    private:
-        int hash(const Pair<string>&  key);
-        int size;
-        vector<vector<Pair<string>>> buckets;
+class Hashtable {
+private:
+    struct Node {
+        Pair<string> data;
+        Node* next;
         
-    public:
-        Hashtable(int size);
+        Node(const Pair<string>& pair) : data(pair), next(nullptr) {}
+    };
 
-        void insert(const Pair<string>& key);
+    int size;
+    Node** buckets;
 
-        int search(const Pair<string>& key);
+    int hash(const Pair<string>& key);
 
-        void remove(const Pair<string>& key);
+public:
+    Hashtable(int size);
+    ~Hashtable();
 
+    void insert(const Pair<string>& key);
+    int search(const Pair<string>& key);
+    void remove(const Pair<string>& key);
 };
-
-
-
-       
-
-
-
 
 #endif
