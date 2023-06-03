@@ -208,3 +208,46 @@
 ---
 - <**table**> : `194.354 sec`
 ---
+---
+- <**sortedtable**> : `186.419 sec`
+---
+- <**table**> : `0.0065861 sec`
+---
+- <**table**> : `8.65e-05 sec`
+- <**sortedtable**> : `6.67e-05 sec`
+- <**binarytree**> : `4.76e-05 sec`
+- <**avl**> : `2.84e-05 sec`
+---
+- <**table**> : `0.0001342 sec`
+- <**sortedtable**> : `9.27e-05 sec`
+- <**binarytree**> : `2.39e-05 sec`
+- <**avl**> : `2.38e-05 sec`
+---
+- <**table**> : `8.56e-05 sec`
+- <**sortedtable**> : `0.0001356 sec`
+- <**binarytree**> : `4.04e-05 sec`
+- <**avl**> : `3.18e-05 sec`
+---
+- <**table**> : `7.45e-05 sec`
+- <**sortedtable**> : `0.000102 sec`
+- <**binarytree**> : `2.29e-05 sec`
+- <**avl**> : `1.84e-05 sec`
+---
+- <**table**> : `0.0695173 sec`
+- <**sortedtable**> : `0.065957 sec`
+- <**binarytree**> : `0.267634 sec`
+- <**avl**> : `0.261748 sec`
+---
+- <**avl**> : `0.278921 sec`
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
