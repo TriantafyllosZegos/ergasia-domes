@@ -7,10 +7,11 @@
 
 using namespace std;
 
-//na koitaksoume to size !!!
+
 Hashtable::Hashtable(int size){
     this->size = size;
-    buckets.resize(size);
+    vector<vector<Pair<string>>> vec(size);
+    this->buckets = vec;
 }
 
 
@@ -38,7 +39,6 @@ int Hashtable::hash(const Pair<string>& key){
 
 
 }
-
 
 void Hashtable::insert(const Pair<string>& key){
     int index = hash(key);

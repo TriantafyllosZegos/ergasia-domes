@@ -86,9 +86,9 @@ STRC buildPairs(STRC strc) {
 };
 
 template Table buildPairs<Table>(Table);
-template SortedTable buildPairs<SortedTable>(SortedTable);
-template BinaryTree buildPairs<BinaryTree>(BinaryTree);
-template Avl buildPairs<Avl>(Avl);
+//template SortedTable buildPairs<SortedTable>(SortedTable);
+//template BinaryTree buildPairs<BinaryTree>(BinaryTree);
+//template Avl buildPairs<Avl>(Avl);
 
 
 

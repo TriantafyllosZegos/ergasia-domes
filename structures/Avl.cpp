@@ -5,7 +5,9 @@
 using namespace std;
 
 
-Avl::Avl():  BinaryTree(){};
+Avl::Avl():  BinaryTree(){
+    root = nullptr;
+};
 
 
 NodeH *rotateRight(NodeH *y)

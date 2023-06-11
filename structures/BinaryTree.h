@@ -20,7 +20,7 @@ public:
     Node* getNode();
 protected:
     Node* root;
-    virtual Node* insertNode(Node* node,const CPair<string>& value);
+    Node* insertNode(Node* node,const CPair<string>& value);
     int searchPair(Node* node,const CPair<string>& value);
     void print(Node* node,string tp);
     
