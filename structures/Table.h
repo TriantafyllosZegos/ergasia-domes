@@ -18,7 +18,7 @@ class Table {
         Table();
         //~Table();
         void insert(const Pair<string>& p);
-        virtual int search(const Pair<string>& p);
+        int search(const Pair<string>& p);
         void print();
         unsigned long long int getSize();
         Pair<string> operator[](int x){

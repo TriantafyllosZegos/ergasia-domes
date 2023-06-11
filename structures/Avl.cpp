@@ -54,7 +54,7 @@ void Avl::insert(const Pair<string> &value)
 {
     root = insertNode((NodeH*) root, CPair<string>(value));
 }
-NodeH* insertNode(NodeH* node,const CPair<string> &pair)
+NodeH* Avl::insertNode(NodeH* node,const CPair<string> &pair)
 {
     /* 1. Perform the normal BST insertion */
     cout << node->height << endl;
