@@ -6,7 +6,7 @@
 #include <string>
 #include "../helpers/Pair.h"
 
-class Hashtable {
+class HashTable {
 private:
     struct Node {
         Pair<string> data;
@@ -21,8 +21,8 @@ private:
     int hash(const Pair<string>& key);
 
 public:
-    Hashtable(int size);
-    ~Hashtable();
+    HashTable(int size);
+    ~HashTable();
 
     void insert(const Pair<string>& key);
     int search(const Pair<string>& key);
