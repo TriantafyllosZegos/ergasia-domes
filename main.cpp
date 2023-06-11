@@ -9,12 +9,12 @@
 #include "helpers/Pair.h"
 #include "helpers/IOHandler.h"
 
-//#include "structures/Avl.h"
-//#include "structures/BinaryTree.h"
+#include "structures/Avl.h"
+#include "structures/BinaryTree.h"
 
 #include "structures/Table.h"
-//#include "structures/SortedTable.h"
-//#include "structures/HashTable.h"
+#include "structures/SortedTable.h"
+#include "structures/HashTable.h"
 
 using namespace std;
 
@@ -28,15 +28,18 @@ int main()
     md << "---" << endl;
     md.close();
 
-    Pair<string> p = arrayQ[990];
+    Pair<string> p = arrayQ[75];
     cout << p << endl;
 
  
     Table t;
     t = buildPairs(t);
     cout << "Table | " << p << " : " << t.search(p) << endl;
-    cout << t[0] << endl;
-/*
+ 
+    HashTable ht(30000000);
+    ht = buildPairs(ht);
+    //cout << "HashTable | " << p << " : " << ht.search(p) << endl;
+
     SortedTable st = SortedTable(t);
     st = buildPairs(st);
     st.sort();
@@ -44,14 +47,13 @@ int main()
 
     BinaryTree bt;
     bt = buildPairs(bt);
-    //cout << "BinaryTree | " << p << " : " << bt.search(p) << endl;
-    bt.print();
+    cout << "BinaryTree | " << p << " : " << bt.search(p) << endl;
 
-    Avl avl;
-    avl = buildPairs(avl);
+    //Avl avl;
+    //avl = buildPairs(avl);
     //cout << "Avl | " << p << " : " << avl.search(p) << endl;
-    avl.print();
-*/
+    //avl.print();
+
     
     return 0;
 }

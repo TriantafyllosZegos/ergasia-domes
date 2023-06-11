@@ -12,7 +12,7 @@ using namespace std;
 class Avl : public BinaryTree {
 public:
     Avl();
-    virtual void insert(const Pair<string>& value);
+    void insert(const Pair<string>& value);
     //~Avl();
 protected:
     NodeH* insertNode(NodeH *node,const CPair<string> &value);

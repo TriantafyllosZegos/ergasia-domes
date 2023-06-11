@@ -11,6 +11,7 @@
 #include "../structures/BinaryTree.h"
 #include "../structures/Table.h"
 #include "../structures/SortedTable.h"
+#include "../structures/HashTable.h"
 
 const string FILE_PATH = "small-file.txt";
 
@@ -86,9 +87,10 @@ STRC buildPairs(STRC strc) {
 };
 
 template Table buildPairs<Table>(Table);
-//template SortedTable buildPairs<SortedTable>(SortedTable);
-//template BinaryTree buildPairs<BinaryTree>(BinaryTree);
-//template Avl buildPairs<Avl>(Avl);
+template SortedTable buildPairs<SortedTable>(SortedTable);
+template BinaryTree buildPairs<BinaryTree>(BinaryTree);
+template Avl buildPairs<Avl>(Avl);
+template HashTable buildPairs<HashTable>(HashTable);
 
 
 

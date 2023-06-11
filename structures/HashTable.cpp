@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Hashtable::Hashtable(int size) {
+HashTable::HashTable(int size) {
     this->size = size;
     buckets = new Node*[size];
     for (int i = 0; i < size; i++) {
@@ -10,7 +10,7 @@ Hashtable::Hashtable(int size) {
     }
 }
 
-Hashtable::~Hashtable() {
+HashTable::~HashTable() {
     for (int i = 0; i < size; i++) {
         Node* curr = buckets[i];
         while (curr != nullptr) {
@@ -22,7 +22,7 @@ Hashtable::~Hashtable() {
     delete[] buckets;
 }
 
-int Hashtable::hash(const Pair<string>& key) {
+int HashTable::hash(const Pair<string>& key) {
     int num1 = 0;
     int num2 = 0;
     int i = 1;
@@ -41,14 +41,14 @@ int Hashtable::hash(const Pair<string>& key) {
     return (num1 * num2 + num1) % size;
 }
 
-void Hashtable::insert(const Pair<string>& key) {
+void HashTable::insert(const Pair<string>& key) {
     int index = hash(key);
     Node* newNode = new Node(key);
     newNode->next = buckets[index];
     buckets[index] = newNode;
 }
 
-int Hashtable::search(const Pair<string>& key) {
+int HashTable::search(const Pair<string>& key) {
     int index = hash(key);
     Node* curr = buckets[index];
     int position = 0;
@@ -62,7 +62,7 @@ int Hashtable::search(const Pair<string>& key) {
     return -1;
 }
 
-void Hashtable::remove(const Pair<string>& key) {
+void HashTable::remove(const Pair<string>& key) {
     int index = hash(key);
     Node* curr = buckets[index];
     Node* prev = nullptr;
