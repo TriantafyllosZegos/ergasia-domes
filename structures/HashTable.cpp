@@ -1,4 +1,4 @@
-#include "Hashtable.h"
+#include "HashTable.h"
 
 using namespace std;
 
@@ -22,70 +22,85 @@ HashTable::~HashTable() {
     delete[] buckets;
 }
 
-unsigned long long int HashTable::hash(const Pair<string>& key) {
-    unsigned long long int num1 = 0;
-    unsigned long long int num2 = 0;
-    unsigned long long int i = 1;
+int HashTable::hash(const Pair<string>& key) {
+    const int prime = 31;
+    int hashValue = 0;
 
+    // Compute the hash value for the first string in the pair
     for (char ch : key.first) {
-        num1 = num1 + static_cast<int>(ch) * i;
-        i *= 10;
+        hashValue = (hashValue * prime) + ch;
     }
 
-    i = 1;
+    // Combine the hash value with the second string in the pair
     for (char ch : key.second) {
-        num2 = num2 + static_cast<int>(ch) * i;
-        i *= 10;
+        hashValue = (hashValue * prime) + ch;
     }
-    return (num1 + num2 ) % size;
+
+    // Ensure the hash value is non-negative and within the range of the hash table
+    hashValue = hashValue % size;
+    if (hashValue < 0) {
+        hashValue += size;
+    }
+    cout << "Hash value: " << hashValue << endl;
+    return hashValue;
 }
 
 void HashTable::insert(const Pair<string>& key) {
     int index = hash(key);
-    Node* curr = buckets[index];
-    while(curr != nullptr) {
-        if (curr->data == key){
-            curr->count++;
+    int originalIndex = index;
+    while (buckets[index] != nullptr) {
+        if (buckets[index]->data == key) {
+            buckets[index]->count++;
             return;
         }
-        curr = curr->next;
+        index = (index + 1) % size;
+        if (index == originalIndex) {
+            // Reached back to the original index, indicating the hash table is full
+            // You may want to handle this case accordingly, e.g., by resizing the hash table
+            return;
+        }
     }
-    curr = new Node(key);
-
-    Node* newNode = new Node(key);
-    newNode->next = buckets[index];
-    buckets[index] = newNode;
-
-
+    buckets[index] = new Node(key);
 }
 
 int HashTable::search(const Pair<string>& key) {
     int index = hash(key);
-    Node* curr = buckets[index];
-    while (curr != nullptr) {
-        if (curr->data == key) {
-            return curr->count;
+    int originalIndex = index;
+    while (buckets[index] != nullptr) {
+        if (buckets[index]->data == key) {
+            return buckets[index]->count;
         }
-        curr = curr->next;
+        index = (index + 1) % size;
+        if (index == originalIndex) {
+            // Reached back to the original index, indicating the key was not found
+            return 0;
+        }
     }
     return 0;
 }
 
 void HashTable::remove(const Pair<string>& key) {
     int index = hash(key);
-    Node* curr = buckets[index];
-    Node* prev = nullptr;
-    while (curr != nullptr) {
-        if (curr->data == key) {
-            if (prev == nullptr) {
-                buckets[index] = curr->next;
-            } else {
-                prev->next = curr->next;
+    int originalIndex = index;
+    while (buckets[index] != nullptr) {
+        if (buckets[index]->data == key) {
+            delete buckets[index];
+            buckets[index] = nullptr;
+// Rehash and reinsert any elements that were previously probed from this position
+            index = (index + 1) % size;
+            while (buckets[index] != nullptr) {
+                Node* nodeToRehash = buckets[index];
+                buckets[index] = nullptr;
+                insert(nodeToRehash->data);
+                delete nodeToRehash;
+                index = (index + 1) % size;
             }
-            delete curr;
             return;
         }
-        prev = curr;
-        curr = curr->next;
+        index = (index + 1) % size;
+        if (index == originalIndex) {
+// Reached back to the original index, indicating the key was not found
+            return;
+        }
     }
 }

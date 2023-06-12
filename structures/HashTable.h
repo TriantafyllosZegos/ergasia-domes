@@ -20,6 +20,8 @@ private:
 
     unsigned long long int hash(const Pair<string>& key);
 
+    
+
 public:
     HashTable(unsigned long long int size);
     ~HashTable();
