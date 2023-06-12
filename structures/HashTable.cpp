@@ -47,51 +47,60 @@ int HashTable::hash(const Pair<string>& key) {
 
 void HashTable::insert(const Pair<string>& key) {
     int index = hash(key);
-    Node* curr = buckets[index];
-    while(curr != nullptr) {
-        if (curr->data == key){
-            curr->count++;
+    int originalIndex = index;
+    while (buckets[index] != nullptr) {
+        if (buckets[index]->data == key) {
+            buckets[index]->count++;
             return;
         }
-        curr = curr->next;
+        index = (index + 1) % size;
+        if (index == originalIndex) {
+            // Reached back to the original index, indicating the hash table is full
+            // You may want to handle this case accordingly, e.g., by resizing the hash table
+            return;
+        }
     }
-    curr = new Node(key);
-
-    /*Node* newNode = new Node(key);
-    newNode->next = buckets[index];
-    buckets[index] = newNode;*/
-
-    
+    buckets[index] = new Node(key);
 }
 
 int HashTable::search(const Pair<string>& key) {
     int index = hash(key);
-    Node* curr = buckets[index];
-    while (curr != nullptr) {
-        if (curr->data == key) {
-            return curr->count;
+    int originalIndex = index;
+    while (buckets[index] != nullptr) {
+        if (buckets[index]->data == key) {
+            return buckets[index]->count;
         }
-        curr = curr->next;
-        
+        index = (index + 1) % size;
+        if (index == originalIndex) {
+            // Reached back to the original index, indicating the key was not found
+            return 0;
+        }
     }
     return 0;
 }
 
 void HashTable::remove(const Pair<string>& key) {
     int index = hash(key);
-    Node* curr = buckets[index];
-    Node* prev = nullptr;
-    while (curr != nullptr) {
-        if (curr->data == key) {
-            if (prev == nullptr) {
-                buckets[index] = curr->next;
-            } else {
-                prev->next = curr->next;
+    int originalIndex = index;
+    while (buckets[index] != nullptr) {
+        if (buckets[index]->data == key) {
+            delete buckets[index];
+            buckets[index] = nullptr;
+// Rehash and reinsert any elements that were previously probed from this position
+            index = (index + 1) % size;
+            while (buckets[index] != nullptr) {
+                Node* nodeToRehash = buckets[index];
+                buckets[index] = nullptr;
+                insert(nodeToRehash->data);
+                delete nodeToRehash;
+                index = (index + 1) % size;
             }
-            delete curr;
             return;
         }
-        prev = curr;
-        curr = curr->next;
+        index = (index + 1) % size;
+        if (index == originalIndex) {
+// Reached back to the original index, indicating the key was not found
+            return;
+        }
     }
 }
