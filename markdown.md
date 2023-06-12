@@ -414,3 +414,172 @@
 - <**sortedtable**> : `0.0676466 sec`
 - <**hashtable**> : `0.964242 sec`
 - <**binarytree**> : `0.34258 sec`
+---
+- <**table**> : `0.077727 sec`
+- <**sortedtable**> : `0.0722882 sec`
+- <**hashtable**> : `0.824398 sec`
+- <**binarytree**> : `0.437586 sec`
+---
+- <**table**> : `0.137719 sec`
+- <**sortedtable**> : `0.06969 sec`
+- <**hashtable**> : `0.853777 sec`
+- <**binarytree**> : `0.444049 sec`
+---
+- <**table**> : `0.076259 sec`
+- <**sortedtable**> : `0.0669636 sec`
+- <**hashtable**> : `0.860745 sec`
+- <**binarytree**> : `0.451434 sec`
+---
+- <**table**> : `0.0916433 sec`
+- <**sortedtable**> : `0.0706998 sec`
+- <**hashtable**> : `1.00937 sec`
+- <**binarytree**> : `0.493011 sec`
+---
+- <**table**> : `0.0642473 sec`
+- <**sortedtable**> : `0.0634333 sec`
+- <**hashtable**> : `0.796403 sec`
+- <**binarytree**> : `0.265957 sec`
+---
+- <**table**> : `0.0603843 sec`
+- <**sortedtable**> : `0.0567452 sec`
+- <**hashtable**> : `0.751625 sec`
+- <**binarytree**> : `0.27944 sec`
+---
+- <**table**> : `0.0674793 sec`
+- <**sortedtable**> : `0.0621952 sec`
+- <**hashtable**> : `0.714081 sec`
+- <**binarytree**> : `0.273433 sec`
+---
+- <**table**> : `0.0728933 sec`
+- <**sortedtable**> : `0.0613532 sec`
+- <**hashtable**> : `0.774251 sec`
+- <**binarytree**> : `0.295516 sec`
+---
+- <**table**> : `0.0638669 sec`
+- <**sortedtable**> : `0.109214 sec`
+- <**hashtable**> : `0.710177 sec`
+- <**binarytree**> : `0.284194 sec`
+---
+- <**table**> : `0.0574415 sec`
+- <**sortedtable**> : `0.0626406 sec`
+- <**hashtable**> : `0.757446 sec`
+- <**binarytree**> : `0.266568 sec`
+---
+- <**table**> : `0.0775569 sec`
+- <**sortedtable**> : `0.0945521 sec`
+- <**hashtable**> : `0.747021 sec`
+- <**binarytree**> : `0.278142 sec`
+---
+- <**table**> : `0.0650431 sec`
+- <**sortedtable**> : `0.0703212 sec`
+- <**hashtable**> : `0.82538 sec`
+- <**binarytree**> : `0.263662 sec`
+---
+- <**table**> : `0.0822313 sec`
+- <**sortedtable**> : `0.0743923 sec`
+- <**hashtable**> : `0.787417 sec`
+- <**binarytree**> : `0.278861 sec`
+---
+- <**table**> : `0.0892274 sec`
+- <**sortedtable**> : `0.0696515 sec`
+- <**hashtable**> : `0.814953 sec`
+- <**binarytree**> : `0.272531 sec`
+---
+- <**table**> : `0.0646645 sec`
+- <**sortedtable**> : `0.0614585 sec`
+- <**hashtable**> : `0.757015 sec`
+- <**binarytree**> : `0.306117 sec`
+- <**avl**> : `89.6632 sec`
+---
+- <**table**> : `0.0626514 sec`
+- <**sortedtable**> : `0.0597723 sec`
+- <**hashtable**> : `0.7371 sec`
+- <**binarytree**> : `0.225196 sec`
+- <**avl**> : `0.309745 sec`
+---
+- <**table**> : `0.0659893 sec`
+- <**sortedtable**> : `0.0654694 sec`
+- <**hashtable**> : `0.760609 sec`
+- <**binarytree**> : `0.263693 sec`
+- <**avl**> : `0.316253 sec`
+---
+- <**table**> : `0.0639078 sec`
+- <**sortedtable**> : `0.0617319 sec`
+- <**hashtable**> : `0.767714 sec`
+- <**binarytree**> : `0.272668 sec`
+- <**avl**> : `0.345055 sec`
+---
+- <**table**> : `0.0687352 sec`
+- <**sortedtable**> : `0.0720621 sec`
+- <**hashtable**> : `0.720837 sec`
+- <**binarytree**> : `0.249868 sec`
+- <**avl**> : `0.289618 sec`
+---
+- <**table**> : `0.0669308 sec`
+- <**sortedtable**> : `0.0600618 sec`
+- <**hashtable**> : `0.744256 sec`
+- <**binarytree**> : `0.245174 sec`
+- <**avl**> : `0.298912 sec`
+---
+- <**table**> : `0.0615797 sec`
+- <**sortedtable**> : `0.0673844 sec`
+- <**hashtable**> : `0.715451 sec`
+- <**binarytree**> : `0.253616 sec`
+- <**avl**> : `0.299963 sec`
+---
+---
+---
+---
+---
+---
+- <**table**> : `0.0599942 sec`
+- <**sortedtable**> : `0.05999 sec`
+- <**hashtable**> : `0.756443 sec`
+- <**binarytree**> : `0.251157 sec`
+- <**avl**> : `0.451881 sec`
+---
+---
+- <**table**> : `0.112358 sec`
+- <**sortedtable**> : `0.10089 sec`
+- <**hashtable**> : `0.814627 sec`
+- <**binarytree**> : `0.387532 sec`
+- <**avl**> : `0.349504 sec`
+---
+- <**table**> : `0.062979 sec`
+- <**sortedtable**> : `0.0651495 sec`
+- <**hashtable**> : `0.821356 sec`
+- <**binarytree**> : `0.315904 sec`
+- <**avl**> : `0.34846 sec`
+---
+- <**table**> : `0.0885976 sec`
+- <**sortedtable**> : `0.136139 sec`
+- <**binarytree**> : `0.384014 sec`
+- <**avl**> : `0.395288 sec`
+---
+- <**table**> : `0.178167 sec`
+- <**sortedtable**> : `0.168454 sec`
+- <**binarytree**> : `0.451571 sec`
+- <**avl**> : `0.378252 sec`
+---
+- <**table**> : `0.125365 sec`
+- <**sortedtable**> : `0.101766 sec`
+- <**binarytree**> : `0.880449 sec`
+- <**avl**> : `0.940669 sec`
+---
+- <**table**> : `0.0640806 sec`
+- <**sortedtable**> : `0.071687 sec`
+- <**hashtable**> : `0.545618 sec`
+- <**binarytree**> : `0.807017 sec`
+- <**avl**> : `0.729657 sec`
+---
+- <**table**> : `0.07261 sec`
+- <**sortedtable**> : `0.117984 sec`
+- <**hashtable**> : `0.134137 sec`
+- <**binarytree**> : `0.453936 sec`
+- <**avl**> : `0.49103 sec`
+---
+- <**table**> : `0.137875 sec`
+- <**sortedtable**> : `0.191662 sec`
+- <**hashtable**> : `0.266513 sec`
+- <**binarytree**> : `0.55018 sec`
+- <**avl**> : `1.25527 sec`

@@ -20,6 +20,7 @@ struct Node
         left = nullptr;
         right = nullptr;
     }
+
     /* ~Node(){
          delete left;
          delete right;
@@ -33,18 +34,28 @@ struct NodeH : public Node
     NodeH *left;
     NodeH *right;
 
-    NodeH(const CPair<string>& value)
+    NodeH(const CPair<string> &value)
     {
         data = value;
         height = 1;
-        left = nullptr;
-        right = nullptr;
+        left = NULL;
+        right = NULL;
     };
     int getBalance()
     {
         if (this == NULL)
             return 0;
-        return this->left->height - this->right->height;
+        return getHeight(this->left) - getHeight(this->right);
+    }
+    friend int getHeight(NodeH *N)
+    {
+        if (N == NULL)
+            return 0;
+        return N->height;
+    };
+    friend int max(int a, int b)
+    {
+        return (a > b) ? a : b;
     }
     NodeH *rotateRight()
     {
@@ -56,8 +67,8 @@ struct NodeH : public Node
         this->left = T2;
 
         // Update heights
-        this->height = (this->left->height >= this->right->height) ? this->left->height : this->right->height + 1;
-        x->height = (x->left->height >= x->right->height) ? x->left->height : x->right->height + 1;
+        this->height = max(getHeight(this->left),getHeight(this->right)) + 1;
+        x->height = max(getHeight(x->left),getHeight(x->right)) + 1;
 
         // Return new root
         return x;
@@ -73,8 +84,8 @@ struct NodeH : public Node
         this->right = T2;
 
         // Update heights
-        this->height = (this->left->height >= this->right->height) ? this->left->height : this->right->height + 1;
-        y->height = (y->left->height >= y->right->height) ? y->left->height : y->right->height + 1;
+        this->height = max(getHeight(this->left),getHeight(this->right)) + 1;
+        y->height = max(getHeight(y->left),getHeight(y->right)) + 1;
 
         // Return new root
         return y;

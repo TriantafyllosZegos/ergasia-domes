@@ -9,16 +9,23 @@
 
 using namespace std;
 
-class Avl : public BinaryTree {
+class Avl : public BinaryTree
+{
 public:
     Avl();
-    void insert(const Pair<string>& value);
+    void insert(const Pair<string> &value);
+    int search(const Pair<string>& p);
+    void print();
     //~Avl();
 protected:
-    NodeH* insertNodeH(NodeH *node,const CPair<string> &value);
-    //friend NodeH* rotateLeft(NodeH *n);
-    //friend NodeH* rotateRight(NodeH *n);
-    //friend int getBalance(NodeH *n);
+    NodeH *insertNodeH(NodeH *node, const CPair<string> &value);
+    int searchPair(NodeH* node,const CPair<string>& value);
+    
+    void print(NodeH* node,string tp);
+    // friend NodeH* rotateLeft(NodeH *n);
+    // friend NodeH* rotateRight(NodeH *n);
+    // friend int getBalance(NodeH *n);
+    
 };
 
 #endif

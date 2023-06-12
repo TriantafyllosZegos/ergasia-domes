@@ -2,14 +2,16 @@
 
 using namespace std;
 
-HashTable::HashTable(unsigned long long int size) {
-    this->size = size;
-    buckets = new Node*[size];
-    for (int i = 0; i < size; i++) {
-        buckets[i] = nullptr;
+
+HashTable::HashTable() {
+    this->cap = 100000;
+    a = new(nothrow) HashItem [cap]();
+
+    for (int i = 0; i < cap; i++) {
+        a[i] = HashItem();
     }
 }
-
+/*
 HashTable::~HashTable() {
     for (int i = 0; i < size; i++) {
         Node* curr = buckets[i];
@@ -20,7 +22,7 @@ HashTable::~HashTable() {
         }
     }
     delete[] buckets;
-}
+}*/
 
 unsigned long long int HashTable::hash(const Pair<string>& key) {
     const int prime = 31;
@@ -37,9 +39,9 @@ unsigned long long int HashTable::hash(const Pair<string>& key) {
     }
 
     // Ensure the hash value is non-negative and within the range of the hash table
-    hashValue = hashValue % size;
+    hashValue = hashValue % cap;
     if (hashValue < 0) {
-        hashValue += size;
+        hashValue += cap;
     }
     return hashValue;
 }
@@ -47,29 +49,48 @@ unsigned long long int HashTable::hash(const Pair<string>& key) {
 void HashTable::insert(const Pair<string>& key) {
     int index = hash(key);
     int originalIndex = index;
-    while (buckets[index] != nullptr) {
-        if (buckets[index]->data == key) {
-            buckets[index]->count++;
+    while (a[index].value != 0) {
+        if (a[index].key == key) {
+            a[index].value++;
             return;
         }
-        index = (index + 1) % size;
+        index = (index + 1) % cap;
         if (index == originalIndex) {
             // Reached back to the original index, indicating the hash table is full
             // You may want to handle this case accordingly, e.g., by resizing the hash table
+
+            resize();
+            //rehash ola
             return;
         }
     }
-    buckets[index] = new Node(key);
+    a[index] = HashItem(key);
+}
+void HashTable::resize() {
+    this->cap *= 2;
+    HashItem * temp = a;
+
+    //prepei delete ?
+    delete a;
+    a = new(nothrow) HashItem [cap]();
+
+
+    for (int i = 0; i < cap; i++) {
+        a[i] = HashItem();
+    }
+    for (int i = 0; i< cap/2;i++){
+        insert(temp[i].key);
+    }
 }
 
 int HashTable::search(const Pair<string>& key) {
     int index = hash(key);
     int originalIndex = index;
-    while (buckets[index] != nullptr) {
-        if (buckets[index]->data == key) {
-            return buckets[index]->count;
+    while (a[index].value != 0) {
+        if (a[index].key == key) {
+            return a[index].value;
         }
-        index = (index + 1) % size;
+        index = (index + 1) % cap;
         if (index == originalIndex) {
             // Reached back to the original index, indicating the key was not found
             return 0;
@@ -77,29 +98,29 @@ int HashTable::search(const Pair<string>& key) {
     }
     return 0;
 }
-
+/*
 void HashTable::remove(const Pair<string>& key) {
     int index = hash(key);
     int originalIndex = index;
-    while (buckets[index] != nullptr) {
-        if (buckets[index]->data == key) {
-            delete buckets[index];
-            buckets[index] = nullptr;
+    while (a[index].value != 0) {
+        if (a[index].key == key) {
+            delete a[index];
+            a[index] = nullptr;
 // Rehash and reinsert any elements that were previously probed from this position
-            index = (index + 1) % size;
-            while (buckets[index] != nullptr) {
-                Node* nodeToRehash = buckets[index];
-                buckets[index] = nullptr;
-                insert(nodeToRehash->data);
+            index = (index + 1) % cap;
+            while (a[index] != nullptr) {
+                HashItem * nodeToRehash = a[index];
+                a[index] = nullptr;
+                insert(nodeToRehash->key);
                 delete nodeToRehash;
-                index = (index + 1) % size;
+                index = (index + 1) % cap;
             }
             return;
         }
-        index = (index + 1) % size;
+        index = (index + 1) % cap;
         if (index == originalIndex) {
 // Reached back to the original index, indicating the key was not found
             return;
         }
     }
-}
+}*/

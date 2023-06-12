@@ -49,6 +49,7 @@ void tokenizeString(const std::string& input, std::string tokens[], int& count) 
 
 template <typename STRC>
 void buildPairs(STRC * strc) {
+    //int z = 0;
     chrono::system_clock::time_point start,end;
     double time;
     start = chrono::high_resolution_clock::now();
@@ -67,6 +68,8 @@ void buildPairs(STRC * strc) {
             for (int i = 0; i < tokenCount-1; i++) {
                 const Pair<string> p = Pair(tokens[i],tokens[i+1]);
                 strc->insert(p); // Insert is mutual method to every structure
+                //z++;
+                //if (z == 100){return;}
             }
             
         }

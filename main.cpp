@@ -28,7 +28,7 @@ int main()
     md << "---" << endl;
     md.close();
 
-    Pair<string> p = arrayQ[0];
+    Pair<string> p = arrayQ[55];
 
  
     Table * t = new Table();
@@ -41,7 +41,7 @@ int main()
     st->sort();
     cout << "SortedTable | " << p << " : " << st->search(p) << endl;
 
-    HashTable * ht = new HashTable(400);
+    HashTable * ht = new HashTable();
     buildPairs(ht);
     cout << "HashTable | " << p << " : " << ht->search(p) << endl;
 
@@ -51,10 +51,8 @@ int main()
 
 
     Avl * avl = new Avl();
-    //buildPairs(avl);
-    avl->insert(p);
-    avl->print();
-    //cout << "Avl | " << p << " : " << avl->search(p) << endl;
+    buildPairs(avl);
+    cout << "Avl | " << p << " : " << avl->search(p) << endl;
     
     return 0;
 }

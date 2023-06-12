@@ -10,15 +10,12 @@ Avl::Avl():  BinaryTree(){
 };
 void Avl::insert(const Pair<string> &value)
 {
-    cout << "before" << endl;
     root = insertNodeH((NodeH*) root, CPair<string>(value));
-    cout << "after" << endl;
 }
 
 
 NodeH* Avl::insertNodeH(NodeH* node,const CPair<string> &pair)
 {
-    cout << "insertNodeH" << node << endl;
     /* 1. Perform the normal BST insertion */
     if (node == nullptr)
     {
@@ -36,20 +33,17 @@ NodeH* Avl::insertNodeH(NodeH* node,const CPair<string> &pair)
         node->right = insertNodeH(node->right, pair);
     else // Equal keys are not allowed in BST
         node->data.count++;
-    cout << "BEFORE HEIGHT" << node << endl;
+        return node;
+
+
     /* 2. Update height of this ancestor node */
+    node->height = 1 + max(getHeight(node->left),getHeight(node->right));
     //node->height = (node->left->height >= node->right->height)?node->left->height:node->right->height + 1;
-    if (node->left->height >= node->right->height){
-        node->height = node->left->height;
-    }else{
-        node->height = node->right->height + 1;
-    }
-    cout << "AFTER HEIGHT" << node << endl;
+    
     /* 3. Get the balance factor of this ancestor
         node to check whether this node became
         unbalanced */
     int balance = node->getBalance();
-    cout << "AFTER BALANCE" << balance << endl;
     
  
     // If this node becomes unbalanced, then
@@ -66,17 +60,87 @@ NodeH* Avl::insertNodeH(NodeH* node,const CPair<string> &pair)
     // Left Right Case
     if (balance > 1 && pair > node->left->data)
     {
-        node->left = node->rotateLeft();
+        node->left = node->left->rotateLeft();
         return node->rotateRight();
     }
  
     // Right Left Case
     if (balance < -1 && pair < node->right->data)
     {
-        node->right = node->rotateRight();
+        node->right = node->right->rotateRight();
         return node->rotateLeft();
     }
  
     /* return the (unchanged) node pointer */
     return node;
+}
+
+
+int Avl::searchPair(NodeH *node, const CPair<string> &value)
+{
+    if (node == NULL)
+    {
+        return 0;
+    }
+    else if (value < node->data)
+    {
+        return searchPair(node->left, value);
+    }
+    else if (value > node->data)
+    {
+        return searchPair(node->right, value);
+    }
+    else
+    {
+        return node->data.count;
+    }
+}
+
+//TODO: Pair < Cpair operations !!!
+
+int Avl::search(const Pair<string> &value)
+{
+    CPair<string> v(value);
+    if (root == NULL)
+    {
+        return 0;
+    }
+    else if (v < root->data)
+    {
+        return searchPair((NodeH*) root->left, v);
+    }
+    else if (v > root->data)
+    {
+        return searchPair((NodeH*) root->right, v);
+    }
+    else
+    {
+        return root->data.count;
+    }
+}
+
+void Avl::print()
+{
+    cout << "############## BINARY TREE ##############" << endl;
+    NodeH *node = (NodeH*) this->root;
+    string tp = "#";
+    if (node == nullptr)
+        return;
+
+    cout << tp << " : " << node->data << endl;
+
+    print(node->left, tp.append(" ❮"));
+
+    print(node->right, tp.append(" ❯"));
+}
+void Avl::print(NodeH *node, string tp)
+{
+    if (node == nullptr)
+        return;
+
+    cout << tp << " : " << node->data << endl;
+
+    print(node->left, tp.append(" ❮"));
+
+    print(node->right, tp.append(" ❯"));
 }

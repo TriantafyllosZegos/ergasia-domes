@@ -15,8 +15,8 @@ public:
     //~BinaryTree();
     virtual void insert(const Pair<string>& value);
     void deleteNode(Node* n);
-    int search(const Pair<string>& p);
-    void print();
+    virtual int search(const Pair<string>& p);
+    virtual void print();
     Node* getNode();
 protected:
     Node* root;
