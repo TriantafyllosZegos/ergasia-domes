@@ -28,31 +28,49 @@ int main()
     md << "---" << endl;
     md.close();
 
-    Pair<string> p = arrayQ[55];
 
- 
+
     Table * t = new Table();
-    buildPairs(t);
-    cout << "Table | " << p << " : " << t->search(p) << endl;
- 
+    buildPairs(t); 
+    cout << "Table SEARCH" << endl;
+    for (int i = 0;i<10;i++){
+        cout << "Table       | " << arrayQ[i] << " : " << t->search(arrayQ[i]) << endl;
+    }
+    
 
     SortedTable * st = new SortedTable(*t);
     buildPairs(st);
     st->sort();
-    cout << "SortedTable | " << p << " : " << st->search(p) << endl;
+    cout << "SortedTable SEARCH" << endl;
+    for (int i = 0;i<10;i++){
+        cout << "SortedTable | " << arrayQ[i] << " : " << st->search(arrayQ[i]) << endl;
+    }
+    delete t;
 
     HashTable * ht = new HashTable();
     buildPairs(ht);
-    cout << "HashTable | " << p << " : " << ht->search(p) << endl;
+    cout << "HashTable SEARCH" << endl;
+    for (int i = 0;i<10;i++){
+        cout << "HashTable   | " << arrayQ[i] << " : " << ht->search(arrayQ[i]) << endl;
+    }
+    delete ht;
 
     BinaryTree * bt = new BinaryTree();
     buildPairs(bt);
-    cout << "BinaryTree | " << p << " : " << bt->search(p) << endl;
+    cout << "BinaryTree SEARCH" << endl;
+    for (int i = 0;i<10;i++){
+        cout << "BinaryTree  | " << arrayQ[i] << " : " << bt->search(arrayQ[i]) << endl;
+    }
+    //delete bt;
 
 
     Avl * avl = new Avl();
     buildPairs(avl);
-    cout << "Avl | " << p << " : " << avl->search(p) << endl;
-    
+    cout << "Avl SEARCH" << endl;
+    for (int i = 0;i<10;i++){
+        cout << "Avl         | " << arrayQ[i] << " : " << avl->search(arrayQ[i]) << endl;
+    }
+    //delete avl;
+
     return 0;
 }

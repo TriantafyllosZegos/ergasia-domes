@@ -4,25 +4,17 @@ using namespace std;
 
 
 HashTable::HashTable() {
-    this->cap = 100000;
+    this->cap = 50000000;
     a = new(nothrow) HashItem [cap]();
-
+    if (a == NULL) cout << "HASHTABLE MEMORY ERROR" << endl;
     for (int i = 0; i < cap; i++) {
         a[i] = HashItem();
     }
 }
-/*
+
 HashTable::~HashTable() {
-    for (int i = 0; i < size; i++) {
-        Node* curr = buckets[i];
-        while (curr != nullptr) {
-            Node* temp = curr;
-            curr = curr->next;
-            delete temp;
-        }
-    }
-    delete[] buckets;
-}*/
+    delete[] a;
+}
 
 unsigned long long int HashTable::hash(const Pair<string>& key) {
     const int prime = 31;

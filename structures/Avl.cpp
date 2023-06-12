@@ -4,80 +4,81 @@
 #include <iostream>
 using namespace std;
 
+Avl::Avl() : BinaryTree(){};
 
-Avl::Avl():  BinaryTree(){
-    root = nullptr;
-};
 void Avl::insert(const Pair<string> &value)
 {
-    root = insertNodeH((NodeH*) root, CPair<string>(value));
+    root = insertNodeH((NodeH *)root, CPair<string>(value));
 }
 
-
-NodeH* Avl::insertNodeH(NodeH* node,const CPair<string> &pair)
+NodeH *Avl::insertNodeH(NodeH *node, const CPair<string> &pair)
 {
     /* 1. Perform the normal BST insertion */
-    if (node == nullptr)
+    if (node == NULL)
     {
         node = new (nothrow) NodeH(pair);
-        if (node == nullptr)
+        node->data.count--;
+        if (node == NULL)
         {
             cout << "ERROR NODE : " << pair << "MEMORY EXX";
             return node;
         }
     }
- 
+
     if (pair < node->data)
+    {
         node->left = insertNodeH(node->left, pair);
+    }
     else if (pair > node->data)
+    {
         node->right = insertNodeH(node->right, pair);
-    else // Equal keys are not allowed in BST
+    }
+    else
+    { // Equal keys are not allowed in BST
         node->data.count++;
         return node;
-
-
+    }
     /* 2. Update height of this ancestor node */
-    node->height = 1 + max(getHeight(node->left),getHeight(node->right));
-    //node->height = (node->left->height >= node->right->height)?node->left->height:node->right->height + 1;
-    
+    node->height = 1 + max(getHeight(node->left), getHeight(node->right));
+    // node->height = (node->left->height >= node->right->height)?node->left->height:node->right->height + 1;
+
     /* 3. Get the balance factor of this ancestor
         node to check whether this node became
         unbalanced */
     int balance = node->getBalance();
-    
- 
+
     // If this node becomes unbalanced, then
     // there are 4 cases
- 
+
     // Left Left Case
     if (balance > 1 && pair < node->left->data)
         return node->rotateRight();
- 
+
     // Right Right Case
     if (balance < -1 && pair > node->right->data)
         return node->rotateLeft();
- 
+
     // Left Right Case
     if (balance > 1 && pair > node->left->data)
     {
         node->left = node->left->rotateLeft();
         return node->rotateRight();
     }
- 
+
     // Right Left Case
     if (balance < -1 && pair < node->right->data)
     {
         node->right = node->right->rotateRight();
         return node->rotateLeft();
     }
- 
+
     /* return the (unchanged) node pointer */
     return node;
 }
 
-
 int Avl::searchPair(NodeH *node, const CPair<string> &value)
 {
+    
     if (node == NULL)
     {
         return 0;
@@ -96,22 +97,23 @@ int Avl::searchPair(NodeH *node, const CPair<string> &value)
     }
 }
 
-//TODO: Pair < Cpair operations !!!
+// TODO: Pair < Cpair operations !!!
 
 int Avl::search(const Pair<string> &value)
 {
+    NodeH * r = (NodeH*) root;
     CPair<string> v(value);
-    if (root == NULL)
+    if (r == NULL)
     {
         return 0;
     }
-    else if (v < root->data)
+    else if (v < r->data)
     {
-        return searchPair((NodeH*) root->left, v);
+        return searchPair(r->left, v);
     }
     else if (v > root->data)
     {
-        return searchPair((NodeH*) root->right, v);
+        return searchPair(r->right, v);
     }
     else
     {
@@ -122,16 +124,16 @@ int Avl::search(const Pair<string> &value)
 void Avl::print()
 {
     cout << "############## BINARY TREE ##############" << endl;
-    NodeH *node = (NodeH*) this->root;
+    NodeH *node = (NodeH *)this->root;
     string tp = "#";
     if (node == nullptr)
         return;
 
     cout << tp << " : " << node->data << endl;
 
-    print(node->left, tp.append(" ❮"));
+    if (node->left) print(node->left, tp + " ❮");
 
-    print(node->right, tp.append(" ❯"));
+    if (node->right) print(node->right, tp + " ❯");
 }
 void Avl::print(NodeH *node, string tp)
 {
@@ -140,7 +142,7 @@ void Avl::print(NodeH *node, string tp)
 
     cout << tp << " : " << node->data << endl;
 
-    print(node->left, tp.append(" ❮"));
+    if (node->left) print(node->left, tp + " ❮");
 
-    print(node->right, tp.append(" ❯"));
+    if (node->right) print(node->right, tp + " ❯");
 }

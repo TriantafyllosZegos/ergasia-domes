@@ -16,7 +16,7 @@ class Table {
 
     public:
         Table();
-        //~Table();
+        ~Table();
         void insert(const Pair<string>& p);
         long long int search(const Pair<string>& p);
         void print();

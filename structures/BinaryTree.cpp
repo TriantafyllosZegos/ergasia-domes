@@ -91,9 +91,9 @@ void BinaryTree::print()
 
     cout << tp << " : " << node->data << endl;
 
-    print(node->left, tp.append(" ❮"));
+    if (node->left) print(node->left, tp + " ❮");
 
-    print(node->right, tp.append(" ❯"));
+    if (node->right) print(node->right, tp + " ❯");
 }
 void BinaryTree::print(Node *node, string tp)
 {
@@ -101,10 +101,9 @@ void BinaryTree::print(Node *node, string tp)
         return;
 
     cout << tp << " : " << node->data << endl;
+    if (node->left) print(node->left, tp.append(" ❮"));
 
-    print(node->left, tp.append(" ❮"));
-
-    print(node->right, tp.append(" ❯"));
+    if (node->right) print(node->right, tp.append(" ❯"));
 }
 
 Node *BinaryTree::getNode()

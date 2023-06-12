@@ -5,25 +5,26 @@
 using namespace std;
 
 Table::Table(){
-    unsigned long long int z = 3900000;
-    a = new(nothrow) Pair<string>[z]();
+    this->cap = 50000000;
+    this->size = 0;
+    a = new(nothrow) Pair<string>[cap]();
     if (a == NULL) cout << "TABLE MEMORY ERROR" << endl;
-    size = 0;
-    cap = 20000000;
+    
+    
     
 }
 
-/*
+
 Table::~Table(){
     delete[] a;
     
-}*/
+}
 
 void Table::insert(const Pair<string>& p){
-    /*
+    
     if (size == cap) {
         // If the array is full, increase its capacity
-        cap += 20000000;
+        this->cap += 50000000;
         Pair<string> * newLines = new(nothrow) Pair<string>[cap]();
         if (newLines == NULL) cout << "Table MEMORY ERROR || size : " << size << endl;
 
@@ -35,7 +36,7 @@ void Table::insert(const Pair<string>& p){
         delete[] a;
         // Update the lines pointer to point to the new array
         a = newLines;
-    }*/
+    }
     // Store the new line
     a[size] = p;
     size++;
