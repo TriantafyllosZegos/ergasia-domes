@@ -22,7 +22,7 @@ HashTable::~HashTable() {
     delete[] buckets;
 }
 
-int HashTable::hash(const Pair<string>& key) {
+unsigned long long int HashTable::hash(const Pair<string>& key) {
     const int prime = 31;
     int hashValue = 0;
 
@@ -41,7 +41,6 @@ int HashTable::hash(const Pair<string>& key) {
     if (hashValue < 0) {
         hashValue += size;
     }
-    cout << "Hash value: " << hashValue << endl;
     return hashValue;
 }
 

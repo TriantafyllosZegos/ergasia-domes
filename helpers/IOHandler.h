@@ -5,8 +5,8 @@
 #include "Pair.h"
 
 template <typename STRC>
-STRC buildPairs(STRC strc);
+void buildPairs(STRC * strc);
 
-Pair<string>* generateQ();
+Pair<string> * generateQ();
 
 #endif

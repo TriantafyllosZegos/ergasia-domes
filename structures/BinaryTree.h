@@ -13,7 +13,7 @@ class BinaryTree {
 public:
     BinaryTree();
     //~BinaryTree();
-    void insert(const Pair<string>& value);
+    virtual void insert(const Pair<string>& value);
     void deleteNode(Node* n);
     int search(const Pair<string>& p);
     void print();

@@ -297,3 +297,120 @@
 ---
 ---
 ---
+---
+---
+---
+---
+---
+---
+---
+- <**phashtable**> : `2.40706 sec`
+---
+- <**phashtable**> : `4.47763 sec`
+---
+- <**ptable**> : `0.0963403 sec`
+- <**phashtable**> : `3.98857 sec`
+- <**psortedtable**> : `0.0777302 sec`
+- <**pbinarytree**> : `0.264108 sec`
+---
+- <**ptable**> : `0.113274 sec`
+- <**psortedtable**> : `0.0677101 sec`
+- <**phashtable**> : `0.882246 sec`
+- <**pbinarytree**> : `0.272463 sec`
+---
+- <**ptable**> : `0.0659989 sec`
+- <**psortedtable**> : `0.0692251 sec`
+- <**phashtable**> : `0.815096 sec`
+- <**pbinarytree**> : `0.264845 sec`
+---
+- <**ptable**> : `0.0671709 sec`
+- <**psortedtable**> : `0.0609639 sec`
+- <**phashtable**> : `0.760258 sec`
+- <**pbinarytree**> : `0.276739 sec`
+---
+- <**ptable**> : `0.066533 sec`
+- <**psortedtable**> : `0.0681683 sec`
+- <**phashtable**> : `0.7699 sec`
+- <**pbinarytree**> : `0.278325 sec`
+---
+- <**ptable**> : `0.143537 sec`
+---
+- <**ptable**> : `0.0713978 sec`
+- <**psortedtable**> : `0.0675949 sec`
+- <**phashtable**> : `0.871727 sec`
+- <**pbinarytree**> : `0.268408 sec`
+---
+- <**ptable**> : `0.0753724 sec`
+- <**psortedtable**> : `0.0662753 sec`
+- <**phashtable**> : `0.753049 sec`
+- <**pbinarytree**> : `0.265987 sec`
+---
+- <**ptable**> : `0.0666205 sec`
+- <**psortedtable**> : `0.0705066 sec`
+- <**phashtable**> : `0.871252 sec`
+- <**pbinarytree**> : `0.278281 sec`
+---
+- <**ptable**> : `0.0973578 sec`
+- <**psortedtable**> : `0.0739288 sec`
+- <**phashtable**> : `0.891351 sec`
+- <**pbinarytree**> : `0.452521 sec`
+---
+- <**ptable**> : `0.0808545 sec`
+- <**psortedtable**> : `0.0710452 sec`
+- <**phashtable**> : `0.848607 sec`
+- <**pbinarytree**> : `0.387678 sec`
+---
+- <**table**> : `0.0823653 sec`
+- <**sortedtable**> : `0.0983665 sec`
+- <**hashtable**> : `0.984486 sec`
+- <**binarytree**> : `0.476247 sec`
+---
+- <**table**> : `0.0728184 sec`
+- <**sortedtable**> : `0.0667505 sec`
+- <**hashtable**> : `0.908376 sec`
+- <**binarytree**> : `0.387277 sec`
+---
+- <**table**> : `0.0901803 sec`
+- <**sortedtable**> : `0.0782064 sec`
+- <**hashtable**> : `0.922524 sec`
+- <**binarytree**> : `0.430667 sec`
+---
+- <**table**> : `0.0761432 sec`
+- <**sortedtable**> : `0.0843899 sec`
+- <**hashtable**> : `0.975803 sec`
+- <**binarytree**> : `0.52848 sec`
+---
+- <**table**> : `0.0730514 sec`
+- <**sortedtable**> : `0.0816309 sec`
+- <**hashtable**> : `0.83316 sec`
+- <**binarytree**> : `0.329759 sec`
+---
+- <**table**> : `0.079143 sec`
+- <**sortedtable**> : `0.0731212 sec`
+- <**hashtable**> : `0.884216 sec`
+- <**binarytree**> : `0.33639 sec`
+---
+- <**table**> : `0.0725043 sec`
+- <**sortedtable**> : `0.151556 sec`
+- <**hashtable**> : `0.923805 sec`
+- <**binarytree**> : `0.451306 sec`
+---
+- <**table**> : `0.083368 sec`
+- <**sortedtable**> : `0.145429 sec`
+- <**hashtable**> : `0.853215 sec`
+- <**binarytree**> : `0.394625 sec`
+---
+- <**table**> : `0.0751759 sec`
+- <**sortedtable**> : `0.0753595 sec`
+- <**hashtable**> : `0.89051 sec`
+- <**binarytree**> : `0.404985 sec`
+---
+- <**table**> : `0.0779109 sec`
+- <**sortedtable**> : `0.0701158 sec`
+- <**hashtable**> : `0.918166 sec`
+- <**binarytree**> : `0.393035 sec`
+---
+- <**table**> : `0.0710569 sec`
+- <**sortedtable**> : `0.0676466 sec`
+- <**hashtable**> : `0.964242 sec`
+- <**binarytree**> : `0.34258 sec`

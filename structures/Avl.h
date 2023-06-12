@@ -15,10 +15,10 @@ public:
     void insert(const Pair<string>& value);
     //~Avl();
 protected:
-    NodeH* insertNode(NodeH *node,const CPair<string> &value);
-    friend NodeH* rotateLeft(NodeH *n);
-    friend NodeH* rotateRight(NodeH *n);
-    friend int getBalance(NodeH *n);
+    NodeH* insertNodeH(NodeH *node,const CPair<string> &value);
+    //friend NodeH* rotateLeft(NodeH *n);
+    //friend NodeH* rotateRight(NodeH *n);
+    //friend int getBalance(NodeH *n);
 };
 
 #endif

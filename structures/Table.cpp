@@ -38,7 +38,6 @@ void Table::insert(const Pair<string>& p){
     }*/
     // Store the new line
     a[size] = p;
-    if (size % 1000000 == 0) cout << size << endl;
     size++;
 }
 

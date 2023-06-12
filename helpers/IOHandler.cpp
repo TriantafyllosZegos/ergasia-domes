@@ -48,8 +48,7 @@ void tokenizeString(const std::string& input, std::string tokens[], int& count) 
 };
 
 template <typename STRC>
-STRC buildPairs(STRC strc) {
-    int z = 0;
+void buildPairs(STRC * strc) {
     chrono::system_clock::time_point start,end;
     double time;
     start = chrono::high_resolution_clock::now();
@@ -67,9 +66,7 @@ STRC buildPairs(STRC strc) {
 
             for (int i = 0; i < tokenCount-1; i++) {
                 const Pair<string> p = Pair(tokens[i],tokens[i+1]);
-                strc.insert(p); // Insert is mutual method to every structure
-                z++;
-                if (z == 1000){return strc;}
+                strc->insert(p); // Insert is mutual method to every structure
             }
             
         }
@@ -78,19 +75,19 @@ STRC buildPairs(STRC strc) {
     end = chrono::high_resolution_clock::now();
     time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
     ofstream out("output.txt",std::ios_base::app);
-    out << "Construction Time of <" << removeNonAlphaNumeric(typeid(strc).name()) << "> : " << time << " sec" << endl;
+    out << "Construction Time of <" << removeNonAlphaNumeric(typeid(*strc).name()) << "> : " << time << " sec" << endl;
     out.close();
     ofstream md("markdown.md",std::ios_base::app);
-    md << "- <**" << removeNonAlphaNumeric(typeid(strc).name()) << "**> : `" << time << " sec`" << endl;
+    md << "- <**" << removeNonAlphaNumeric(typeid(*strc).name()) << "**> : `" << time << " sec`" << endl;
     md.close();
-    return strc;
+    //return strc;
 };
 
-template Table buildPairs<Table>(Table);
-template SortedTable buildPairs<SortedTable>(SortedTable);
-template BinaryTree buildPairs<BinaryTree>(BinaryTree);
-template Avl buildPairs<Avl>(Avl);
-template HashTable buildPairs<HashTable>(HashTable);
+template void buildPairs<Table>(Table*);
+template void buildPairs<SortedTable>(SortedTable*);
+template void buildPairs<BinaryTree>(BinaryTree*);
+template void buildPairs<Avl>(Avl*);
+template void buildPairs<HashTable>(HashTable*);
 
 
 

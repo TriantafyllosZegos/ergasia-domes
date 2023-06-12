@@ -8,60 +8,22 @@ using namespace std;
 Avl::Avl():  BinaryTree(){
     root = nullptr;
 };
-
-
-NodeH *rotateRight(NodeH *y)
-{
-    NodeH *x = y->left;
-    NodeH *T2 = x->right;
- 
-    // Perform rotation
-    x->right = y;
-    y->left = T2;
- 
-    // Update heights
-    y->height = (y->left->height >= y->right->height)?y->left->height:y->right->height + 1;
-    x->height = (x->left->height >= x->right->height)?x->left->height:x->right->height + 1;
- 
-    // Return new root
-    return x;
-}
-
-NodeH *rotateLeft(NodeH *x)
-{
-    NodeH *y = x->right;
-    NodeH *T2 = y->left;
- 
-    // Perform rotation
-    y->left = x;
-    x->right = T2;
- 
-    // Update heights
-    x->height = (x->left->height >= x->right->height)?x->left->height:x->right->height + 1;
-    y->height = (y->left->height >= y->right->height)?y->left->height:y->right->height + 1;
- 
-    // Return new root
-    return y;
-}
-
-int getBalance(NodeH *n)
-{
-    if (n == NULL)
-        return 0;
-    return n->left->height - n->right->height;
-}
 void Avl::insert(const Pair<string> &value)
 {
-    root = insertNode((NodeH*) root, CPair<string>(value));
+    cout << "before" << endl;
+    root = insertNodeH((NodeH*) root, CPair<string>(value));
+    cout << "after" << endl;
 }
-NodeH* Avl::insertNode(NodeH* node,const CPair<string> &pair)
+
+
+NodeH* Avl::insertNodeH(NodeH* node,const CPair<string> &pair)
 {
+    cout << "insertNodeH" << node << endl;
     /* 1. Perform the normal BST insertion */
-    cout << node->height << endl;
-    if (node == NULL)
+    if (node == nullptr)
     {
         node = new (nothrow) NodeH(pair);
-        if (node == NULL)
+        if (node == nullptr)
         {
             cout << "ERROR NODE : " << pair << "MEMORY EXX";
             return node;
@@ -69,19 +31,25 @@ NodeH* Avl::insertNode(NodeH* node,const CPair<string> &pair)
     }
  
     if (pair < node->data)
-        node->left = insertNode(node->left, pair);
+        node->left = insertNodeH(node->left, pair);
     else if (pair > node->data)
-        node->right = insertNode(node->right, pair);
+        node->right = insertNodeH(node->right, pair);
     else // Equal keys are not allowed in BST
         node->data.count++;
- 
+    cout << "BEFORE HEIGHT" << node << endl;
     /* 2. Update height of this ancestor node */
-    node->height = (node->left->height >= node->right->height)?node->left->height:node->right->height + 1;
-    
+    //node->height = (node->left->height >= node->right->height)?node->left->height:node->right->height + 1;
+    if (node->left->height >= node->right->height){
+        node->height = node->left->height;
+    }else{
+        node->height = node->right->height + 1;
+    }
+    cout << "AFTER HEIGHT" << node << endl;
     /* 3. Get the balance factor of this ancestor
         node to check whether this node became
         unbalanced */
-    int balance = getBalance(node);
+    int balance = node->getBalance();
+    cout << "AFTER BALANCE" << balance << endl;
     
  
     // If this node becomes unbalanced, then
@@ -89,24 +57,24 @@ NodeH* Avl::insertNode(NodeH* node,const CPair<string> &pair)
  
     // Left Left Case
     if (balance > 1 && pair < node->left->data)
-        return rotateRight(node);
+        return node->rotateRight();
  
     // Right Right Case
     if (balance < -1 && pair > node->right->data)
-        return rotateLeft(node);
+        return node->rotateLeft();
  
     // Left Right Case
     if (balance > 1 && pair > node->left->data)
     {
-        node->left = rotateLeft(node->left);
-        return rotateRight(node);
+        node->left = node->rotateLeft();
+        return node->rotateRight();
     }
  
     // Right Left Case
     if (balance < -1 && pair < node->right->data)
     {
-        node->right = rotateRight(node->right);
-        return rotateLeft(node);
+        node->right = node->rotateRight();
+        return node->rotateLeft();
     }
  
     /* return the (unchanged) node pointer */
