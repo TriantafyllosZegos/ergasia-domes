@@ -54,7 +54,7 @@ unsigned long long int Table::getSize(){
     return size;
 }
 
-int Table::search(const Pair<string>& p){
+long long int Table::search(const Pair<string>& p){
     unsigned int c = 0;
     for (int i = 0;i<size;i++){
         if (a[i].first == p.first && a[i].second == p.second){

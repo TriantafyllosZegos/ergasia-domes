@@ -69,7 +69,7 @@ STRC buildPairs(STRC strc) {
                 const Pair<string> p = Pair(tokens[i],tokens[i+1]);
                 strc.insert(p); // Insert is mutual method to every structure
                 z++;
-                if (z == 10){return strc;}
+                if (z == 1000){return strc;}
             }
             
         }
@@ -121,6 +121,5 @@ Pair<string>* generateQ() {
         }
     }
     myfile.close();
-    //cout << "aQ size : " << z << endl;
     return aQ;
 };
