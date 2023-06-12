@@ -23,43 +23,58 @@ HashTable::~HashTable() {
 }
 
 int HashTable::hash(const Pair<string>& key) {
-    int num1 = 0;
-    int num2 = 0;
-    int i = 1;
+    const int prime = 31;
+    int hashValue = 0;
 
+    // Compute the hash value for the first string in the pair
     for (char ch : key.first) {
-        num1 = num1 + static_cast<int>(ch) * i;
-        i *= 10;
+        hashValue = (hashValue * prime) + ch;
     }
 
-    i = 1;
+    // Combine the hash value with the second string in the pair
     for (char ch : key.second) {
-        num2 = num2 + static_cast<int>(ch) * i;
-        i *= 10;
+        hashValue = (hashValue * prime) + ch;
     }
 
-    return (num1 * num2 + num1) % size;
+    // Ensure the hash value is non-negative and within the range of the hash table
+    hashValue = hashValue % size;
+    if (hashValue < 0) {
+        hashValue += size;
+    }
+    cout << "Hash value: " << hashValue << endl;
+    return hashValue;
 }
 
 void HashTable::insert(const Pair<string>& key) {
     int index = hash(key);
-    Node* newNode = new Node(key);
+    Node* curr = buckets[index];
+    while(curr != nullptr) {
+        if (curr->data == key){
+            curr->count++;
+            return;
+        }
+        curr = curr->next;
+    }
+    curr = new Node(key);
+
+    /*Node* newNode = new Node(key);
     newNode->next = buckets[index];
-    buckets[index] = newNode;
+    buckets[index] = newNode;*/
+
+    
 }
 
 int HashTable::search(const Pair<string>& key) {
     int index = hash(key);
     Node* curr = buckets[index];
-    int position = 0;
     while (curr != nullptr) {
         if (curr->data == key) {
-            return position;
+            return curr->count;
         }
         curr = curr->next;
-        position++;
+        
     }
-    return -1;
+    return 0;
 }
 
 void HashTable::remove(const Pair<string>& key) {

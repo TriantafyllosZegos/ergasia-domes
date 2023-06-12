@@ -10,15 +10,18 @@ class HashTable {
 private:
     struct Node {
         Pair<string> data;
+        int count;
         Node* next;
-        
-        Node(const Pair<string>& pair) : data(pair), next(nullptr) {}
+
+        Node(const Pair<string>& pair) : data(pair),count(1), next(nullptr) {}
     };
 
     int size;
     Node** buckets;
 
     int hash(const Pair<string>& key);
+
+    
 
 public:
     HashTable(int size);

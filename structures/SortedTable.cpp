@@ -62,13 +62,13 @@ int SortedTable::search(const Pair<string> &pair)
     {
         counter++;
         int index = mid + 1;
-        while (0 <= index < size && a[index] == pair)
+        while (0 <= index && index < size && a[index] == pair)
         {
             counter++;
             index++;
         }
         index = mid - 1;
-        while (0 <= index < size && a[index] == pair)
+        while (0 <= index && index < size && a[index] == pair)
         {
             counter++;
             index--;
