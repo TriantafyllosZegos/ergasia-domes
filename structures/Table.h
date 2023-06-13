@@ -10,17 +10,17 @@ class Table {
         Pair<string>* a;
     protected:
         
-        unsigned long long int size;
-        unsigned long long int cap;
+        unsigned int size;
+        unsigned int cap;
 
 
     public:
         Table();
         ~Table();
         void insert(const Pair<string>& p);
-        long long int search(const Pair<string>& p);
+        unsigned int search(const Pair<string>& p);
         void print();
-        unsigned long long int getSize();
+        unsigned int getSize();
         Pair<string> operator[](int x){
             return this->a[x];
         }

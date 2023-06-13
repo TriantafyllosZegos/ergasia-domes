@@ -17,7 +17,7 @@ NodeH *Avl::insertNodeH(NodeH *node, const CPair<string> &pair)
     if (node == NULL)
     {
         node = new (nothrow) NodeH(pair);
-        node->data.count--;
+        node->data.count--; //WEIRD BEHAVIOR
         if (node == NULL)
         {
             cout << "ERROR NODE : " << pair << "MEMORY EXX";

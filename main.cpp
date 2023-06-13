@@ -23,6 +23,7 @@ using namespace std;
 int main()
 {
     Pair<string> * arrayQ = generateQ();
+    const int NUMBER_OF_SEARCH = 1000;
 
     ofstream md("markdown.md",std::ios_base::app);
     md << "---" << endl;
@@ -32,33 +33,33 @@ int main()
 
     Table * t = new Table();
     buildPairs(t); 
-    cout << "Table SEARCH" << endl;
-    for (int i = 0;i<10;i++){
+    cout << endl << "Table SEARCH" << endl;
+    for (int i = 0;i<NUMBER_OF_SEARCH;i++){
         cout << "Table       | " << arrayQ[i] << " : " << t->search(arrayQ[i]) << endl;
     }
     
 
-    SortedTable * st = new SortedTable(*t);
+    SortedTable * st = new SortedTable(t);
     buildPairs(st);
     st->sort();
-    cout << "SortedTable SEARCH" << endl;
-    for (int i = 0;i<10;i++){
+    cout << endl << "SortedTable SEARCH" << endl;
+    for (int i = 0;i<NUMBER_OF_SEARCH;i++){
         cout << "SortedTable | " << arrayQ[i] << " : " << st->search(arrayQ[i]) << endl;
     }
-    delete t;
+    delete st;
 
     HashTable * ht = new HashTable();
     buildPairs(ht);
-    cout << "HashTable SEARCH" << endl;
-    for (int i = 0;i<10;i++){
+    cout << endl << "HashTable SEARCH" << endl;
+    for (int i = 0;i<NUMBER_OF_SEARCH;i++){
         cout << "HashTable   | " << arrayQ[i] << " : " << ht->search(arrayQ[i]) << endl;
     }
     delete ht;
 
     BinaryTree * bt = new BinaryTree();
     buildPairs(bt);
-    cout << "BinaryTree SEARCH" << endl;
-    for (int i = 0;i<10;i++){
+    cout << endl << "BinaryTree SEARCH" << endl;
+    for (int i = 0;i<NUMBER_OF_SEARCH;i++){
         cout << "BinaryTree  | " << arrayQ[i] << " : " << bt->search(arrayQ[i]) << endl;
     }
     //delete bt;
@@ -66,8 +67,8 @@ int main()
 
     Avl * avl = new Avl();
     buildPairs(avl);
-    cout << "Avl SEARCH" << endl;
-    for (int i = 0;i<10;i++){
+    cout << endl << "Avl SEARCH" << endl;
+    for (int i = 0;i<NUMBER_OF_SEARCH;i++){
         cout << "Avl         | " << arrayQ[i] << " : " << avl->search(arrayQ[i]) << endl;
     }
     //delete avl;

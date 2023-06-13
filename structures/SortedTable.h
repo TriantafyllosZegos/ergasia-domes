@@ -8,7 +8,7 @@
 class SortedTable : public Table{
     public:
         SortedTable();
-        SortedTable(Table t);
+        SortedTable(Table * t);
         int search(const Pair<string>& p);
         void sort();
         

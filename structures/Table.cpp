@@ -29,7 +29,7 @@ void Table::insert(const Pair<string>& p){
         if (newLines == NULL) cout << "Table MEMORY ERROR || size : " << size << endl;
 
         // Copy the existing lines to the new array
-        for (unsigned long long int i = 0; i < size; i++) {
+        for (unsigned int i = 0; i < size; i++) {
                 newLines[i] = a[i];
         }
         // Delete the old array
@@ -45,18 +45,18 @@ void Table::insert(const Pair<string>& p){
 
 void Table::print(){
     cout << "############## TABLE ##############" << endl;
-    for (unsigned long long int i = 0; i < size;i++){
+    for (unsigned int i = 0; i < size;i++){
         cout << a[i] << endl;
     }
 }
 
-unsigned long long int Table::getSize(){
+unsigned int Table::getSize(){
     return size;
 }
 
-long long int Table::search(const Pair<string>& p){
+unsigned int Table::search(const Pair<string>& p){
     unsigned int c = 0;
-    for (int i = 0;i<size;i++){
+    for (unsigned int i = 0;i<size;i++){
         if (a[i].first == p.first && a[i].second == p.second){
             c++;
         }

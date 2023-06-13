@@ -5,11 +5,13 @@
 
 using namespace std;
 
-SortedTable::SortedTable() {}
+SortedTable::SortedTable() : Table() {}
 
-SortedTable::SortedTable(Table t)
+SortedTable::SortedTable(Table * t)
 {
-    a = t.a;
+    this->cap = 50000000;
+    this->size = 0;
+    this->a = t->a;
 }
 
 void SortedTable::swap(int x, int y)
