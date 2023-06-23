@@ -20,11 +20,7 @@ public:
 protected:
     NodeH *insertNodeH(NodeH *node, const CPair<string> &value);
     int searchPair(NodeH* node,const CPair<string>& value);
-    
     void print(NodeH* node,string tp);
-    // friend NodeH* rotateLeft(NodeH *n);
-    // friend NodeH* rotateRight(NodeH *n);
-    // friend int getBalance(NodeH *n);
     
 };
 

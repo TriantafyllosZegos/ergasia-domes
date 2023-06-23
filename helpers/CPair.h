@@ -34,6 +34,21 @@ struct CPair : public Pair<T> {
     friend bool operator>=(const CPair& p1,const CPair& p2){
         return (p1.first > p2.first || (p1.first == p2.first && p1.second == p2.second) || (p1.first == p2.first && p1.second > p2.second));
     }
+    friend bool operator==(CPair p1,const Pair<T>& p2){
+        return (p1.first == p2.first && p1.second == p2.second);
+    }
+    friend bool operator<=(CPair p1,const Pair<T>& p2){
+        return (p1.first < p2.first || (p1.first == p2.first && p1.second == p2.second) || (p1.first == p2.first && p1.second < p2.second));
+    }
+    friend bool operator>=(CPair p1,const Pair<T>& p2){
+        return (p1.first > p2.first || (p1.first == p2.first && p1.second == p2.second) || (p1.first == p2.first && p1.second > p2.second));
+    }
+    friend bool operator>(CPair p1,const Pair<T>& p2){
+        return (p1.first > p2.first || (p1.first == p2.first && p1.second > p2.second));
+    }
+    friend bool operator<(CPair p1,const Pair<T>& p2){
+        return (p1.first < p2.first || (p1.first == p2.first && p1.second < p2.second));
+    }
     explicit CPair(const Pair<string>& p) : first(p.first),second(p.second),count(1) {}  
     
 };

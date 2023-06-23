@@ -29,48 +29,68 @@ int main()
     md << "---" << endl;
     md.close();
 
+    chrono::system_clock::time_point start,end;
+    double time;
 
 
+/*
     Table * t = new Table();
-    buildPairs(t); 
-    cout << endl << "Table SEARCH" << endl;
-    for (int i = 0;i<NUMBER_OF_SEARCH;i++){
-        cout << "Table       | " << arrayQ[i] << " : " << t->search(arrayQ[i]) << endl;
-    }
-    
+    buildPairs(t);
 
-    SortedTable * st = new SortedTable(t);
-    buildPairs(st);
-    st->sort();
-    cout << endl << "SortedTable SEARCH" << endl;
+    start = chrono::high_resolution_clock::now();
     for (int i = 0;i<NUMBER_OF_SEARCH;i++){
-        cout << "SortedTable | " << arrayQ[i] << " : " << st->search(arrayQ[i]) << endl;
+        t->search(arrayQ[i]);
     }
-    delete st;
+    end = chrono::high_resolution_clock::now();
+    time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
+    cout << "Table:       "<< time << " secs " << t->search(Pair<string>("i","am"))  << endl;
+    delete t;
+    
+    
+    SortedTable * st = new SortedTable();
+    buildPairs(st);
+    start = chrono::high_resolution_clock::now();
+    for (int i = 0;i<NUMBER_OF_SEARCH;i++){
+        st->search(arrayQ[i]);
+    }
+    end = chrono::high_resolution_clock::now();
+    time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
+    cout << "SortedTable: "<< time << " secs " << st->search(Pair<string>("i","am"))  << endl;
+    //delete st;
+
 
     HashTable * ht = new HashTable();
     buildPairs(ht);
-    cout << endl << "HashTable SEARCH" << endl;
+    start = chrono::high_resolution_clock::now();
     for (int i = 0;i<NUMBER_OF_SEARCH;i++){
-        cout << "HashTable   | " << arrayQ[i] << " : " << ht->search(arrayQ[i]) << endl;
+         ht->search(arrayQ[i]);
     }
-    delete ht;
-
+    end = chrono::high_resolution_clock::now();
+    time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
+    cout << "HashTable:   "<< time << " secs " << ht->search(Pair<string>("this","is")) << endl;
+    //delete ht;
+*/
     BinaryTree * bt = new BinaryTree();
     buildPairs(bt);
-    cout << endl << "BinaryTree SEARCH" << endl;
+    start = chrono::high_resolution_clock::now();
     for (int i = 0;i<NUMBER_OF_SEARCH;i++){
-        cout << "BinaryTree  | " << arrayQ[i] << " : " << bt->search(arrayQ[i]) << endl;
+        bt->search(arrayQ[i]);
     }
+    end = chrono::high_resolution_clock::now();
+    time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
+    cout << "BinaryTree:  "<< time << " secs " <<  bt->search(Pair<string>("this","is")) << endl;
     //delete bt;
 
 
     Avl * avl = new Avl();
     buildPairs(avl);
-    cout << endl << "Avl SEARCH" << endl;
+    start = chrono::high_resolution_clock::now();
     for (int i = 0;i<NUMBER_OF_SEARCH;i++){
-        cout << "Avl         | " << arrayQ[i] << " : " << avl->search(arrayQ[i]) << endl;
+        avl->search(arrayQ[i]);
     }
+    end = chrono::high_resolution_clock::now();
+    time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
+    cout << "Avl:         "<< time << " secs " << avl->search(Pair<string>("this","is")) << endl ;
     //delete avl;
 
     return 0;

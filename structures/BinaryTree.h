@@ -14,14 +14,14 @@ public:
     BinaryTree();
     //~BinaryTree();
     virtual void insert(const Pair<string>& value);
-    void deleteNode(Node* n);
+    //void deleteNode(Node* n);
     virtual int search(const Pair<string>& p);
     virtual void print();
     Node* getNode();
 protected:
     Node* root;
     Node* insertNode(Node* node,const CPair<string>& value);
-    int searchPair(Node* node,const CPair<string>& value);
+    int search(Node* node,const CPair<string>& value);
     void print(Node* node,string tp);
     
 

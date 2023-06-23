@@ -7,111 +7,97 @@ using namespace std;
 
 SortedTable::SortedTable() : Table() {}
 
-SortedTable::SortedTable(Table * t)
+SortedTable::SortedTable(Table *t)
 {
-    this->cap = 50000000;
+    this->cap = 1024;
     this->size = 0;
     this->a = t->a;
 }
 
-void SortedTable::swap(int x, int y)
+void SortedTable::insert(const Pair<string> &pair)
 {
-    Pair<string> temp = a[x];
-    a[x] = a[y];
-    a[y] = temp;
+    checkResize();
+
+    long insertionIndex = findInsertionIndex(pair);
+
+    // Pair already exists
+    if (insertionIndex == -1){ return ;}
+
+    // Shift the elements to the right of the insertion point
+    shiftRight(insertionIndex);
+
+    // Insert the new element at the determined position
+    a[insertionIndex] = CPair(pair.first, pair.second);
+
+    // Update the size of the array
+    size++;
 }
 
-int SortedTable::partition(int low, int high, int pivotIndex)
+long SortedTable::findInsertionIndex(const Pair<string> &pair, long low, long high)
 {
-    Pair<string> pivot = a[pivotIndex];
-    swap(pivotIndex, high);
-    int storeIndex = low;
-    for (int i = low; i < high; i++)
-    {
-        if (a[i] <= pivot)
-        {
-            swap(i, storeIndex);
-            storeIndex++;
+    while (low <= high) {
+        long mid = low + (high - low) / 2;
+
+        if (a[mid] == pair) {
+            a[mid].count++;
+            return -1; // Element already exists
+        }
+        else if (a[mid] < pair) {
+            low = mid + 1;
+        }
+        else {
+            high = mid - 1;
         }
     }
-    swap(storeIndex, high);
-    return storeIndex;
+
+    return low;
 }
 
-void SortedTable::quicksort(int low, int high)
+long SortedTable::findInsertionIndex(const Pair<string> &pair)
 {
-    if (low < high)
+    return findInsertionIndex(pair, 0, size - 1);
+}
+
+void SortedTable::shiftRight(long startIndex)
+{
+    for (long i = size - 1; i >= startIndex; i--)
     {
-        int pivotIndex = low + (high - low) / 2;
-        pivotIndex = partition(low, high, pivotIndex);
-        quicksort(low, pivotIndex - 1);
-        quicksort(pivotIndex + 1, high);
+        a[i + 1] = a[i];
     }
 }
-void SortedTable::sort()
+long SortedTable::search(const Pair<string> &pair)
 {
-    quicksort(0, size);
-}
+    long mid = getSize() / 2;
+    long l = 0;
+    long h = getSize();
 
-int SortedTable::search(const Pair<string> &pair)
-{
-    int counter = 0;
-    int mid = getSize() / 2;
-    int l = 0;
-    int h = getSize();
-
-    if (a[mid] == pair)
-    {
-        counter++;
-        int index = mid + 1;
-        while (0 <= index && index < size && a[index] == pair)
-        {
-            counter++;
-            index++;
-        }
-        index = mid - 1;
-        while (0 <= index && index < size && a[index] == pair)
-        {
-            counter++;
-            index--;
-        }
-        return counter;
+    if (a[mid] > pair){
+        return searchPair(pair, l, mid - 1);
     }
 
-    if (a[mid] > pair)
-        return searchPair(pair,l, mid - 1);
-
-    if (a[mid] < pair)
-        return searchPair(pair,mid + 1, h);
+    if (a[mid] < pair){
+        return searchPair(pair, mid + 1, h);
+    }
+    return a[mid].count;
 }
-int SortedTable::searchPair(const Pair<string> &pair,int low, int high)
+
+long SortedTable::searchPair(const Pair<string> &pair, long low, long high)
 {
-    int mid = low + (high - low) / 2;
+    long mid = low + (high - low) / 2;
     if (low <= high)
     {
         if (a[mid] == pair)
         {
-            int counter = 1;
-            int index = mid + 1;
-            while (0 <= index < size && a[index] == pair)
-            {
-                counter++;
-                index++;
-            }
-            index = mid - 1;
-            while (0 <= index < size && a[index] == pair)
-            {
-                counter++;
-                index--;
-            }
-            return counter;
+            return a[mid].count;
         }
 
-        if (a[mid] > pair)
-            return searchPair(pair,low, mid - 1);
+        if (a[mid] > pair){
+            return searchPair(pair, low, mid - 1);
+        }
 
-        if (a[mid] < pair)
-            return searchPair(pair,mid + 1, high);
+        if (a[mid] < pair){
+            return searchPair(pair, mid + 1, high);
+        }
     }
     return 0;
 }

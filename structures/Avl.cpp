@@ -45,7 +45,7 @@ NodeH *Avl::insertNodeH(NodeH *node, const CPair<string> &pair)
     /* 3. Get the balance factor of this ancestor
         node to check whether this node became
         unbalanced */
-    int balance = node->getBalance();
+    int balance = getBalance(node);
 
     // If this node becomes unbalanced, then
     // there are 4 cases

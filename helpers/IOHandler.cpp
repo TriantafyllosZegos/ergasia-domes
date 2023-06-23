@@ -13,7 +13,7 @@
 #include "../structures/SortedTable.h"
 #include "../structures/HashTable.h"
 
-const string FILE_PATH = "small-file.txt";
+const string FILE_PATH = "gutenberg.txt";
 
 std::string removeNonAlphaNumeric(const std::string& input) {
     std::string result;
@@ -49,7 +49,7 @@ void tokenizeString(const std::string& input, std::string tokens[], int& count) 
 
 template <typename STRC>
 void buildPairs(STRC * strc) {
-    //unsigned long int z = 0;
+    unsigned long z = 1;
     chrono::system_clock::time_point start,end;
     double time;
     start = chrono::high_resolution_clock::now();
@@ -68,14 +68,15 @@ void buildPairs(STRC * strc) {
             for (int i = 0; i < tokenCount-1; i++) {
                 Pair<string> p = Pair(tokens[i],tokens[i+1]);
                 strc->insert(p); // Insert is mutual method to every structure
-                //z++;
-                //if (z % 50000000 == 0){
-                    //cout << "<" << removeNonAlphaNumeric(typeid(*strc).name()) << "> | " << z << " Pairs inserted" << endl;
-                //}
+                z++;
+                if (z % 100000 == 0){
+                    cout << z << " inserts" <<endl;
+                }
             }
             
         }
     }
+    cout << z << endl;
     myfile.close();
     end = chrono::high_resolution_clock::now();
     time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;

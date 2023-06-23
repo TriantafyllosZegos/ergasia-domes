@@ -22,18 +22,13 @@ struct HashItem
         key = pair;
         value = 1;
     }
-
-    /* ~Node(){
-         delete left;
-         delete right;
-     }*/
 };
 
 class HashTable {
 private:
     HashItem * a;
-    unsigned long long int hash(const Pair<string>& key);
-    unsigned long long int cap;
+    unsigned long hash(const Pair<string>& key);
+    unsigned long cap;
 
     
 

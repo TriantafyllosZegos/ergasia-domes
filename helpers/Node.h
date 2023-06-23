@@ -41,15 +41,15 @@ struct NodeH : public Node
         left = NULL;
         right = NULL;
     };
-    int getBalance()
+    friend int getBalance(NodeH *N)
     {
-        if (this == NULL)
+        if (N == nullptr)
             return 0;
-        return getHeight(this->left) - getHeight(this->right);
+        return getHeight(N->left) - getHeight(N->right);
     }
     friend int getHeight(NodeH *N)
     {
-        if (N == NULL)
+        if (N == nullptr)
             return 0;
         return N->height;
     };

@@ -38,7 +38,7 @@ void BinaryTree::insert(const Pair<string> &value)
     root = insertNode(root, CPair<string>(value));
 }
 
-int BinaryTree::searchPair(Node *node, const CPair<string> &value)
+int BinaryTree::search(Node *node, const CPair<string> &value)
 {
     if (node == NULL)
     {
@@ -46,11 +46,11 @@ int BinaryTree::searchPair(Node *node, const CPair<string> &value)
     }
     else if (value < node->data)
     {
-        return searchPair(node->left, value);
+        return search(node->left, value);
     }
     else if (value > node->data)
     {
-        return searchPair(node->right, value);
+        return search(node->right, value);
     }
     else
     {
@@ -69,11 +69,11 @@ int BinaryTree::search(const Pair<string> &value)
     }
     else if (v < root->data)
     {
-        return searchPair(root->left, v);
+        return search(root->left, v);
     }
     else if (v > root->data)
     {
-        return searchPair(root->right, v);
+        return search(root->right, v);
     }
     else
     {

@@ -3,11 +3,12 @@
 
 #include <string>
 #include "../helpers/Pair.h"
+#include "../helpers/CPair.h"
 using namespace std;
 
 class Table {
     public:
-        Pair<string>* a;
+        CPair<string>* a;
     protected:
         
         unsigned int size;
@@ -17,11 +18,12 @@ class Table {
     public:
         Table();
         ~Table();
-        void insert(const Pair<string>& p);
+        virtual void insert(const Pair<string>& p);
         unsigned int search(const Pair<string>& p);
+        void checkResize();
         void print();
         unsigned int getSize();
-        Pair<string> operator[](int x){
+        CPair<string> operator[](int x){
             return this->a[x];
         }
 };

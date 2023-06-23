@@ -1,16 +1,15 @@
 {
   "version": "0.2.0",
   "configurations": [
-    
     {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "externalConsole": true,
-      "cwd": "c:/Users/aggel/Desktop/ErgasiesSxolh/ergasia-domes",
-      "program": "c:/Users/aggel/Desktop/ErgasiesSxolh/ergasia-domes/main",
+      "externalConsole": false,
+      "cwd": "/home/riu/Documents/Projects/ergasia-domes",
+      "program": "/home/riu/Documents/Projects/ergasia-domes/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
