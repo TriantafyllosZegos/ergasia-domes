@@ -47,7 +47,7 @@ unsigned int Table::search(const Pair<string> &p)
 
 void Table::checkResize()
 {
-    if (size == cap - 1)
+    if (size == cap)
     {
         // If the array is full, increase its capacity
         this->cap *= 2;

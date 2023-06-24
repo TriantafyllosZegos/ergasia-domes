@@ -33,7 +33,6 @@ int main()
     double time;
 
 
-/*
     Table * t = new Table();
     buildPairs(t);
 
@@ -44,7 +43,7 @@ int main()
     end = chrono::high_resolution_clock::now();
     time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
     cout << "Table:       "<< time << " secs " << t->search(Pair<string>("i","am"))  << endl;
-    delete t;
+    //delete t;
     
     
     SortedTable * st = new SortedTable();
@@ -69,7 +68,7 @@ int main()
     time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
     cout << "HashTable:   "<< time << " secs " << ht->search(Pair<string>("this","is")) << endl;
     //delete ht;
-*/
+
     BinaryTree * bt = new BinaryTree();
     buildPairs(bt);
     start = chrono::high_resolution_clock::now();

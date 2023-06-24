@@ -22,7 +22,7 @@ HashTable::~HashTable()
 unsigned long HashTable::hash(const Pair<string> &key)
 {
     const int prime = 31;
-    int hashValue = 0;
+    long long hashValue = 0;
 
     // Compute the hash value for the first string in the pair
     for (char ch : key.first)

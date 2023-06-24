@@ -60,8 +60,7 @@ void buildPairs(STRC * strc) {
         while ( myfile ) {
             getline (myfile, myline);
             string newl = removeNonAlphaNumeric(myline);
-            if (newl == "") continue;
-            std::string tokens[30];  
+            std::string tokens[100];  
             int tokenCount = 0;
             tokenizeString(newl, tokens, tokenCount);
 
@@ -98,7 +97,7 @@ template void buildPairs<HashTable>(HashTable*);
 
 Pair<string>* generateQ() {
     int z = 0;
-    Pair<string>* aQ = new(nothrow) Pair<string>[1000];
+    Pair<string>* aQ = new(nothrow) Pair<string>[1000]();
     if (aQ == NULL) cout << "aQ MEMORY ERROR" << endl;
     string myline;
     std::ifstream myfile;
