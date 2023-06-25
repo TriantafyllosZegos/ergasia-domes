@@ -32,7 +32,7 @@ int main()
     chrono::system_clock::time_point start,end;
     double time;
 
-
+/*
     Table * t = new Table();
     buildPairs(t);
 
@@ -68,7 +68,7 @@ int main()
     time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
     cout << "HashTable:   "<< time << " secs " << ht->search(Pair<string>("this","is")) << endl;
     //delete ht;
-
+*/
     BinaryTree * bt = new BinaryTree();
     buildPairs(bt);
     start = chrono::high_resolution_clock::now();

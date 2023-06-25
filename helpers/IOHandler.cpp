@@ -59,8 +59,12 @@ void buildPairs(STRC * strc) {
     if ( myfile.is_open() ) {
         while ( myfile ) {
             getline (myfile, myline);
+                /*if (z > 8600000 ){
+                        cout << z << " inserts" <<endl;
+                        cout << myline <<endl;
+                    }*/
             string newl = removeNonAlphaNumeric(myline);
-            std::string tokens[100];  
+            std::string tokens[10000];  
             int tokenCount = 0;
             tokenizeString(newl, tokens, tokenCount);
 
@@ -68,9 +72,9 @@ void buildPairs(STRC * strc) {
                 Pair<string> p = Pair(tokens[i],tokens[i+1]);
                 strc->insert(p); // Insert is mutual method to every structure
                 z++;
-                if (z % 100000 == 0){
-                    cout << z << " inserts" <<endl;
-                }
+                    if (z % 100000 == 0){
+                        cout << z << " inserts" <<endl;
+                    }
             }
             
         }
