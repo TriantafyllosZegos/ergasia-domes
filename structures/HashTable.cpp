@@ -12,6 +12,7 @@ HashTable::HashTable()
     {
         a[i] = HashItem();
     }
+    numElements = 0;
 }
 
 HashTable::~HashTable()
@@ -21,34 +22,42 @@ HashTable::~HashTable()
 
 unsigned long HashTable::hash(const Pair<string> &key)
 {
-    const int prime = 31;
-    long long hashValue = 0;
+    const unsigned long p1 = 31;
+    const unsigned long p2 = 37;
+    const unsigned long m1 = 1e9 + 9;
+    const unsigned long m2 = 1e9 + 7;
+   
+
+    unsigned long hash1 = 0;
+    unsigned long hash2 = 0;
 
     // Compute the hash value for the first string in the pair
     for (char ch : key.first)
     {
-        hashValue = (hashValue * prime) + ch;
+        hash1 = (hash1 * p1 + (ch - 'a' + 1)) % m1;
+        hash2 = (hash2 * p2 + (ch - 'a' + 1)) % m2;
     }
 
-    // Combine the hash value with the second string in the pair
+    // Combine the hash values with the second string in the pair
     for (char ch : key.second)
     {
-        hashValue = (hashValue * prime) + ch;
+        hash1 = (hash1 * p1 + (ch - 'a' + 1)) % m1;
+        hash2 = (hash2 * p2 + (ch - 'a' + 1)) % m2;
     }
 
-    // Ensure the hash value is non-negative and within the range of the hash table
-    hashValue = hashValue % cap;
-    if (hashValue < 0)
-    {
-        hashValue += cap;
-    }
+    // Combine the hash values using a simple addition
+    unsigned long hashValue = (hash1 + hash2) % cap;
+
     return hashValue;
 }
+
 
 void HashTable::insert(const Pair<string> &key)
 {
     unsigned long index = hash(key);
-    unsigned long originalIndex = index;
+    //unsigned long originalIndex = index;
+    double loadFactor = static_cast<double>(numElements) / cap; // Calculate load factor
+    
     while (a[index].value != 0)
     {
         if (a[index].key == key)
@@ -56,25 +65,33 @@ void HashTable::insert(const Pair<string> &key)
             a[index].value++;
             return;
         }
+
         index = (index + 1) % cap;
-        if (index == originalIndex)
+
+        if (loadFactor > 0.7) // Adjust the threshold as needed
         {
+            cout << "start" << endl;
             resize();
             return insert(key);
         }
     }
+
     a[index] = HashItem(key);
+    numElements++; // Increase the count of elements stored
 }
 
 void HashTable::resize()
 {
+   
     this->cap *= 2;
+    cout << "temp" << endl;
     HashItem *temp = new (nothrow) HashItem[cap]();
 
     for (unsigned long i = 0; i < cap; i++)
     {
         temp[i] = HashItem();
     }
+    cout << "end temp" << endl;
 
     for (unsigned long i = 0; i < cap / 2; i++)
     {
@@ -99,6 +116,7 @@ void HashTable::resize()
 
     delete[] a;
     this->a = temp;
+    cout << "end" << endl;
 }
 
 int HashTable::search(const Pair<string> &key)

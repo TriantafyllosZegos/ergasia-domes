@@ -29,6 +29,7 @@ private:
     HashItem * a;
     unsigned long hash(const Pair<string>& key);
     unsigned long cap;
+    unsigned long numElements;
 
     
 
