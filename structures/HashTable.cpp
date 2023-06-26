@@ -14,12 +14,12 @@ HashTable::HashTable()
     }
     numElements = 0;
 }
-
+/*
 HashTable::~HashTable()
 {
     delete[] a;
 }
-
+*/
 unsigned long HashTable::hash(const Pair<string> &key)
 {
     const unsigned long p1 = 31;

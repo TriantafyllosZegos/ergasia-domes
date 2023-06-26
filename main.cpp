@@ -20,34 +20,36 @@ using namespace std;
 
 
 
-int main()
+int main(int argc, char* argv[])
 {
-    Pair<string> * Q = generateQ();
+    string file;
+    if (argc == 1){
+        file = "small-file"; //DEFAULT VALUE WITHOUT ARGS
+    }else{
+        file = argv[1];
+    }
+    const string FILE_PATH = file + ".txt";
     const int NUMBER_OF_SEARCH = 1000;
+    const Pair<string> * Q = generateQ(FILE_PATH,NUMBER_OF_SEARCH);
 
-    ofstream md("markdown.md",std::ios_base::app);
-    md << "---" << endl;
-    md.close();
-
-/*
     Table * t = new Table();
-    runStructure(t,Q,NUMBER_OF_SEARCH);
-    delete t;
+    runStructure(t,FILE_PATH,Q,NUMBER_OF_SEARCH);
+    //delete t;
     
     SortedTable * st = new SortedTable();
-    runStructure(st,Q,NUMBER_OF_SEARCH);
-    delete st;
-*/
+    runStructure(st,FILE_PATH,Q,NUMBER_OF_SEARCH);
+    //delete st;
+
     HashTable * ht = new HashTable();
-    runStructure(ht,Q,NUMBER_OF_SEARCH);
-    delete ht;
+    runStructure(ht,FILE_PATH,Q,NUMBER_OF_SEARCH);
+    //delete ht;
 
     BinaryTree * bt = new BinaryTree();
-    runStructure(bt,Q,NUMBER_OF_SEARCH);
+    runStructure(bt,FILE_PATH,Q,NUMBER_OF_SEARCH);
     //delete bt;
 
     Avl * avl = new Avl();
-    runStructure(avl,Q,NUMBER_OF_SEARCH);
+    runStructure(avl,FILE_PATH,Q,NUMBER_OF_SEARCH);
     //delete avl;
 
     return 0;

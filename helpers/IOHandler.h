@@ -5,11 +5,11 @@
 #include "Pair.h"
 
 template <typename STRC>
-void buildPairs(STRC * strc);
+void buildPairs(STRC * strc,const string FILE_PATH);
 
 template <typename STRC>
-void runStructure(STRC * strc,Pair<string> * Q,const int);
+void runStructure(STRC * strc,const string FILE_PATH,const Pair<string> * Q,const int);
 
-Pair<string> * generateQ();
+const Pair<string> * generateQ(const string FILE_PATH,const int NUMBER_OF_SEARCH);
 
 #endif

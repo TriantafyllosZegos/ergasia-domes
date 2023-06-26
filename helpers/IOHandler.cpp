@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <chrono>
+#include <cstring>
 #include <cctype>
 #include "Pair.h"
 #include "CPair.h"
@@ -12,8 +13,6 @@
 #include "../structures/Table.h"
 #include "../structures/SortedTable.h"
 #include "../structures/HashTable.h"
-
-const string FILE_PATH = "small-file.txt";
 
 std::string removeNonAlphaNumeric(const std::string& input) {
     std::string result;
@@ -48,7 +47,7 @@ void tokenizeString(const std::string& input, std::string tokens[], int& count) 
 };
 
 template <typename STRC>
-void buildPairs(STRC * strc) {
+void buildPairs(STRC * strc,const string FILE_PATH) {
     unsigned long z = 1;
     string myline;
     std::ifstream myfile;
@@ -80,19 +79,19 @@ void buildPairs(STRC * strc) {
     myfile.close();
 };
 
-template void buildPairs<Table>(Table*);
-template void buildPairs<SortedTable>(SortedTable*);
-template void buildPairs<BinaryTree>(BinaryTree*);
-template void buildPairs<Avl>(Avl*);
-template void buildPairs<HashTable>(HashTable*);
+template void buildPairs<Table>(Table*,const string );
+template void buildPairs<SortedTable>(SortedTable*,const string );
+template void buildPairs<BinaryTree>(BinaryTree*,const string );
+template void buildPairs<Avl>(Avl*,const string );
+template void buildPairs<HashTable>(HashTable*,const string );
 
 
 template <typename STRC>
-void runStructure(STRC * strc,Pair<string> * Q,const int NUMBER_OF_SEARCH) {
+void runStructure(STRC * strc,const string FILE_PATH,const Pair<string> * Q,const int NUMBER_OF_SEARCH) {
     chrono::system_clock::time_point start,end;
     double time;
     start = chrono::high_resolution_clock::now();
-    buildPairs(strc);
+    buildPairs(strc,FILE_PATH);
     end = chrono::high_resolution_clock::now();
     time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
     ofstream out("output.txt",std::ios_base::app);
@@ -100,8 +99,12 @@ void runStructure(STRC * strc,Pair<string> * Q,const int NUMBER_OF_SEARCH) {
     ofstream md("markdown.md",std::ios_base::app);
     md << "- <**" << removeNonAlphaNumeric(typeid(*strc).name()) << "**> : `" << time << " sec`" << endl;
     md.close();*/
-
-    out << "<" << removeNonAlphaNumeric(typeid(*strc).name()) << "> | Construction : " << time << " sec | ";
+    const string name = removeNonAlphaNumeric(typeid(*strc).name());
+    out << "<" << name << ">";
+    for (int i = name.size(); i<18;i++){
+        out << " ";
+    }
+    out << " | Construction : " << time << " sec | ";
     start = chrono::high_resolution_clock::now();
     for (int i = 0;i<NUMBER_OF_SEARCH;i++){
         strc->search(Q[i]);
@@ -112,18 +115,17 @@ void runStructure(STRC * strc,Pair<string> * Q,const int NUMBER_OF_SEARCH) {
     out.close();
 };
 
-template void runStructure<Table>(Table*,Pair<string> * Q,const int);
-template void runStructure<SortedTable>(SortedTable*,Pair<string> * Q,const int);
-template void runStructure<BinaryTree>(BinaryTree*,Pair<string> * Q,const int);
-template void runStructure<Avl>(Avl*,Pair<string> * Q,const int);
-template void runStructure<HashTable>(HashTable*,Pair<string> * Q,const int);
+template void runStructure<Table>(Table*,const string ,const Pair<string> * Q,const int);
+template void runStructure<SortedTable>(SortedTable*,const string ,const Pair<string> * Q,const int);
+template void runStructure<BinaryTree>(BinaryTree*,const string ,const Pair<string> * Q,const int);
+template void runStructure<Avl>(Avl*,const string ,const Pair<string> * Q,const int);
+template void runStructure<HashTable>(HashTable*,const string ,const Pair<string> * Q,const int);
 
 
 
-Pair<string>* generateQ() {
+const Pair<string>* generateQ(const string FILE_PATH,const int NUMBER_OF_SEARCH) {
     int z = 0;
     Pair<string>* aQ = new(nothrow) Pair<string>[1000]();
-    if (aQ == NULL) cout << "aQ MEMORY ERROR" << endl;
     string myline;
     std::ifstream myfile;
     myfile.open(FILE_PATH);
@@ -131,7 +133,7 @@ Pair<string>* generateQ() {
         while ( myfile && z < 1000) {
             getline (myfile, myline);
             string newl = removeNonAlphaNumeric(myline);
-            std::string tokens[25];  // Assuming maximum of 100 tokens
+            std::string tokens[10000];  // Assuming maximum of 100 tokens
             int tokenCount = 0;
 
             tokenizeString(newl, tokens, tokenCount);
