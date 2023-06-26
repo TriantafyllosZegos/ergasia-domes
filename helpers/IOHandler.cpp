@@ -101,7 +101,7 @@ void runStructure(STRC * strc,Pair<string> * Q,const int NUMBER_OF_SEARCH) {
     md << "- <**" << removeNonAlphaNumeric(typeid(*strc).name()) << "**> : `" << time << " sec`" << endl;
     md.close();*/
 
-    out << "<" << removeNonAlphaNumeric(typeid(*strc).name()) << "> | Construction : " << time << " sec | " << endl;
+    out << "<" << removeNonAlphaNumeric(typeid(*strc).name()) << "> | Construction : " << time << " sec | ";
     start = chrono::high_resolution_clock::now();
     for (int i = 0;i<NUMBER_OF_SEARCH;i++){
         strc->search(Q[i]);
