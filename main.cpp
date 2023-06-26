@@ -32,22 +32,19 @@ int main()
 /*
     Table * t = new Table();
     runStructure(t,Q,NUMBER_OF_SEARCH);
-    //delete t;
-    
+    delete t;
     
     SortedTable * st = new SortedTable();
     runStructure(st,Q,NUMBER_OF_SEARCH);
-    //delete st;
-
+    delete st;
 */
     HashTable * ht = new HashTable();
     runStructure(ht,Q,NUMBER_OF_SEARCH);
-    //delete ht;
+    delete ht;
 
     BinaryTree * bt = new BinaryTree();
     runStructure(bt,Q,NUMBER_OF_SEARCH);
     //delete bt;
-
 
     Avl * avl = new Avl();
     runStructure(avl,Q,NUMBER_OF_SEARCH);
