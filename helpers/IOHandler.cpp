@@ -72,7 +72,7 @@ void buildPairs(STRC * strc) {
                 Pair<string> p = Pair(tokens[i],tokens[i+1]);
                 strc->insert(p); // Insert is mutual method to every structure
                 z++;
-                    if (z % 100000 == 0){
+                    if (z % 1000000 == 0){
                         cout << z << " inserts" <<endl;
                     }
             }
