@@ -3,6 +3,7 @@
 #include "../helpers/CPair.h"
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 Table::Table()
@@ -13,12 +14,7 @@ Table::Table()
     if (a == NULL)
         cout << "TABLE MEMORY ERROR" << endl;
 }
-/*
-Table::~Table()
-{
-    delete[] a;
-}
-*/
+
 void Table::print()
 {
     cout << "############## TABLE ##############" << endl;
@@ -51,7 +47,6 @@ void Table::checkResize()
     {
         // If the array is full, increase its capacity
         this->cap *= 2;
-        //a = (CPair<string>*)realloc(a,cap*sizeof(CPair<string>));
         CPair<string> *newLines = new (nothrow) CPair<string>[cap]();
         if (newLines == NULL)
             cout << "Table MEMORY ERROR || size : " << size << endl;

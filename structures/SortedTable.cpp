@@ -6,12 +6,7 @@
 using namespace std;
 
 SortedTable::SortedTable() : Table() {}
-/*
-SortedTable::~SortedTable()
-{
-    delete[] a;
-}
-*/
+
 SortedTable::SortedTable(Table *t)
 {
     this->cap = 1024;

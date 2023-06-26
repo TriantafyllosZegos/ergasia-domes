@@ -12,7 +12,7 @@ HashTable::HashTable()
     {
         a[i] = HashItem();
     }
-    numElements = 0;
+    this->numElements = 0;
 }
 /*
 HashTable::~HashTable()
@@ -20,6 +20,11 @@ HashTable::~HashTable()
     delete[] a;
 }
 */
+
+
+unsigned long HashTable::getSize(){
+    return numElements;
+}
 unsigned long HashTable::hash(const Pair<string> &key)
 {
     const unsigned long p1 = 31;

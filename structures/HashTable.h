@@ -36,7 +36,7 @@ private:
 public:
     HashTable();
     //~HashTable();
-
+    unsigned long getSize();
     void insert(const Pair<string>& key);
     void resize();
     int search(const Pair<string>& key);
