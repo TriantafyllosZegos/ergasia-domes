@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 
     Table *t = new Table();
     runStructure(t, FILE_PATH, ARRAY_Q, NUMBER_OF_SEARCH);
-    std::cout << t->getSize() << endl;
+    cout << t->getSize() << endl;
     // delete t;
 
     SortedTable *st = new SortedTable();
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 
     HashTable *ht = new HashTable();
     runStructure(ht, FILE_PATH, ARRAY_Q, NUMBER_OF_SEARCH);
-    std::cout << ht->getSize() << endl;
+    cout << ht->getSize() << endl;
     // delete ht;
 
     BinaryTree *bt = new BinaryTree();
