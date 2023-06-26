@@ -88,7 +88,7 @@ template void buildPairs<HashTable>(HashTable*);
 
 
 template <typename STRC>
-void runStructure(STRC * strc,const int NUMBER_OF_SEARCH) {
+void runStructure(STRC * strc,Pair<string> * Q,const int NUMBER_OF_SEARCH) {
     chrono::system_clock::time_point start,end;
     double time;
     start = chrono::high_resolution_clock::now();
@@ -104,7 +104,7 @@ void runStructure(STRC * strc,const int NUMBER_OF_SEARCH) {
     out << "Construction Time of <" << removeNonAlphaNumeric(typeid(*strc).name()) << "> : " << time << " sec" << endl;
     start = chrono::high_resolution_clock::now();
     for (int i = 0;i<NUMBER_OF_SEARCH;i++){
-        t->search(arrayQ[i]);
+        t->search(Q[i]);
     }
     end = chrono::high_resolution_clock::now();
     time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
@@ -112,11 +112,11 @@ void runStructure(STRC * strc,const int NUMBER_OF_SEARCH) {
     out.close();
 };
 
-template void runStructure<Table>(Table*,const int);
-template void runStructure<SortedTable>(SortedTable*,const int);
-template void runStructure<BinaryTree>(BinaryTree*,const int);
-template void runStructure<Avl>(Avl*,const int);
-template void runStructure<HashTable>(HashTable*,const int);
+template void runStructure<Table>(Table*,Pair<string> * Q,const int);
+template void runStructure<SortedTable>(SortedTable*,Pair<string> * Q,const int);
+template void runStructure<BinaryTree>(BinaryTree*,Pair<string> * Q,const int);
+template void runStructure<Avl>(Avl*,Pair<string> * Q,const int);
+template void runStructure<HashTable>(HashTable*,Pair<string> * Q,const int);
 
 
 
