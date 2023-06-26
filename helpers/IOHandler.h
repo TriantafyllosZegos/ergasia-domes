@@ -7,6 +7,9 @@
 template <typename STRC>
 void buildPairs(STRC * strc);
 
+template <typename STRC>
+void runStructure(STRC * strc,const int);
+
 Pair<string> * generateQ();
 
 #endif

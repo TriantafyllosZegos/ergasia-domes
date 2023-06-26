@@ -50,9 +50,6 @@ void tokenizeString(const std::string& input, std::string tokens[], int& count) 
 template <typename STRC>
 void buildPairs(STRC * strc) {
     unsigned long z = 1;
-    chrono::system_clock::time_point start,end;
-    double time;
-    start = chrono::high_resolution_clock::now();
     string myline;
     std::ifstream myfile;
     myfile.open(FILE_PATH);
@@ -81,14 +78,6 @@ void buildPairs(STRC * strc) {
     }
     cout << z << endl;
     myfile.close();
-    end = chrono::high_resolution_clock::now();
-    time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
-    ofstream out("output.txt",std::ios_base::app);
-    out << "Construction Time of <" << removeNonAlphaNumeric(typeid(*strc).name()) << "> : " << time << " sec" << endl;
-    out.close();
-    ofstream md("markdown.md",std::ios_base::app);
-    md << "- <**" << removeNonAlphaNumeric(typeid(*strc).name()) << "**> : `" << time << " sec`" << endl;
-    md.close();
 };
 
 template void buildPairs<Table>(Table*);
@@ -96,6 +85,38 @@ template void buildPairs<SortedTable>(SortedTable*);
 template void buildPairs<BinaryTree>(BinaryTree*);
 template void buildPairs<Avl>(Avl*);
 template void buildPairs<HashTable>(HashTable*);
+
+
+template <typename STRC>
+void runStructure(STRC * strc,const int NUMBER_OF_SEARCH) {
+    chrono::system_clock::time_point start,end;
+    double time;
+    start = chrono::high_resolution_clock::now();
+    buildPairs(strc);
+    end = chrono::high_resolution_clock::now();
+    time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
+    ofstream out("output.txt",std::ios_base::app);
+    /*
+    ofstream md("markdown.md",std::ios_base::app);
+    md << "- <**" << removeNonAlphaNumeric(typeid(*strc).name()) << "**> : `" << time << " sec`" << endl;
+    md.close();*/
+
+    out << "Construction Time of <" << removeNonAlphaNumeric(typeid(*strc).name()) << "> : " << time << " sec" << endl;
+    start = chrono::high_resolution_clock::now();
+    for (int i = 0;i<NUMBER_OF_SEARCH;i++){
+        t->search(arrayQ[i]);
+    }
+    end = chrono::high_resolution_clock::now();
+    time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
+    out << "Search Time of <" << removeNonAlphaNumeric(typeid(*strc).name()) << "> : " << time << " sec" << endl;
+    out.close();
+};
+
+template void runStructure<Table>(Table*,const int);
+template void runStructure<SortedTable>(SortedTable*,const int);
+template void runStructure<BinaryTree>(BinaryTree*,const int);
+template void runStructure<Avl>(Avl*,const int);
+template void runStructure<HashTable>(HashTable*,const int);
 
 
 
