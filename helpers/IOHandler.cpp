@@ -118,7 +118,7 @@ template void runStructure<HashTable>(HashTable*,const string ,const Pair<string
 
 const Pair<string>* generateQ(const string FILE_PATH,const int NUMBER_OF_SEARCH) {
     int z = 0;
-    Pair<string>* aQ = new(nothrow) Pair<string>[1000]();
+    Pair<string>* aQ = new(nothrow) Pair<string>[1001]();
     string myline;
     std::ifstream myfile;
     myfile.open(FILE_PATH);

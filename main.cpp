@@ -20,14 +20,13 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    const string FILE_PATH = argc < 2 ? "small-file.txt" : argv[1]; // Default value "small-file.txt"
-    const int NUMBER_OF_SEARCH = argc < 3 ? 1000 : stoi(argv[2]);   // Default value 1000
+    const string FILE_PATH = argc < 2 ? "small-file.txt" : argv[1]; // DEFAULT "small-file.txt"
+    const int NUMBER_OF_SEARCH = argc < 3 ? 1000 : stoi(argv[2]);   // DEFAULT 1000
 
     const Pair<string> *ARRAY_Q = generateQ(FILE_PATH, NUMBER_OF_SEARCH);
 
     Table *t = new Table();
     runStructure(t, FILE_PATH, ARRAY_Q, NUMBER_OF_SEARCH);
-    cout << t->getSize() << endl;
     // delete t;
 
     SortedTable *st = new SortedTable();
@@ -36,7 +35,6 @@ int main(int argc, char *argv[])
 
     HashTable *ht = new HashTable();
     runStructure(ht, FILE_PATH, ARRAY_Q, NUMBER_OF_SEARCH);
-    cout << ht->getSize() << endl;
     // delete ht;
 
     BinaryTree *bt = new BinaryTree();

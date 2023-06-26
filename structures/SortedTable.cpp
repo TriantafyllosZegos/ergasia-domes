@@ -7,13 +7,6 @@ using namespace std;
 
 SortedTable::SortedTable() : Table() {}
 
-SortedTable::SortedTable(Table *t)
-{
-    this->cap = 1024;
-    this->size = 0;
-    this->a = t->a;
-}
-
 void SortedTable::insert(const Pair<string> &pair)
 {
     checkResize();
