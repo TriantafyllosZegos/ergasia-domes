@@ -13,7 +13,7 @@
 #include "../structures/SortedTable.h"
 #include "../structures/HashTable.h"
 
-const string FILE_PATH = "gutenberg.txt";
+const string FILE_PATH = "small-file.txt";
 
 std::string removeNonAlphaNumeric(const std::string& input) {
     std::string result;
@@ -101,14 +101,14 @@ void runStructure(STRC * strc,Pair<string> * Q,const int NUMBER_OF_SEARCH) {
     md << "- <**" << removeNonAlphaNumeric(typeid(*strc).name()) << "**> : `" << time << " sec`" << endl;
     md.close();*/
 
-    out << "Construction Time of <" << removeNonAlphaNumeric(typeid(*strc).name()) << "> : " << time << " sec" << endl;
+    out << "<" << removeNonAlphaNumeric(typeid(*strc).name()) << "> | Construction : " << time << " sec | " << endl;
     start = chrono::high_resolution_clock::now();
     for (int i = 0;i<NUMBER_OF_SEARCH;i++){
-        t->search(Q[i]);
+        strc->search(Q[i]);
     }
     end = chrono::high_resolution_clock::now();
     time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
-    out << "Search Time of <" << removeNonAlphaNumeric(typeid(*strc).name()) << "> : " << time << " sec" << endl;
+    out << "Search : " << time << " sec" << endl;
     out.close();
 };
 

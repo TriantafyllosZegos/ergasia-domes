@@ -17,7 +17,7 @@ class Table {
 
     public:
         Table();
-        ~Table();
+        virtual ~Table();
         virtual void insert(const Pair<string>& p);
         unsigned int search(const Pair<string>& p);
         void checkResize();
