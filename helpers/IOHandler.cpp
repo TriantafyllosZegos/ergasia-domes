@@ -55,10 +55,6 @@ void buildPairs(STRC * strc,const string FILE_PATH) {
     if ( myfile.is_open() ) {
         while ( myfile ) {
             getline (myfile, myline);
-                /*if (z > 8600000 ){
-                        cout << z << " inserts" <<endl;
-                        cout << myline <<endl;
-                    }*/
             string newl = removeNonAlphaNumeric(myline);
             std::string tokens[10000];  
             int tokenCount = 0;
@@ -95,13 +91,10 @@ void runStructure(STRC * strc,const string FILE_PATH,const Pair<string> * Q,cons
     end = chrono::high_resolution_clock::now();
     time = chrono::duration_cast<chrono::nanoseconds>(end-start).count() * 1e-9;
     ofstream out("output.txt",std::ios_base::app);
-    /*
-    ofstream md("markdown.md",std::ios_base::app);
-    md << "- <**" << removeNonAlphaNumeric(typeid(*strc).name()) << "**> : `" << time << " sec`" << endl;
-    md.close();*/
-    const string name = removeNonAlphaNumeric(typeid(*strc).name());
-    out << "<" << name << ">";
-    for (int i = name.size(); i<18;i++){
+    string name = removeNonAlphaNumeric(typeid(*strc).name());
+    name[0] = (char) name[0] - 32; // to start with Uppercase
+    out << name;
+    for (int i = name.size(); i<10;i++){
         out << " ";
     }
     out << " | Construction : " << time << " sec | ";

@@ -18,39 +18,32 @@
 
 using namespace std;
 
-
-
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
-    string file;
-    if (argc == 1){
-        file = "small-file"; //DEFAULT VALUE WITHOUT ARGS
-    }else{
-        file = argv[1];
-    }
-    const string FILE_PATH = file + ".txt";
-    const int NUMBER_OF_SEARCH = 1000;
-    const Pair<string> * Q = generateQ(FILE_PATH,NUMBER_OF_SEARCH);
+    const string FILE_PATH = argc < 2 ? "small-file.txt" : argv[1]; // Default value "small-file.txt"
+    const int NUMBER_OF_SEARCH = argc < 3 ? 1000 : stoi(argv[2]);   // Default value 1000
 
-    Table * t = new Table();
-    runStructure(t,FILE_PATH,Q,NUMBER_OF_SEARCH);
-    //delete t;
-    
-    SortedTable * st = new SortedTable();
-    runStructure(st,FILE_PATH,Q,NUMBER_OF_SEARCH);
-    //delete st;
+    const Pair<string> *ARRAY_Q = generateQ(FILE_PATH, NUMBER_OF_SEARCH);
 
-    HashTable * ht = new HashTable();
-    runStructure(ht,FILE_PATH,Q,NUMBER_OF_SEARCH);
-    //delete ht;
+    Table *t = new Table();
+    runStructure(t, FILE_PATH, ARRAY_Q, NUMBER_OF_SEARCH);
+    // delete t;
 
-    BinaryTree * bt = new BinaryTree();
-    runStructure(bt,FILE_PATH,Q,NUMBER_OF_SEARCH);
-    //delete bt;
+    SortedTable *st = new SortedTable();
+    //runStructure(st, FILE_PATH, ARRAY_Q, NUMBER_OF_SEARCH);
+    // delete st;
 
-    Avl * avl = new Avl();
-    runStructure(avl,FILE_PATH,Q,NUMBER_OF_SEARCH);
-    //delete avl;
+    HashTable *ht = new HashTable();
+    runStructure(ht, FILE_PATH, ARRAY_Q, NUMBER_OF_SEARCH);
+    // delete ht;
+
+    BinaryTree *bt = new BinaryTree();
+    runStructure(bt, FILE_PATH, ARRAY_Q, NUMBER_OF_SEARCH);
+    // delete bt;
+
+    Avl *avl = new Avl();
+    runStructure(avl, FILE_PATH, ARRAY_Q, NUMBER_OF_SEARCH);
+    // delete avl;
 
     return 0;
 }
