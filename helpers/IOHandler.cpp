@@ -48,7 +48,7 @@ void tokenizeString(const std::string& input, std::string tokens[], int& count) 
 
 template <typename STRC>
 void buildPairs(STRC * strc,const string FILE_PATH) {
-    unsigned long z = 1;
+    unsigned long z = 0;
     string myline;
     std::ifstream myfile;
     myfile.open(FILE_PATH);
@@ -118,12 +118,12 @@ template void runStructure<HashTable>(HashTable*,const string ,const Pair<string
 
 const Pair<string>* generateQ(const string FILE_PATH,const int NUMBER_OF_SEARCH) {
     int z = 0;
-    Pair<string>* aQ = new(nothrow) Pair<string>[1001]();
+    Pair<string>* aQ = new(nothrow) Pair<string>[NUMBER_OF_SEARCH]();
     string myline;
     std::ifstream myfile;
     myfile.open(FILE_PATH);
     if ( myfile.is_open() ) {
-        while ( myfile && z < 1000) {
+        while ( myfile && z < NUMBER_OF_SEARCH) {
             getline (myfile, myline);
             string newl = removeNonAlphaNumeric(myline);
             std::string tokens[10000];  // Assuming maximum of 100 tokens
@@ -136,7 +136,7 @@ const Pair<string>* generateQ(const string FILE_PATH,const int NUMBER_OF_SEARCH)
                     Pair<string> p(tokens[i],tokens[i+1]);
                     aQ[z] = p;
                     z++;
-                    if (z == 1000) break;
+                    if (z == NUMBER_OF_SEARCH) break;
                 }
             }
         }

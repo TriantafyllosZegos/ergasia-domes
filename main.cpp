@@ -24,11 +24,11 @@ int main(int argc, char *argv[])
     const int NUMBER_OF_SEARCH = argc < 3 ? 1000 : stoi(argv[2]);   // DEFAULT 1000
 
     const Pair<string> *ARRAY_Q = generateQ(FILE_PATH, NUMBER_OF_SEARCH);
-
+/*
     Table *t = new Table();
     runStructure(t, FILE_PATH, ARRAY_Q, NUMBER_OF_SEARCH);
     // delete t;
-
+*/
     SortedTable *st = new SortedTable();
     runStructure(st, FILE_PATH, ARRAY_Q, NUMBER_OF_SEARCH);
     // delete st;

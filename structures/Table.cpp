@@ -8,8 +8,8 @@ using namespace std;
 
 Table::Table()
 {
-    this->cap = 1024;
-    this->size = 0;
+    cap = 1024;
+    size = 0;
     a = new (nothrow) CPair<string>[cap]();
     if (a == NULL)
         cout << "TABLE MEMORY ERROR" << endl;

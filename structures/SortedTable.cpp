@@ -5,17 +5,15 @@
 
 using namespace std;
 
-SortedTable::SortedTable() : Table() {}
+SortedTable::SortedTable() : Table() {
+}
 
 void SortedTable::insert(const Pair<string> &pair)
 {
     checkResize();
-
     long insertionIndex = findInsertionIndex(pair);
-
     // Pair already exists
     if (insertionIndex == -1){ return ;}
-
     // Shift the elements to the right of the insertion point
     shiftRight(insertionIndex);
 
@@ -26,6 +24,10 @@ void SortedTable::insert(const Pair<string> &pair)
     size++;
 }
 
+long SortedTable::findInsertionIndex(const Pair<string> &pair)
+{
+    return findInsertionIndex(pair, 0, (long) size - 1);
+}
 long SortedTable::findInsertionIndex(const Pair<string> &pair, long low, long high)
 {
     while (low <= high) {
@@ -42,18 +44,13 @@ long SortedTable::findInsertionIndex(const Pair<string> &pair, long low, long hi
             high = mid - 1;
         }
     }
-
     return low;
 }
 
-long SortedTable::findInsertionIndex(const Pair<string> &pair)
-{
-    return findInsertionIndex(pair, 0, size - 1);
-}
 
 void SortedTable::shiftRight(long startIndex)
 {
-    for (long i = size - 1; i >= startIndex; i--)
+    for (long i = (long) size - 1; i >= startIndex; i--)
     {
         a[i + 1] = a[i];
     }
