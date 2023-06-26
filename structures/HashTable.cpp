@@ -70,7 +70,7 @@ void HashTable::insert(const Pair<string> &key)
 
         if (loadFactor > 0.7) // Adjust the threshold as needed
         {
-            cout << "start" << endl;
+            
             resize();
             return insert(key);
         }
@@ -84,14 +84,14 @@ void HashTable::resize()
 {
    
     this->cap *= 2;
-    cout << "temp" << endl;
+   
     HashItem *temp = new (nothrow) HashItem[cap]();
 
     for (unsigned long i = 0; i < cap; i++)
     {
         temp[i] = HashItem();
     }
-    cout << "end temp" << endl;
+
 
     for (unsigned long i = 0; i < cap / 2; i++)
     {
@@ -116,7 +116,7 @@ void HashTable::resize()
 
     delete[] a;
     this->a = temp;
-    cout << "end" << endl;
+    
 }
 
 int HashTable::search(const Pair<string> &key)
