@@ -14,7 +14,7 @@ void Avl::insert(const Pair<string> &value)
 
 NodeH *Avl::insertNodeH(NodeH *node, const CPair<string> &pair)
 {
-    /* 1. Perform the normal BST insertion */
+    // Perform the normal BST insertion 
     if (node == NULL)
     {
         // Create a new node with the given pair if the current node is null
@@ -43,10 +43,10 @@ NodeH *Avl::insertNodeH(NodeH *node, const CPair<string> &pair)
         node->data.count++;
         return node;
     }
-    /* 2. Update height of this ancestor node */
+    //  Update height of this ancestor node 
     node->height = 1 + max(getHeight(node->left), getHeight(node->right));
 
-    /* 3. Get the balance factor of this ancestor
+    /* Get the balance factor of this ancestor
         node to check whether this node became
         unbalanced */
     int balance = getBalance(node);
@@ -76,7 +76,7 @@ NodeH *Avl::insertNodeH(NodeH *node, const CPair<string> &pair)
         return node->rotateLeft();
     }
 
-    /* return the (unchanged) node pointer */
+    // return the (unchanged) node pointer 
     return node;
 }
 

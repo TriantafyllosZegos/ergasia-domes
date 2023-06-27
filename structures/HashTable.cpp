@@ -26,7 +26,7 @@ HashTable::HashTable()
 
 HashTable::~HashTable()
 {
-    // Deallocate the memory used by the hash table array
+    
     delete[] a;
 }
 
@@ -52,7 +52,7 @@ unsigned long HashTable::hash(const Pair<string> &key)
         hash2 = (hash2 * p2 + (ch - 'a' + 1)) % m2;
     }
 
-    // Combine the hash values with the second string in the pair
+    // Compute and combine the hash values with the second string in the pair
     for (char ch : key.second)
     {
         hash1 = (hash1 * p1 + (ch - 'a' + 1)) % m1;
@@ -95,7 +95,7 @@ void HashTable::insert(const Pair<string> &key)
         }
     }
 
-    // Insert the key-value pair at the determined index
+    // Else insert the key-value pair at the determined index 
     a[index] = HashItem(key);
     numElements++; // Increase the count of elements stored in the hash table
 }
@@ -118,7 +118,7 @@ void HashTable::resize()
     for (unsigned long i = 0; i < cap / 2; i++)
     {
         if(a[i].value > 0){
-            // Compute the new index for each element using the updated hash function
+            // Compute the new index
             unsigned long index = hash(a[i].key);
 
             // Insert the element at the new index in the new hash table
