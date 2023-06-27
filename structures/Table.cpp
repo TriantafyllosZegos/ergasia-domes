@@ -17,7 +17,7 @@ Table::Table()
 
 Table::~Table()
 {
-    delete[] a; // Deallocate the memory for the array
+    delete[] a; 
 }
 
 void Table::print()
@@ -25,13 +25,13 @@ void Table::print()
     cout << "############## TABLE ##############" << endl;
     for (unsigned int i = 0; i < size; i++)
     {
-        cout << a[i] << endl; // Print each CPair object in the array
+        cout << a[i] << endl; 
     }
 }
 
 unsigned int Table::getSize()
 {
-    return size; // Return the current size of the table
+    return size; 
 }
 
 unsigned int Table::search(const Pair<string> &p)
@@ -61,7 +61,7 @@ void Table::checkResize()
         {
             newLines[i] = a[i]; // Copy each CPair object from the old array to the new array
         }
-        delete[] a; // Deallocate the memory for the old array
+        delete[] a; 
         a = newLines; // Update the pointer to point to the new array
     }
 }
@@ -79,5 +79,5 @@ void Table::insert(const Pair<string> &p)
     checkResize(); // Check if resizing of the array is needed
     // Store the new line at the end of the array
     a[size] = CPair(p.first, p.second); // Create a new CPair object with the given values and assign it to the next available position in the array
-    size++; // Increment the size of the table
+    size++;
 }
