@@ -115,11 +115,15 @@ void HashTable::resize()
     }
 
     // Rehash the elements from the original hash table to the new hash table
-    for (unsigned long i = 0; i < cap / 2; i++)
-    {
-        if(a[i].value > 0){
-            // Compute the new index
+    for (unsigned long i = 0; i < cap / 2; i++) {
+        if (a[i].value > 0) {
+            // Compute the new index using a hash function based on the new capacity
             unsigned long index = hash(a[i].key);
+
+            // Linear probing until an empty slot is found in the new hash table
+            while (temp[index].value != 0) {
+                index = (index + 1) % cap;
+            }
 
             // Insert the element at the new index in the new hash table
             temp[index].key = a[i].key;
@@ -127,12 +131,14 @@ void HashTable::resize()
         }
     }
 
+
     // Deallocate the memory used by the original hash table array
     delete[] a;
 
     // Update the hash table array to point to the new hash table array
     this->a = temp;
 }
+
 
 int HashTable::search(const Pair<string> &key)
 {

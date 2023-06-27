@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 
     const Pair<string> *ARRAY_Q = generateQ(FILE_PATH, NUMBER_OF_SEARCH);
 
-    const Pair<string> test("this","is");
+    const Pair<string> test("a","little");
 
     Table *t = new Table();
     runStructure(t, FILE_PATH, ARRAY_Q, NUMBER_OF_SEARCH);
