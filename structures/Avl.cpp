@@ -4,10 +4,11 @@
 #include <iostream>
 using namespace std;
 
-Avl::Avl() : BinaryTree(){};
+Avl::Avl() : BinaryTree() {};
 
 void Avl::insert(const Pair<string> &value)
 {
+    // Insert a pair into the AVL tree
     root = insertNodeH((NodeH *)root, CPair<string>(value));
 }
 
@@ -16,8 +17,9 @@ NodeH *Avl::insertNodeH(NodeH *node, const CPair<string> &pair)
     /* 1. Perform the normal BST insertion */
     if (node == NULL)
     {
+        // Create a new node with the given pair if the current node is null
         node = new (nothrow) NodeH(pair);
-        node->data.count--; //WEIRD BEHAVIOR
+        node->data.count--; // WEIRD BEHAVIOR
         if (node == NULL)
         {
             cout << "ERROR NODE : " << pair << "MEMORY EXX";
@@ -27,20 +29,22 @@ NodeH *Avl::insertNodeH(NodeH *node, const CPair<string> &pair)
 
     if (pair < node->data)
     {
+        // Recursively insert the pair into the left subtree if it is smaller than the current node's pair
         node->left = insertNodeH(node->left, pair);
     }
     else if (pair > node->data)
     {
+        // Recursively insert the pair into the right subtree if it is greater than the current node's pair
         node->right = insertNodeH(node->right, pair);
     }
     else
     { // Equal keys are not allowed in BST
+        // If the pair is equal to the current node's pair, increment the count
         node->data.count++;
         return node;
     }
     /* 2. Update height of this ancestor node */
     node->height = 1 + max(getHeight(node->left), getHeight(node->right));
-    // node->height = (node->left->height >= node->right->height)?node->left->height:node->right->height + 1;
 
     /* 3. Get the balance factor of this ancestor
         node to check whether this node became
@@ -78,30 +82,32 @@ NodeH *Avl::insertNodeH(NodeH *node, const CPair<string> &pair)
 
 int Avl::searchPair(NodeH *node, const CPair<string> &value)
 {
-    
+    // Search for a pair in the AVL tree
     if (node == NULL)
     {
         return 0;
     }
     else if (value < node->data)
     {
+        // Recursively search in the left subtree if the value is smaller than the current node's pair
         return searchPair(node->left, value);
     }
     else if (value > node->data)
     {
+        // Recursively search in the right subtree if the value is greater than the current node's pair
         return searchPair(node->right, value);
     }
     else
     {
+        // Pair found, return the count of occurrences
         return node->data.count;
     }
 }
 
-// TODO: Pair < Cpair operations !!!
-
 int Avl::search(const Pair<string> &value)
 {
-    NodeH * r = (NodeH*) root;
+    // Search for a pair in the AVL tree
+    NodeH *r = (NodeH *)root;
     CPair<string> v(value);
     if (r == NULL)
     {
@@ -109,14 +115,17 @@ int Avl::search(const Pair<string> &value)
     }
     else if (v < r->data)
     {
+        // Recursively search in the left subtree if the value is smaller than the root's pair
         return searchPair(r->left, v);
     }
     else if (v > root->data)
     {
+        // Recursively search in the right subtree if the value is greater than the root's pair
         return searchPair(r->right, v);
     }
     else
     {
+        // Pair found at the root, return the count of occurrences
         return root->data.count;
     }
 }
@@ -135,8 +144,10 @@ void Avl::print()
 
     if (node->right) print(node->right, tp + " ❯");
 }
+
 void Avl::print(NodeH *node, string tp)
 {
+    // Recursive helper function to print the AVL tree
     if (node == nullptr)
         return;
 
