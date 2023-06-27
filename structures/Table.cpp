@@ -14,6 +14,10 @@ Table::Table()
     if (a == NULL)
         cout << "TABLE MEMORY ERROR" << endl;
 }
+Table::~Table()
+{
+    delete[] a;
+}
 
 void Table::print()
 {

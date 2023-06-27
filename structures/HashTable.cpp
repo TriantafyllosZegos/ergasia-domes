@@ -14,12 +14,12 @@ HashTable::HashTable()
     }
     this->numElements = 0;
 }
-/*
+
 HashTable::~HashTable()
 {
     delete[] a;
 }
-*/
+
 
 
 unsigned long HashTable::getSize(){
@@ -97,23 +97,11 @@ void HashTable::resize()
 
     for (unsigned long i = 0; i < cap / 2; i++)
     {
-        unsigned long  index = hash(a[i].key);
-        unsigned long  originalIndex = index;
-        while (temp[index].value != 0)
-        {
-            if (temp[index].key == a[i].key)
-            {
-                temp[index].value++;
-                break;
-            }
-            index = (index + 1) % cap;
-            if (index == originalIndex)
-            {
-                cout << " error " << endl;
-                return ;
-            }
+        if(a[i].value > 0){
+            unsigned long  index = hash(a[i].key);
+            temp[index].key = a[i].key;
+            temp[index].value = a[i].value;
         }
-        temp[index] = HashItem(a[i].key);
     }
 
     delete[] a;

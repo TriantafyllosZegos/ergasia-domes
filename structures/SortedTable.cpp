@@ -8,6 +8,7 @@ using namespace std;
 SortedTable::SortedTable() : Table() {
 }
 
+
 void SortedTable::insert(const Pair<string> &pair)
 {
     checkResize();
@@ -55,6 +56,7 @@ void SortedTable::shiftRight(long startIndex)
         a[i + 1] = a[i];
     }
 }
+
 long SortedTable::search(const Pair<string> &pair)
 {
     long mid = getSize() / 2;

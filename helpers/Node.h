@@ -21,10 +21,10 @@ struct Node
         right = nullptr;
     }
 
-    /* ~Node(){
+     ~Node(){
          delete left;
          delete right;
-     }*/
+     }
 };
 
 struct NodeH : public Node
@@ -90,9 +90,9 @@ struct NodeH : public Node
         // Return new root
         return y;
     }
-    /* ~Node(){
+    ~NodeH(){
          delete left;
          delete right;
-     }*/
+     }
 };
 #endif

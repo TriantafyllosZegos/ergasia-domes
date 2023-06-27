@@ -33,6 +33,11 @@ Node *BinaryTree::insertNode(Node *node, const CPair<string> &value)
 
 BinaryTree::BinaryTree() : root(nullptr) {}
 
+BinaryTree::~BinaryTree(){
+    delete root;
+}
+
+
 void BinaryTree::insert(const Pair<string> &value)
 {
     root = insertNode(root, CPair<string>(value));

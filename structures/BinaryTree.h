@@ -12,7 +12,7 @@ using namespace std;
 class BinaryTree {
 public:
     BinaryTree();
-    //~BinaryTree();
+    virtual ~BinaryTree();
     virtual void insert(const Pair<string>& value);
     //void deleteNode(Node* n);
     virtual int search(const Pair<string>& p);
