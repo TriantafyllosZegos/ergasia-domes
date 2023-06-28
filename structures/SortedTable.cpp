@@ -59,7 +59,7 @@ void SortedTable::shiftRight(long startIndex)
     }
 }
 
-long SortedTable::search(const Pair<string> &pair)
+unsigned int SortedTable::search(const Pair<string> &pair)
 {
     long mid = getSize() / 2;
     long l = 0;

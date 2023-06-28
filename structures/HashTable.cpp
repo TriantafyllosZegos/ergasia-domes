@@ -139,8 +139,7 @@ void HashTable::resize()
     this->a = temp;
 }
 
-
-int HashTable::search(const Pair<string> &key)
+unsigned int HashTable::search(const Pair<string> &key)
 {
     // Compute the initial index for search
     unsigned long index = hash(key);

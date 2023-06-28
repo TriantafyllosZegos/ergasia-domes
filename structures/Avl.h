@@ -14,7 +14,7 @@ class Avl : public BinaryTree
 public:
     Avl();
     void insert(const Pair<string> &value);
-    int search(const Pair<string>& p);
+    unsigned int search(const Pair<string>& p);
     void print();
     //~Avl();
 protected:

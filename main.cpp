@@ -25,31 +25,24 @@ int main(int argc, char *argv[])
 
     const Pair<string> *ARRAY_Q = generateQ(FILE_PATH, NUMBER_OF_SEARCH);
 
-    const Pair<string> test("a","little");
-
     Table *t = new Table();
     runStructure(t, FILE_PATH, ARRAY_Q, NUMBER_OF_SEARCH);
-    cout << t->search(test) << endl;
     delete t;
 
     SortedTable *st = new SortedTable();
     runStructure(st, FILE_PATH, ARRAY_Q, NUMBER_OF_SEARCH);
-    cout << st->search(test) << endl;
     delete st;
 
     HashTable *ht = new HashTable();
     runStructure(ht, FILE_PATH, ARRAY_Q, NUMBER_OF_SEARCH);
-    cout << ht->search(test) << endl;
     delete ht;
 
     BinaryTree *bt = new BinaryTree();
     runStructure(bt, FILE_PATH, ARRAY_Q, NUMBER_OF_SEARCH);
-    cout << bt->search(test) << endl;
     delete bt;
 
     Avl *avl = new Avl();
     runStructure(avl, FILE_PATH, ARRAY_Q, NUMBER_OF_SEARCH);
-    cout << avl->search(test) << endl;
     delete avl;
 
     return 0;

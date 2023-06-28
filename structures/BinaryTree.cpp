@@ -73,7 +73,7 @@ int BinaryTree::search(Node *node, const CPair<string> &value)
     }
 }
 
-int BinaryTree::search(const Pair<string> &value)
+unsigned int BinaryTree::search(const Pair<string> &value)
 {
     // Search for a pair in the binary tree
     CPair<string> v(value);

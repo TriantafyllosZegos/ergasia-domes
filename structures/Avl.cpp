@@ -104,7 +104,7 @@ int Avl::searchPair(NodeH *node, const CPair<string> &value)
     }
 }
 
-int Avl::search(const Pair<string> &value)
+unsigned int Avl::search(const Pair<string> &value)
 {
     // Search for a pair in the AVL tree
     NodeH *r = (NodeH *)root;
@@ -132,7 +132,7 @@ int Avl::search(const Pair<string> &value)
 
 void Avl::print()
 {
-    cout << "############## BINARY TREE ##############" << endl;
+    cout << "############## AVL ##############" << endl;
     NodeH *node = (NodeH *)this->root;
     string tp = "#";
     if (node == nullptr)

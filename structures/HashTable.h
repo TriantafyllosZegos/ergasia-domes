@@ -5,6 +5,7 @@
 #include <utility>
 #include <string>
 #include "../helpers/Pair.h"
+#include "../helpers/Structure.h"
 #include "../helpers/CPair.h"
 
 
@@ -24,8 +25,8 @@ struct HashItem
     }
 };
 
-class HashTable {
-private:
+class HashTable : public Structure {
+private: 
     HashItem * a;
     unsigned long hash(const Pair<string>& key);
     unsigned long cap;
@@ -35,12 +36,11 @@ private:
 
 public:
     HashTable();
-    ~HashTable();
+    virtual ~HashTable();
     unsigned long getSize();
     void insert(const Pair<string>& key);
     void resize();
-    int search(const Pair<string>& key);
-    void remove(const Pair<string>& key);
+    unsigned int search(const Pair<string>& key);
 };
 
 #endif

@@ -3,10 +3,12 @@
 
 #include <string>
 #include "../helpers/Pair.h"
+#include "../helpers/Structure.h"
 #include "../helpers/CPair.h"
 using namespace std;
 
-class Table {
+class Table : public Structure
+{
     public:
         CPair<string>* a;
     protected:
@@ -25,7 +27,7 @@ class Table {
         unsigned int getSize();
         CPair<string> operator[](int x){
             return this->a[x];
-        }
+        };
 };
 
 #endif

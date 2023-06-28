@@ -9,7 +9,7 @@ class SortedTable : public Table{
     public:
         SortedTable();
         //~SortedTable();
-        long search(const Pair<string>& p);
+        unsigned int search(const Pair<string>& p);
         void insert(const Pair<string>& p);
         
     private:
