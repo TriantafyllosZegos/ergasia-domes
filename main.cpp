@@ -1,26 +1,19 @@
-#include <iostream>
 #include <string>
-#include <fstream>
-#include <sstream>
-#include <cctype>
-#include <thread>
-#include <future>
-#include <typeinfo>
 #include "helpers/Pair.h"
 #include "helpers/IOHandler.h"
-
-#include "structures/Avl.h"
-#include "structures/BinaryTree.h"
 
 #include "structures/Table.h"
 #include "structures/SortedTable.h"
 #include "structures/HashTable.h"
+#include "structures/Avl.h"
+#include "structures/BinaryTree.h"
+
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-    const string FILE_PATH = argc < 2 ? "small-file.txt" : argv[1];    // DEFAULT "small-file.txt"
+    const string FILE_PATH = argc < 2 ? "small-file.txt" : argv[1]; // DEFAULT "small-file.txt"
     const int NUMBER_OF_SEARCH = argc < 3 ? 1000 : stoi(argv[2]);   // DEFAULT 1000
 
     const Pair<string> *ARRAY_Q = generateQ(FILE_PATH, NUMBER_OF_SEARCH);

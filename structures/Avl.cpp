@@ -80,7 +80,7 @@ NodeH *Avl::insertNodeH(NodeH *node, const CPair<string> &pair)
     return node;
 }
 
-int Avl::searchPair(NodeH *node, const CPair<string> &value)
+int Avl::search(NodeH *node, const CPair<string> &value)
 {
     // Search for a pair in the AVL tree
     if (node == NULL)
@@ -90,12 +90,12 @@ int Avl::searchPair(NodeH *node, const CPair<string> &value)
     else if (value < node->data)
     {
         // Recursively search in the left subtree if the value is smaller than the current node's pair
-        return searchPair(node->left, value);
+        return search(node->left, value);
     }
     else if (value > node->data)
     {
         // Recursively search in the right subtree if the value is greater than the current node's pair
-        return searchPair(node->right, value);
+        return search(node->right, value);
     }
     else
     {
@@ -116,12 +116,12 @@ unsigned int Avl::search(const Pair<string> &value)
     else if (v < r->data)
     {
         // Recursively search in the left subtree if the value is smaller than the root's pair
-        return searchPair(r->left, v);
+        return search(r->left, v);
     }
     else if (v > root->data)
     {
         // Recursively search in the right subtree if the value is greater than the root's pair
-        return searchPair(r->right, v);
+        return search(r->right, v);
     }
     else
     {

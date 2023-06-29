@@ -8,7 +8,7 @@ HashTable::HashTable()
     this->cap = 1024;
 
     // Allocate memory for the hash table array
-    a = new (nothrow) HashItem[cap]();
+    a = new (nothrow) HashItem<string>[cap]();
 
     // Check if memory allocation was successful
     if (a == NULL)
@@ -17,7 +17,7 @@ HashTable::HashTable()
     // Initialize each element in the hash table array to an empty HashItem
     for (unsigned long i = 0; i < cap; i++)
     {
-        a[i] = HashItem();
+        a[i] = HashItem<string>();
     }
 
     // Initialize the number of elements in the hash table to 0
@@ -96,7 +96,7 @@ void HashTable::insert(const Pair<string> &key)
     }
 
     // Else insert the key-value pair at the determined index 
-    a[index] = HashItem(key);
+    a[index] = HashItem<string>(key);
     numElements++; // Increase the count of elements stored in the hash table
 }
 
@@ -106,12 +106,12 @@ void HashTable::resize()
     this->cap *= 2;
 
     // Create a new temporary hash table array with the doubled capacity
-    HashItem *temp = new (nothrow) HashItem[cap]();
+    HashItem<string> *temp = new (nothrow) HashItem<string>[cap]();
 
     // Initialize each element in the new hash table array to an empty HashItem
     for (unsigned long i = 0; i < cap; i++)
     {
-        temp[i] = HashItem();
+        temp[i] = HashItem<string>();
     }
 
     // Rehash the elements from the original hash table to the new hash table
@@ -167,4 +167,12 @@ unsigned int HashTable::search(const Pair<string> &key)
 
     // Key not found
     return 0;
+}
+
+void HashTable::print(){
+    for (unsigned long i = 0;i<cap;i++){
+        if (a[i].value > 0){
+            cout << a[i].key << " || count : " << a[i].value << endl;
+        }
+    }
 }

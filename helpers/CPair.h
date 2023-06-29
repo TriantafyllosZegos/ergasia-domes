@@ -11,7 +11,6 @@ struct CPair : public Pair<T> {
     int count;
     CPair(T first,T second): first(first), second(second), count(1){};
     CPair(Pair<T>& p): first(p.first), second(p.second), count(1){};
-    //CPair(T first,T second,int c): first(first), second(second), count(c){};
     CPair(){}
     friend std::ostream& operator<<(std::ostream& os,CPair& pair) {
         return os << pair.first << "," << pair.second << " || count : " << pair.count;

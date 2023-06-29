@@ -16,10 +16,9 @@ public:
     void insert(const Pair<string> &value);
     unsigned int search(const Pair<string>& p);
     void print();
-    //~Avl();
 protected:
     NodeH *insertNodeH(NodeH *node, const CPair<string> &value);
-    int searchPair(NodeH* node,const CPair<string>& value);
+    int search(NodeH* node,const CPair<string>& value);
     void print(NodeH* node,string tp);
     
 };

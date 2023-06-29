@@ -6,28 +6,12 @@
 #include <string>
 #include "../helpers/Pair.h"
 #include "../helpers/Structure.h"
-#include "../helpers/CPair.h"
+#include "../helpers/HashItem.h"
 
-
-struct HashItem
-{
-    Pair<string> key;
-    int value;
-    HashItem()
-    {
-        key = Pair<string>();
-        value = 0;
-    }
-    HashItem(const Pair<string>& pair)
-    {
-        key = pair;
-        value = 1;
-    }
-};
 
 class HashTable : public Structure {
 private: 
-    HashItem * a;
+    HashItem<string> * a;
     unsigned long hash(const Pair<string>& key);
     unsigned long cap;
     unsigned long numElements;
@@ -41,6 +25,7 @@ public:
     void insert(const Pair<string>& key);
     void resize();
     unsigned int search(const Pair<string>& key);
+    void print();
 };
 
 #endif

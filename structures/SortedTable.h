@@ -8,12 +8,11 @@
 class SortedTable : public Table{
     public:
         SortedTable();
-        //~SortedTable();
         unsigned int search(const Pair<string>& p);
         void insert(const Pair<string>& p);
         
     private:
-        long searchPair(const Pair<string>& p,long low, long high);
+        unsigned int search(const Pair<string>& p,long low, long high);
         void shiftRight(long index);
         long findInsertionIndex(const Pair<string>& p,long low, long high);
         long findInsertionIndex(const Pair<string>& p);

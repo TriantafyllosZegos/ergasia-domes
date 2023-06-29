@@ -78,6 +78,5 @@ void Table::insert(const Pair<string> &p)
     }
     checkResize(); // Check if resizing of the array is needed
     // Store the new line at the end of the array
-    a[size] = CPair(p.first, p.second); // Create a new CPair object with the given values and assign it to the next available position in the array
-    size++;
+    a[size++] = CPair(p.first, p.second); // Create a new CPair object with the given values and assign it to the next available position in the array
 }

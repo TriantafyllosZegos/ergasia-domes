@@ -132,7 +132,7 @@ const Pair<string> *generateQ(const string FILE_PATH, const int NUMBER_OF_SEARCH
             tokenizeString(newl, tokens, tokenCount);
             for (int i = 0; i < tokenCount - 1; i++)
             {
-                int random = rand() % 10000;
+                int random = rand() % (long) NUMBER_OF_SEARCH;
                 if (random == 7)
                 {
                     Pair<string> p(tokens[i], tokens[i + 1]);

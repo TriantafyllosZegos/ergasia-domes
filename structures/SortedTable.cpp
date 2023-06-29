@@ -66,16 +66,16 @@ unsigned int SortedTable::search(const Pair<string> &pair)
     long h = getSize();
 
     if (a[mid] > pair){
-        return searchPair(pair, l, mid - 1); // Search in the left half of the sorted array
+        return search(pair, l, mid - 1); // Search in the left half of the sorted array
     }
 
     if (a[mid] < pair){
-        return searchPair(pair, mid + 1, h); // Search in the right half of the sorted array
+        return search(pair, mid + 1, h); // Search in the right half of the sorted array
     }
     return a[mid].count; // Element found at the middle position
 }
 
-long SortedTable::searchPair(const Pair<string> &pair, long low, long high)
+unsigned int SortedTable::search(const Pair<string> &pair, long low, long high)
 {
     long mid = low + (high - low) / 2;
     if (low <= high)
@@ -86,11 +86,11 @@ long SortedTable::searchPair(const Pair<string> &pair, long low, long high)
         }
 
         if (a[mid] > pair){
-            return searchPair(pair, low, mid - 1); // Search in the left half of the remaining array
+            return search(pair, low, mid - 1); // Search in the left half of the remaining array
         }
 
         if (a[mid] < pair){
-            return searchPair(pair, mid + 1, high); // Search in the right half of the remaining array
+            return search(pair, mid + 1, high); // Search in the right half of the remaining array
         }
     }
     return 0; // Element not found
